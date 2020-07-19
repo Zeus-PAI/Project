@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumno</title>
+</head>
+
+<body>
+    <h1>alumno</h1>
+    <br>
+
+    {% if message %}
+    <p style="color: red;">{{message}}</p>
+    <br>
+    {% endif %}
+    <form action="/" method="POST">
+        name: <br>
+        <input type="text" name="name" id="name">
+        <br><br>
+        age: <br>
+        <input type="text" name="age" id="age">
+        <br><br>
+        <input type="submit" value="Send">
+    </form>
+</body>
+
+</html>

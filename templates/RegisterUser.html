@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Usuario</title>
+</head>
+
+<body>
+    <h1>Registro de Usuario</h1>
+    <br>
+
+    {% if message %}
+    <p style="color: red;">{{message}}</p>
+    <br>
+    {% endif %}
+    <form action="/registrousuario" method="POST">
+        Ingrese su nombre completo: <br>
+        <input type="text" name="nombre" id="nombre">
+        <br><br>
+        Elige un nombre de Usuario: <br>
+        <input type="text" name="usuario" id="usuario">
+        <br><br>
+        Ingresa tu correo: <br>
+        <input type="email" name="correo" id="correo">
+        <br><br>
+        Ingresa una contraseña: <br>
+        <input type="password" name="contraseña" id="contraseña">
+        <br><br>
+        Ingresa tu Fecha de Nacimiento: <br>
+        <input type="date" name="fecha" id="fecha">
+        <br><br>
+        Escribe un número de teléfono: <br>
+        <input type="text" name="telefono" id="telefono">
+        <br><br>
+        Ingresa tu país de Origen: <br>
+        <input type="text" name="pais" id="pais">
+        <br><br>
+        <input type="submit" value="Send">
+    </form>
+</body>
+
+</html>
