@@ -1,5 +1,6 @@
 from Logic import Logic
 from userobj import UserObj
+from Solicitudobj import SolicitudObj
 
 
 class UserLogic(Logic):
@@ -31,8 +32,23 @@ class RegisterLogic(Logic):
         database = self.get_databaseXObj()
         sql = (
             "insert into proyectozeus.usuarios (`idUsuario`, `Usuario`, `nombre_completo`, `correo`, "
-            + "`contraseña`, `Fecha de Nacimiento`, `telefono`, `pais de residencia`, `idTipo`) "
+            + "`contraseña`, `FechaNacimiento`, `telefono`, `pais`, `idTipo`) "
             + f"values (0, '{user}', '{nombre_completo}', '{correo}', '{password}', '{Fecha}', '{telefono}', '{pais}', 2);"
+        )
+        rows = database.executeNonQueryRows(sql)
+        return rows
+
+
+class RequestLogic(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def NewRequest(self, user, nombre_completo, correo, password, Fecha, telefono, Motivos, Frecuencia, pais, Foto):
+        database = self.get_databaseXObj()
+        sql = (
+            "insert into proyectozeus.solicitudes (`idSolicitud`, `Usuario`, `nombre_completo`, `correo`, "
+            + "`contraseña`, `FechaNacimiento`, `telefono`, `MotivosViaje`,`FrecuenciaViaje`,`EstadoSolicitud`,`pais`, `Foto`) "
+            + f"values (0, '{user}', '{nombre_completo}', '{correo}', '{password}', '{Fecha}', '{telefono}', '{Motivos}', '{Frecuencia}', 'Pendiente','{pais}', '{Foto}');"
         )
         rows = database.executeNonQueryRows(sql)
         return rows

@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, session
 from MethodUtil import MethodUtil
-from userlogic import UserLogic, RegisterLogic
+from userlogic import UserLogic, RegisterLogic, RequestLogic
 from userobj import UserObj
+from Solicitudobj import SolicitudObj
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -84,9 +85,12 @@ def registerviajeroform():
         Fecha = request.form["fecha"]
         telefono = request.form["telefono"]
         pais = request.form["pais"]
-        logic = RegisterLogic()
-        rows = logic.insertNewUser(
-            usuario, nombre, email, contraseña, Fecha, telefono, pais
+        Motivos = request.form["motivos"]
+        Frecuencia = request.form["frecuencia"]
+        Foto = request.form["foto"]
+        logic = RequestLogic()
+        rows = logic.NewRequest(
+            usuario, nombre, email, contraseña, Fecha, telefono, Motivos, Frecuencia, pais, Foto
         )
         message = f"{rows} affected"
         return render_template("RegisterViajero.html", message=message)
