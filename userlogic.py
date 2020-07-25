@@ -53,3 +53,14 @@ class RequestLogic(Logic):
         )
         rows = database.executeNonQueryRows(sql)
         return rows
+
+
+class EstadoLogic(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def UpdateRequest(self, id, estado):
+        database = self.get_databaseXObj()
+        sql = f"UPDATE `proyectozeus`.`solicitudes` SET `EstadoSolicitud` = '{estado}' WHERE (`idSolicitud` = '{id}');"
+        rows = database.executeNonQueryRows(sql)
+        return rows

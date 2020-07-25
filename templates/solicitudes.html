@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if message %}
+    <p style="color: red;">{{message}}</p>
+    <br>
+    {% endif %}
+    <form action="/solicitudes" method="POST">
+        Escribe el ID de la Solicitud que deseas actualizar:
+        <br><br>
+        ID Solicitud: <br>
+        <input type="int" name="idsolicitud" id="idsolicitud">
+        <br><br>
+        Estado: <br>
+        <select class="" name="estado" id="estado">
+            <option value="none" selected>-</option>
+            <option value="Aprobada">Aprobada</option>
+            <option value="Denegada">Denegada</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Actualizar">
+    </form>
+    
+</body>
+</html>
