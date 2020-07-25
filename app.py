@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, session
 from MethodUtil import MethodUtil
-from userlogic import UserLogic, RegisterLogic, RequestLogic, EstadoLogic, GetRequests
+from userlogic import UserLogic, RegisterLogic, RequestLogic, EstadoLogic, GetRequests, ViajesLogic
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -112,6 +112,18 @@ def ShowRequests():
         logic2 = GetRequests()
         data = logic2.GetRequests()
         return render_template("solicitudes.html", message=message, datos=data)
+
+
+@app.route("/viajesactivos", methods=["GET", "POST"])
+def ShowTrips():
+    if request.method == "GET":
+        return render_template("Buscarviajes.html")
+    else:  # "POST"
+        FechaInicio = request.form["fechainicio"]
+        FechaFinal = request.form["fechafinal"]
+        logic = ViajesLogic()
+        datos = logic.GetViajes(FechaInicio, FechaFinal)
+        return render_template("ViajesDisponibles.html", datos=datos)
         
 
 if __name__ == "__main__":

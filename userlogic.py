@@ -75,3 +75,14 @@ class GetRequests(Logic):
         sql = f"SELECT * FROM proyectozeus.solicitudes where EstadoSolicitud='Pendiente';"
         data = database.executeQuery(sql)
         return data
+
+
+class ViajesLogic(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def GetViajes(self, fechainicio, fechafinal):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.viajes where `fecha de regreso` < '{fechafinal}' and `fecha de inicio` > '{fechainicio}';"
+        data = database.executeQuery(sql)
+        return data
