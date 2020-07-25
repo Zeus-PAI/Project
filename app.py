@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, session
 from MethodUtil import MethodUtil
-from userlogic import UserLogic, RegisterLogic, RequestLogic, EstadoLogic
+from userlogic import UserLogic, RegisterLogic, RequestLogic, EstadoLogic, GetRequests
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -96,18 +96,23 @@ def registerviajeroform():
         message = f"{rows} affected"
         return render_template("RegisterViajero.html", message=message)
 
+
 @app.route("/solicitudes", methods=["GET", "POST"])
 def ShowRequests():
     if request.method == "GET":
-        return render_template("solicitudes.html")
+        logic2 = GetRequests()
+        data = logic2.GetRequests()
+        return render_template("solicitudes.html", datos=data)
     else:  # "POST"
         idSolicitud = request.form["idsolicitud"]
         Estado = request.form["estado"]
         logic = EstadoLogic()
         rows = logic.UpdateRequest(idSolicitud, Estado)
         message = f"{rows} affected"
-        return render_template("solicitudes.html", message =message)
-
+        logic2 = GetRequests()
+        data = logic2.GetRequests()
+        return render_template("solicitudes.html", message=message, datos=data)
+        
 
 if __name__ == "__main__":
     app.run(debug=True)

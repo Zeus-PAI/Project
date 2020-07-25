@@ -64,3 +64,14 @@ class EstadoLogic(Logic):
         sql = f"UPDATE `proyectozeus`.`solicitudes` SET `EstadoSolicitud` = '{estado}' WHERE (`idSolicitud` = '{id}');"
         rows = database.executeNonQueryRows(sql)
         return rows
+
+
+class GetRequests(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def GetRequests(self):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.solicitudes where EstadoSolicitud='Pendiente';"
+        data = database.executeQuery(sql)
+        return data
