@@ -6,7 +6,7 @@ from Solicitudobj import SolicitudObj
 class UserLogic(Logic):
     def __init__(self):
         super().__init__()
-        self.keys = ["idUsuario", "Usuario", "nombre_completo", "correo", "contraseña", "Fecha de Nacimiento", "telefono", "pais de residencia", "idTipo"]
+        self.keys = ["idUsuario", "Usuario", "nombre_completo", "correo", "contraseña", "FechaNacimiento", "telefono", "pais", "idTipo", "Foto"]
 
     def getUserData(self, user):
         database = self.get_databaseXObj()
@@ -17,7 +17,8 @@ class UserLogic(Logic):
             data_dic = data[0]
             userObj = UserObj(
                 data_dic["idUsuario"], data_dic["Usuario"], data_dic["nombre_completo"], data_dic["correo"],
-                data_dic["contraseña"], data_dic["Fecha de Nacimiento"], data_dic["telefono"], data_dic["pais de residencia"], data_dic["idTipo"]
+                data_dic["contraseña"], data_dic["FechaNacimiento"], data_dic["telefono"], data_dic["pais"], data_dic["idTipo"],
+                data_dic["Foto"]
             )
             return userObj
         else:
@@ -28,12 +29,12 @@ class RegisterLogic(Logic):
     def __init__(self):
         super().__init__()
 
-    def insertNewUser(self, user, nombre_completo, correo, password, Fecha, telefono, pais):
+    def insertNewUser(self, user, nombre_completo, correo, password, Fecha, telefono, pais, Foto):
         database = self.get_databaseXObj()
         sql = (
             "insert into proyectozeus.usuarios (`idUsuario`, `Usuario`, `nombre_completo`, `correo`, "
-            + "`contraseña`, `FechaNacimiento`, `telefono`, `pais`, `idTipo`) "
-            + f"values (0, '{user}', '{nombre_completo}', '{correo}', '{password}', '{Fecha}', '{telefono}', '{pais}', 2);"
+            + "`contraseña`, `FechaNacimiento`, `telefono`, `pais`, `idTipo`, `Foto`) "
+            + f"values (0, '{user}', '{nombre_completo}', '{correo}', '{password}', '{Fecha}', '{telefono}', '{pais}', 2, '{Foto}');"
         )
         rows = database.executeNonQueryRows(sql)
         return rows

@@ -65,9 +65,10 @@ def registerform():
         Fecha = request.form["fecha"]
         telefono = request.form["telefono"]
         pais = request.form["pais"]
+        Foto = request.form["foto"]
         logic = RegisterLogic()
         rows = logic.insertNewUser(
-            usuario, nombre, email, contraseña, Fecha, telefono, pais
+            usuario, nombre, email, contraseña, Fecha, telefono, pais, Foto
         )
         message = f"{rows} affected"
         return render_template("RegisterUser.html", message=message)
