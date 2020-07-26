@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viajes Activos</title>
+    <style>
+        table {
+            width: 100%;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        #t01 tr:nth-child(even) {
+            background-color: #eee;
+        }
+
+        #t01 tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        #t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        <center>Encuentra el viaje para hacer tu pedido</center>
+    </h1>
+    {% if message %}
+    <p style="color: red;">{{message}}</p>
+    <br>
+    {% endif %}
+    <table class="tablaViajes" id="t01">
+
+        <tr>
+            <th>ID Viaje</th>
+            <th>ID Viajero</th>
+            <th>Inicio de Viaje</th>
+            <th>Regreso de Viaje</th>
+            <th>País Destino</th>
+            <th>Dirección de Estadía</th>
+            <th>Costo por libra</th>
+            <th>Teléfono</th>
+            <th>Imagen de Referencia</th>
+            </tr>
+        {% for dato in datos%}
+        <tr>
+            <td>{{dato[0]}}</td>
+            <td>{{dato[1]}}</td>
+            <td>{{dato[2]}}</td>
+            <td>{{dato[3]}}</td>
+            <td>{{dato[4]}}</td>
+            <td>{{dato[5]}}</td>
+            <td>{{dato[6]}}</td>
+            <td>{{dato[7]}}</td>
+            <td>{{dato[8]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
