@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-print("Hello")
-=======
 from flask import Flask, render_template, request, redirect, session
 from MethodUtil import MethodUtil
 from userlogic import UserLogic, RegisterLogic, RequestLogic, EstadoLogic, GetRequests, ViajesLogic
@@ -132,4 +129,3 @@ def ShowTrips():
 if __name__ == "__main__":
     app.run(debug=True)
     # app.run(debug=True)
->>>>>>> 86c8de23f99429565f859a1351b21f0aba9a8c64
