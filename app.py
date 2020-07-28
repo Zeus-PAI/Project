@@ -1,6 +1,15 @@
 from flask import Flask, render_template, request, redirect, session
 from MethodUtil import MethodUtil
-from userlogic import UserLogic, RegisterLogic, RequestLogic, EstadoLogic, GetRequests, ViajesLogic
+from userlogic import (
+    UserLogic,
+    RegisterLogic,
+    RequestLogic,
+    EstadoLogic,
+    GetRequests,
+    ViajesLogic,
+    DUsers,
+    DeleteUser,
+)
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -91,7 +100,16 @@ def registerviajeroform():
         Foto = request.form["foto"]
         logic = RequestLogic()
         rows = logic.NewRequest(
-            usuario, nombre, email, contraseña, Fecha, telefono, Motivos, Frecuencia, pais, Foto
+            usuario,
+            nombre,
+            email,
+            contraseña,
+            Fecha,
+            telefono,
+            Motivos,
+            Frecuencia,
+            pais,
+            Foto,
         )
         message = f"{rows} affected"
         return render_template("RegisterViajero.html", message=message)
@@ -112,6 +130,22 @@ def ShowRequests():
         logic2 = GetRequests()
         data = logic2.GetRequests()
         return render_template("solicitudes.html", message=message, datos=data)
+
+
+@app.route("/deleteuser", methods=["GET", "POST"])
+def DelUsers():
+    if request.method == "GET":
+        logic2 = DeleteUser()
+        data = logic2.DeleteUser()
+        return render_template("deleteuser.html", datos=data)
+    else:  # "POST"
+        idUsuario = request.form["idUsuario"]
+        logic = DUsers()
+        rows = logic.DUsers(idUsuario)
+        message = f"{rows} affected"
+        logic2 = DeleteUser()
+        data = logic2.DeleteUser()
+        return render_template("deleteuser.html", message=message, datos=data)
 
 
 @app.route("/viajesactivos", methods=["GET", "POST"])

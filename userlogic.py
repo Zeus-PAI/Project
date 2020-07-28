@@ -6,7 +6,18 @@ from Solicitudobj import SolicitudObj
 class UserLogic(Logic):
     def __init__(self):
         super().__init__()
-        self.keys = ["idUsuario", "Usuario", "nombre_completo", "correo", "contraseña", "FechaNacimiento", "telefono", "pais", "idTipo", "Foto"]
+        self.keys = [
+            "idUsuario",
+            "Usuario",
+            "nombre_completo",
+            "correo",
+            "contraseña",
+            "FechaNacimiento",
+            "telefono",
+            "pais",
+            "idTipo",
+            "Foto",
+        ]
 
     def getUserData(self, user):
         database = self.get_databaseXObj()
@@ -16,9 +27,16 @@ class UserLogic(Logic):
         if len(data) > 0:
             data_dic = data[0]
             userObj = UserObj(
-                data_dic["idUsuario"], data_dic["Usuario"], data_dic["nombre_completo"], data_dic["correo"],
-                data_dic["contraseña"], data_dic["FechaNacimiento"], data_dic["telefono"], data_dic["pais"], data_dic["idTipo"],
-                data_dic["Foto"]
+                data_dic["idUsuario"],
+                data_dic["Usuario"],
+                data_dic["nombre_completo"],
+                data_dic["correo"],
+                data_dic["contraseña"],
+                data_dic["FechaNacimiento"],
+                data_dic["telefono"],
+                data_dic["pais"],
+                data_dic["idTipo"],
+                data_dic["Foto"],
             )
             return userObj
         else:
@@ -29,7 +47,9 @@ class RegisterLogic(Logic):
     def __init__(self):
         super().__init__()
 
-    def insertNewUser(self, user, nombre_completo, correo, password, Fecha, telefono, pais, Foto):
+    def insertNewUser(
+        self, user, nombre_completo, correo, password, Fecha, telefono, pais, Foto
+    ):
         database = self.get_databaseXObj()
         sql = (
             "insert into proyectozeus.usuarios (`idUsuario`, `Usuario`, `nombre_completo`, `correo`, "
@@ -44,7 +64,19 @@ class RequestLogic(Logic):
     def __init__(self):
         super().__init__()
 
-    def NewRequest(self, user, nombre_completo, correo, password, Fecha, telefono, Motivos, Frecuencia, pais, Foto):
+    def NewRequest(
+        self,
+        user,
+        nombre_completo,
+        correo,
+        password,
+        Fecha,
+        telefono,
+        Motivos,
+        Frecuencia,
+        pais,
+        Foto,
+    ):
         database = self.get_databaseXObj()
         sql = (
             "insert into proyectozeus.solicitudes (`idSolicitud`, `Usuario`, `nombre_completo`, `correo`, "
@@ -72,7 +104,31 @@ class GetRequests(Logic):
 
     def GetRequests(self):
         database = self.get_databaseXObj()
-        sql = f"SELECT * FROM proyectozeus.solicitudes where EstadoSolicitud='Pendiente';"
+        sql = (
+            f"SELECT * FROM proyectozeus.solicitudes where EstadoSolicitud='Pendiente';"
+        )
+        data = database.executeQuery(sql)
+        return data
+
+
+class DUsers(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def DUsers(self, id):
+        database = self.get_databaseXObj()
+        sql = f"DELETE FROM proyectozeus.usuarios WHERE (idUsuario = '{id}');"
+        rows = database.executeNonQueryRows(sql)
+        return rows
+
+
+class DeleteUser(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def DeleteUser(self):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.usuarios;"
         data = database.executeQuery(sql)
         return data
 
