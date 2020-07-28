@@ -111,22 +111,22 @@ class GetRequests(Logic):
         return data
 
 
-class DUsers(Logic):
+class DeleteUser(Logic):
     def __init__(self):
         super().__init__()
 
-    def DUsers(self, id):
+    def DeleteUser(self, id):
         database = self.get_databaseXObj()
         sql = f"DELETE FROM proyectozeus.usuarios WHERE (idUsuario = '{id}');"
         rows = database.executeNonQueryRows(sql)
         return rows
 
 
-class DeleteUser(Logic):
+class UserShowLogic(Logic):
     def __init__(self):
         super().__init__()
 
-    def DeleteUser(self):
+    def ShowUsers(self):
         database = self.get_databaseXObj()
         sql = f"SELECT * FROM proyectozeus.usuarios;"
         data = database.executeQuery(sql)

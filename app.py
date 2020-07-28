@@ -7,7 +7,7 @@ from userlogic import (
     EstadoLogic,
     GetRequests,
     ViajesLogic,
-    DUsers,
+    UserShowLogic,
     DeleteUser,
 )
 from userobj import UserObj
@@ -135,16 +135,16 @@ def ShowRequests():
 @app.route("/deleteuser", methods=["GET", "POST"])
 def DelUsers():
     if request.method == "GET":
-        logic2 = DeleteUser()
-        data = logic2.DeleteUser()
+        logic2 = UserShowLogic()
+        data = logic2.ShowUsers()
         return render_template("deleteuser.html", datos=data)
     else:  # "POST"
         idUsuario = request.form["idUsuario"]
-        logic = DUsers()
-        rows = logic.DUsers(idUsuario)
+        logic = DeleteUser()
+        rows = logic.DeleteUser(idUsuario)
         message = f"{rows} affected"
-        logic2 = DeleteUser()
-        data = logic2.DeleteUser()
+        logic2 = UserShowLogic()
+        data = logic2.ShowUsers()
         return render_template("deleteuser.html", message=message, datos=data)
 
 
