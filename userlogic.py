@@ -139,6 +139,6 @@ class ViajesLogic(Logic):
 
     def GetViajes(self, fechainicio, fechafinal):
         database = self.get_databaseXObj()
-        sql = f"SELECT * FROM proyectozeus.viajes where `fecha de regreso` < '{fechafinal}' and `fecha de inicio` > '{fechainicio}';"
+        sql = f"SELECT * FROM proyectozeus.viajes where `fecha de regreso` < '{fechafinal}' and `fecha de inicio` > '{fechainicio}' and `Activo` = 'Sí';"
         data = database.executeQuery(sql)
         return data
