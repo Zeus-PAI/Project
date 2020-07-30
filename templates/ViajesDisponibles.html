@@ -48,14 +48,17 @@
 
         <tr>
             <th>ID Viaje</th>
-            <th>ID Viajero</th>
+            <th>Viajero</th>
             <th>Inicio de Viaje</th>
             <th>Regreso de Viaje</th>
             <th>País Destino</th>
-            <th>Dirección de Estadía</th>
             <th>Costo por libra</th>
             <th>Teléfono</th>
-            <th>Imagen de Referencia</th>
+            <th>Foto</th>
+            <th>Cantidad de Viajes</th>
+            <th>Cantidad de Pedidos</th>
+            <th>Calificación</th>
+            <th> </th>
             </tr>
         {% for dato in datos%}
         <tr>
@@ -68,6 +71,9 @@
             <td>{{dato[7]}}</td>
             <td>{{dato[8]}}</td>
             <td>{{dato[9]}}</td>
+            <td>{{dato[10]}}</td>
+            <td>{{dato[11]}}</td>
+            <td> <a href="/confirmarpedido/{{dato[0]}}">Haz tu Pedido</a></td>
         </tr>
         {% endfor %}
     </table>

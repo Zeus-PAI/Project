@@ -139,6 +139,15 @@ class ViajesLogic(Logic):
 
     def GetViajes(self, fechainicio, fechafinal):
         database = self.get_databaseXObj()
-        sql = f"SELECT * FROM proyectozeus.viajes where `fecha de regreso` < '{fechafinal}' and `fecha de inicio` > '{fechainicio}' and `Activo` = 'Sí';"
+        
+        sql = f"SELECT * FROM proyectozeus.viajes_view where `Inicio de Viaje` > '{fechainicio}' and `Regreso de Viaje` < '{fechafinal}' and `Activo` = 'Sí';"
+        data = database.executeQuery(sql)
+        return data
+
+
+class ConfirmarLogic(Logic):
+    def ViajeByid(self, id):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.viajes_view where idViaje = {id};"
         data = database.executeQuery(sql)
         return data

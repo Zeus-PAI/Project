@@ -9,6 +9,7 @@ from userlogic import (
     ViajesLogic,
     UserShowLogic,
     DeleteUser,
+    ConfirmarLogic
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -158,6 +159,16 @@ def ShowTrips():
         logic = ViajesLogic()
         datos = logic.GetViajes(FechaInicio, FechaFinal)
         return render_template("ViajesDisponibles.html", datos=datos)
+
+
+@app.route("/confirmarpedido/<int:id>", methods=["GET", "POST"])
+def ConfirmarPedido(id):
+    if request.method == "GET":
+        logic = ConfirmarLogic()
+        data = logic.ViajeByid(id)
+        return render_template("ConfirmarPedido.html", datos=data, id=id)
+    else:  # "POST"
+        return render_template("ConfirmarPedido.html")
 
 
 if __name__ == "__main__":
