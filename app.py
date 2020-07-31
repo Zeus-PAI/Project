@@ -146,6 +146,9 @@ def registrarViajeform():
     if request.method == "GET":
         return render_template("registrarViaje.html")
     else:  # "POST"
+        logic = idViajeroLogic()
+        idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
+        idViajero = int(''.join(map(str, idV[0])))
         fechaInicio = request.form["fechaInicio"]
         fechaRegreso = request.form["fechaRegreso"]
         paisDestino = request.form["paisDestino"]
@@ -155,7 +158,7 @@ def registrarViajeform():
         imagenReferencia = request.form["imagenReferencia"]
         logic = RegisterViajeLogic()
         rows = logic.insertNewViaje(
-            diccionarioUsuarios.get("idUser"),
+            idViajero,
             fechaInicio,
             fechaRegreso,
             paisDestino,
@@ -268,13 +271,14 @@ def ShowTodosLosPedidosAdmin():
 def ShowViajesViajeros():
     if request.method == "GET":
         logic = idViajeroLogic()
-        idViajero = logic.getidViajero(diccionarioUsuarios.get("idUser"))
+        idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
+        idViajero = int(''.join(map(str, idV[0])))
         logic2 = ShowViajesViajero()
         data = logic2.ShowViajesViajero(idViajero)
-        return render_template("viajesviajeros.html", datos=data)
+        return render_template("viajesviajeros.html", datos=data, Viajero=idViajero)
     else:  # "POST"
         logic2 = ShowViajesViajero()
-        data = logic2.ShowViajesViajero(idViajero)
+        data = logic2.ShowViajesViajero(diccionarioUsuarios.get("idUser"))
         return render_template("viajesviajeros.html", datos=data)
 
 
