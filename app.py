@@ -9,7 +9,8 @@ from userlogic import (
     ViajesLogic,
     UserShowLogic,
     DeleteUser,
-    ConfirmarLogic
+    ConfirmarLogic,
+    idViajeroLogic
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
