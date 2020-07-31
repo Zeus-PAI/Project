@@ -144,7 +144,10 @@ def registerviajeroform():
 @app.route("/registrarViajes", methods=["GET", "POST"])
 def registrarViajeform():
     if request.method == "GET":
-        return render_template("registrarViaje.html")
+        logic = idViajeroLogic()
+        idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
+        idViajero = int(''.join(map(str, idV[0])))
+        return render_template("registrarViaje.html", idViajero=idViajero)
     else:  # "POST"
         logic = idViajeroLogic()
         idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
@@ -157,18 +160,9 @@ def registrarViajeform():
         telefono = request.form["telefono"]
         imagenReferencia = request.form["imagenReferencia"]
         logic = RegisterViajeLogic()
-        rows = logic.insertNewViaje(
-            idViajero,
-            fechaInicio,
-            fechaRegreso,
-            paisDestino,
-            direccionEstadia,
-            cobroLibra,
-            telefono,
-            imagenReferencia,
-        )
+        rows = logic.insertNewViaje(idViajero, fechaInicio, fechaRegreso, paisDestino, direccionEstadia, cobroLibra, telefono, imagenReferencia)
         message = f"{rows} affected"
-        return render_template("registrarViaje.html", message=message)
+        return render_template("registrarViaje.html", message=message, idViajero=idViajero)
 
 
 @app.route("/solicitudes", methods=["GET", "POST"])

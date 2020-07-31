@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - Usuario</title>
+    <title>Registra un nuevo Viaje</title>
 </head>
 
 <body>
-    <h1>Registro de Usuario</h1>
+    <h1>Registra un nuevo Viaje</h1>
     <br>
 
     {% if message %}
@@ -18,6 +18,7 @@
     <form action="/registrarViajes" method="POST">
         Ingrese los datos solicitados
         <br><br>
+        {{idViajero}}
         Fecha de incio de viaje: <br>
         <input type="date" name="fechaInicio" id="fechaInicio">
         <br><br>
@@ -31,7 +32,7 @@
         <input type="text" name="direccionEstadia" id="direccionEstadia">
         <br><br>
         Cobro por libra: <br>
-        <input type="floatformat" name="cobroLibra" id="cobroLibra">
+        <input type="number" name="cobroLibra" min="0" step="0.5">
         <br><br>
         Número de teléfono: <br>
         <input type="text" name="telefono" id="telefono">

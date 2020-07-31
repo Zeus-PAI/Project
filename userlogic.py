@@ -77,8 +77,9 @@ class RegisterViajeLogic(Logic):
     ):
         database = self.get_databaseXObj()
         sql = (
-            "INSERT INTO `proyectozeus`.`viajes` (`idviaje`, `idViajero`, `fecha de inicio`, `fecha de regreso`, `Activo`, `Pais Destino`, `direccion de estadia`, `cobro por libra`, `telefono`,`imagen referencia`)) "
-            + f"values (0, '{idViajero}','{fechaInicio}', '{fechaRegreso}', 'Sí', '{paisDestino}', '{direccionEstadia}', '{cobroLibra}', '{telefono}', '{imagenReferencia}');"
+            "INSERT INTO proyectozeus.viajes (`idviaje`, `idViajero`, `fecha de inicio`, `fecha de regreso`, `Activo`, `Pais Destino`, `direccion de estadia`, `cobro por libra`, "
+            + "`telefono`,`imagen referencia`) "
+            + f"values ('0', '{idViajero}','{fechaInicio}', '{fechaRegreso}', 'Sí', '{paisDestino}', '{direccionEstadia}', '{cobroLibra}', '{telefono}', '{imagenReferencia}');"
         )
         rows = database.executeNonQueryRows(sql)
         return rows
