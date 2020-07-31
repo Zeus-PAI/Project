@@ -59,6 +59,21 @@ class RegisterLogic(Logic):
         rows = database.executeNonQueryRows(sql)
         return rows
 
+class RegisterViajeLogic(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def insertNewViaje(
+        self, fechaInicio, fechaRegreso, paisDestino, direccionEstadia, cobroLibra, telefono, imagenReferencia, Foto
+    ):
+        database = self.get_databaseXObj()
+        sql = (
+            "insert into proyectozeus.usuarios (`fechaInicio`, `fechaRegreso`, `paisDestino`, `direccionEstadia`, "
+            + "`cobroLibra`, `FechaNacimiento`, `telefono`, `imagenReferencia`) "
+            + f"values (0, '{fechaInicio}', '{fechaRegreso}', '{paisDestino}', '{direccionEstadia}', '{cobroLibra}', '{telefono}', '{imagenReferencia}');"
+        )
+        rows = database.executeNonQueryRows(sql)
+        return rows
 
 class RequestLogic(Logic):
     def __init__(self):

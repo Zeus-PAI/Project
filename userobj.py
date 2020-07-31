@@ -1,5 +1,17 @@
 class UserObj:
-    def __init__(self, id, user, nombre_completo, correo, password, Fecha, telefono, pais, idTipo, Foto):
+    def __init__(
+        self,
+        id,
+        user,
+        nombre_completo,
+        correo,
+        password,
+        Fecha,
+        telefono,
+        pais,
+        idTipo,
+        Foto,
+    ):
         self.id = id
         self.user = user
         self.name = nombre_completo

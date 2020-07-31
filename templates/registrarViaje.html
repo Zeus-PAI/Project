@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Usuario</title>
+</head>
+
+<body>
+    <h1>Registro de Usuario</h1>
+    <br>
+
+    {% if message %}
+    <p style="color: red;">{{message}}</p>
+    <br>
+    {% endif %}
+    <form action="/registrarViajes" method="POST">
+        Ingrese los datos solicitados
+        <br><br>
+        Fecha de incio de viaje: <br>
+        <input type="date" name="fechaInicio" id="fechaInicio">
+        <br><br>
+        Fecha de regreso del viaje: <br>
+        <input type="date" name="fechaRegreso" id="fechaRegreso">
+        <br><br>
+        País de destino: <br>
+        <input type="text" name="paisDestino" id="paisDestino">
+        <br><br>
+        Dirección de estadía: <br>
+        <input type="text" name="direccionEstadia" id="direccionEstadia">
+        <br><br>
+        Cobro por libra: <br>
+        <input type="floatformat" name="cobroLibra" id="cobroLibra">
+        <br><br>
+        Número de teléfono: <br>
+        <input type="text" name="telefono" id="telefono">
+        <br><br>
+        Imagen de referencia (Opcional): <br>
+        <input type="text" name="imagenReferencia" id="imagenReferencia">
+        <br><br>
+        <input type="submit" value="Send">
+    </form>
+</body>
+
+</html>
