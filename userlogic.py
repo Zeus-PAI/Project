@@ -175,8 +175,18 @@ class idViajeroLogic(Logic):
 
     def getidViajero(self, id):
         database = self.get_databaseXObj()
-        sql = (
-            f"SELECT idViajero FROM proyectozeus.viajeros where idUsuario='{id}';"
-        )
+        sql = f"SELECT idViajero FROM proyectozeus.viajeros where idUsuario='{id}';"
         data = database.executeQuery(sql)
         return data
+
+
+class UserShowPedidos(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def ShowPedidos(self, id):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.pedidos where idUsuario='{id}';"
+        data = database.executeQuery(sql)
+        return data
+
