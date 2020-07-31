@@ -151,3 +151,22 @@ class ConfirmarLogic(Logic):
         sql = f"SELECT * FROM proyectozeus.viajes_view where idViaje = {id};"
         data = database.executeQuery(sql)
         return data
+
+
+class PedidoLogic(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def insertNewPedido(
+        self, user, nombre_completo, correo, password, Fecha, telefono, pais, Foto
+    ):
+        database = self.get_databaseXObj()
+        sql = (
+            "insert into proyectozeus.usuarios (`idUsuario`, `Usuario`, `nombre_completo`, `correo`, "
+            + "`contraseña`, `FechaNacimiento`, `telefono`, `pais`, `idTipo`, `Foto`) "
+            + f"values (0, '{user}', '{nombre_completo}', '{correo}', '{password}', '{Fecha}', '{telefono}', '{pais}', 2, '{Foto}');"
+        )
+        rows = database.executeNonQueryRows(sql)
+        return rows
+
+

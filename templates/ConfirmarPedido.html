@@ -27,7 +27,6 @@
     <h2>
         <center>Confirma Tu Pedido</center>
     </h2>
-
     <div class="row">
         <div class="column" style="background-color:rgb(177, 180, 214);">
             <h2>Datos de Viaje</h2>
@@ -54,6 +53,10 @@
         </div>
         <div class="column" style="background-color:#ffb555;">
             <h2>Datos de Pedido</h2>
+            idUsuario Solicitante:
+            <br> 
+            <input type="show" name="idUser" id="idUser" value="{{user}}">
+            <br><br>
             Nombre del Artículo:
             <br>
             <input type="text" name="nombre" id="nombre">
@@ -86,12 +89,16 @@
             <br>
             <input type="text" name="url" id="url">
             <br><br>
+            Otras especificaciones:
+            <br>
+            <textarea name="descripcion" rows="2" cols="20"></textarea>
+            <br><br>
         </div>
     </div>
-    <br><br>
+    <br><br><br><br>
     <center>Total</center>
     <br><br>
-    <input type="hidden" name="id" id="id" value="{{id}}">
+    <input type="show" name="total" id="total" value="100">
     <center><input type="submit" value="Solicitar Pedido"></center>
     </form>
 </body>

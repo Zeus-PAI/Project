@@ -18,6 +18,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.secret_key = "python es bien chivo"
+diccionarioUsuarios = {"idUser": "", "User": "", "Nombre": ""}
 
 
 @app.route("/")
@@ -46,16 +47,25 @@ def loginform():
         if userdata is not None:
             if userdata.password == password:
                 if userdata.Tipo == 1:
+                    diccionarioUsuarios.update({"idUser": userdata.id})
+                    diccionarioUsuarios.update({"User": userdata.user})
+                    diccionarioUsuarios.update({"Nombre": userdata.name})
                     return render_template(
-                        "dashboard_admin.html", userdata=userdata.user
+                        "dashboard_admin.html", userdata=userdata.user, userid=userdata.id
                     )
                 elif userdata.Tipo == 2:
+                    diccionarioUsuarios.update({"idUser": userdata.id})
+                    diccionarioUsuarios.update({"User": userdata.user})
+                    diccionarioUsuarios.update({"Nombre": userdata.name})                   
                     return render_template(
-                        "dashboard_user.html", userdata=userdata.user
+                        "dashboard_user.html", userdata=userdata.user, userid=userdata.id
                     )
                 elif userdata.Tipo == 3:
+                    diccionarioUsuarios.update({"idUser": userdata.id})
+                    diccionarioUsuarios.update({"User": userdata.user})
+                    diccionarioUsuarios.update({"Nombre": userdata.name})
                     return render_template(
-                        "dashboard_viajero.html", userdata=userdata.user
+                        "dashboard_viajero.html", userdata=userdata.user, userid=userdata.id
                     )
             else:
                 return render_template("loginform.html", message="hubo error")
@@ -166,7 +176,7 @@ def ConfirmarPedido(id):
     if request.method == "GET":
         logic = ConfirmarLogic()
         data = logic.ViajeByid(id)
-        return render_template("ConfirmarPedido.html", datos=data, id=id)
+        return render_template("ConfirmarPedido.html", datos=data, id=id, user=diccionarioUsuarios.get("idUser"))
     else:  # "POST"
         return render_template("ConfirmarPedido.html")
 
