@@ -15,6 +15,7 @@ from userlogic import (
     ViajerosShowAdminLogic,
     PedidosShowAdminLogic,
     ShowViajesViajero,
+    RegisterViajeLogic,
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -153,7 +154,8 @@ def registrarViajeform():
         telefono = request.form["telefono"]
         imagenReferencia = request.form["imagenReferencia"]
         logic = RegisterViajeLogic()
-        rows = logic.NewRequest(
+        rows = logic.insertNewViaje(
+            diccionarioUsuarios.get("idUser"),
             fechaInicio,
             fechaRegreso,
             paisDestino,
