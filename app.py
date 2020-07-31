@@ -16,7 +16,10 @@ from userobj import UserObj
 from Solicitudobj import SolicitudObj
 from werkzeug.security import generate_password_hash, check_password_hash
 
-
+# PASOS PARA AGREGAR AL REPOSITORIO
+# git add -A
+# git commit -m "nombre de accion"
+# git push --set-upstream https://github.com/Zeus-PAI/Project master
 app = Flask(__name__)
 app.secret_key = "python es bien chivo"
 diccionarioUsuarios = {"idUser": "", "User": "", "Nombre": ""}
