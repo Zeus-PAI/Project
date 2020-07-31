@@ -212,3 +212,13 @@ class PedidosShowAdminLogic(Logic):
         data = database.executeQuery(sql)
         return data
 
+
+class ShowViajesViajero(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def ShowViajesViajero(self, id):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.viajes where idViajero='{id}';"
+        data = database.executeQuery(sql)
+        return data
