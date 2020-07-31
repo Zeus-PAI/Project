@@ -190,3 +190,25 @@ class UserShowPedidos(Logic):
         data = database.executeQuery(sql)
         return data
 
+
+class ViajerosShowAdminLogic(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def ShowViajerosAdmin(self):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.viajeros;"
+        data = database.executeQuery(sql)
+        return data
+
+
+class PedidosShowAdminLogic(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def ShowPedidosAdmin(self):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.pedidos;"
+        data = database.executeQuery(sql)
+        return data
+

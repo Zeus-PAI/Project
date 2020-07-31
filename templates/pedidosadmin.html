@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitudes de Viajero</title>
+<style>
+    table {
+        width: 100%;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 15px;
+        text-align: left;
+    }
+
+    #t01 tr:nth-child(even) {
+        background-color: #eee;
+    }
+
+    #t01 tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    #t01 th {
+        background-color: black;
+        color: white;
+    }
+</style>
+</head>
+<body>
+    <h1><center>Actualiza tus solicitudes</center></h1>
+    {% if message %}
+    <p style="color: red;">{{message}}</p>
+    <br>
+    {% endif %}
+    <form action="/verpedidos" method="POST">
+        Escribe el ID de la Solicitud que deseas actualizar:
+        <br><br>
+        ID Solicitud: <br>
+        <input type="int" name="idsolicitud" id="idsolicitud">
+        <br><br>
+        Estado: <br>
+        <select class="" name="estado" id="estado">
+            <option value="none" selected>-</option>
+            <option value="Aprobada">Aprobada</option>
+            <option value="Denegada">Denegada</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Actualizar">
+    </form>
+    <br><br>
+    <table class="tablaOrdenes" id="t01">
+    
+        <tr>
+            <th>ID Pedido</th>
+            <th>ID Usuario</th>
+            <th>ID Viajero</th>
+            <th>ID Viaje</th>
+            <th>Nombre del artículo</th>
+            <th>Estado</th>
+            <th>Precio (USD)</th>
+            <th>Peso (lb)</th>
+            <th>Categoría</th>
+            <th>Cantidad</th>
+            <th>Otras especificaciones</th>
+            <th>URL</th>
+            <th>País</th>
+            <th>Fecha estimada de entrega</th>
+            <th>Total</th>
+        </tr>
+        {% for dato in datos%}
+        <tr>
+            <td>{{dato[0]}}</td>
+            <td>{{dato[1]}}</td>
+            <td>{{dato[2]}}</td>
+            <td>{{dato[3]}}</td>
+            <td>{{dato[4]}}</td>
+            <td>{{dato[5]}}</td>
+            <td>{{dato[6]}}</td>
+            <td>{{dato[7]}}</td>
+            <td>{{dato[8]}}</td>
+            <td>{{dato[9]}}</td>
+            <td>{{dato[10]}}</td>
+            <td>{{dato[11]}}</td>
+            <td>{{dato[12]}}</td>
+            <td>{{dato[13]}}</td>
+            <td>{{dato[14]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

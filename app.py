@@ -12,6 +12,8 @@ from userlogic import (
     ConfirmarLogic,
     idViajeroLogic,
     UserShowPedidos,
+    ViajerosShowAdminLogic,
+    PedidosShowAdminLogic,
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -207,6 +209,30 @@ def ShowPedidos2():
         logic2 = UserShowPedidos()
         data = logic2.ShowPedidos(diccionarioUsuarios.get("idUser"))
         return render_template("ver_pedidos.html", datos=data)
+
+
+@app.route("/verviajeros", methods=["GET", "POST"])
+def ShowViajeros():
+    if request.method == "GET":
+        logic2 = ViajerosShowAdminLogic()
+        data = logic2.ShowViajerosAdmin()
+        return render_template("viajerosadmin.html", datos=data)
+    else:  # "POST"
+        logic2 = ViajerosShowAdminLogic()
+        data = logic2.ShowViajerosAdmin()
+        return render_template("viajerosadmin.html", datos=data)
+
+
+@app.route("/verpedidos", methods=["GET", "POST"])
+def ShowTodosLosPedidosAdmin():
+    if request.method == "GET":
+        logic2 = PedidosShowAdminLogic()
+        data = logic2.ShowPedidosAdmin()
+        return render_template("pedidosadmin.html", datos=data)
+    else:  # "POST"
+        logic2 = PedidosShowAdminLogic()
+        data = logic2.ShowPedidosAdmin()
+        return render_template("pedidosadmin.html", datos=data)
 
 
 if __name__ == "__main__":
