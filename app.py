@@ -10,7 +10,8 @@ from userlogic import (
     UserShowLogic,
     DeleteUser,
     ConfirmarLogic,
-    idViajeroLogic
+    idViajeroLogic,
+    UserShowPedidos,
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -55,21 +56,27 @@ def loginform():
                     diccionarioUsuarios.update({"User": userdata.user})
                     diccionarioUsuarios.update({"Nombre": userdata.name})
                     return render_template(
-                        "dashboard_admin.html", userdata=userdata.user, userid=userdata.id
+                        "dashboard_admin.html",
+                        userdata=userdata.user,
+                        userid=userdata.id,
                     )
                 elif userdata.Tipo == 2:
                     diccionarioUsuarios.update({"idUser": userdata.id})
                     diccionarioUsuarios.update({"User": userdata.user})
-                    diccionarioUsuarios.update({"Nombre": userdata.name})                   
+                    diccionarioUsuarios.update({"Nombre": userdata.name})
                     return render_template(
-                        "dashboard_user.html", userdata=userdata.user, userid=userdata.id
+                        "dashboard_user.html",
+                        userdata=userdata.user,
+                        userid=userdata.id,
                     )
                 elif userdata.Tipo == 3:
                     diccionarioUsuarios.update({"idUser": userdata.id})
                     diccionarioUsuarios.update({"User": userdata.user})
                     diccionarioUsuarios.update({"Nombre": userdata.name})
                     return render_template(
-                        "dashboard_viajero.html", userdata=userdata.user, userid=userdata.id
+                        "dashboard_viajero.html",
+                        userdata=userdata.user,
+                        userid=userdata.id,
                     )
             else:
                 return render_template("loginform.html", message="hubo error")
@@ -180,9 +187,26 @@ def ConfirmarPedido(id):
     if request.method == "GET":
         logic = ConfirmarLogic()
         data = logic.ViajeByid(id)
-        return render_template("ConfirmarPedido.html", datos=data, id=id, user=diccionarioUsuarios.get("idUser"))
+        return render_template(
+            "ConfirmarPedido.html",
+            datos=data,
+            id=id,
+            user=diccionarioUsuarios.get("idUser"),
+        )
     else:  # "POST"
         return render_template("ConfirmarPedido.html")
+
+
+@app.route("/pedidosUsuario", methods=["GET", "POST"])
+def ShowPedidos2():
+    if request.method == "GET":
+        logic2 = UserShowPedidos()
+        data = logic2.ShowPedidos(diccionarioUsuarios.get("idUser"))
+        return render_template("ver_pedidos.html", datos=data)
+    else:  # "POST"
+        logic2 = UserShowPedidos()
+        data = logic2.ShowPedidos(diccionarioUsuarios.get("idUser"))
+        return render_template("ver_pedidos.html", datos=data)
 
 
 if __name__ == "__main__":
