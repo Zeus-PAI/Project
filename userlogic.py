@@ -139,7 +139,6 @@ class ViajesLogic(Logic):
 
     def GetViajes(self, fechainicio, fechafinal):
         database = self.get_databaseXObj()
-        
         sql = f"SELECT * FROM proyectozeus.viajes_view where `Inicio de Viaje` > '{fechainicio}' and `Regreso de Viaje` < '{fechafinal}' and `Activo` = 'Sí';"
         data = database.executeQuery(sql)
         return data
@@ -170,3 +169,14 @@ class PedidoLogic(Logic):
         return rows
 
 
+class idViajeroLogic(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def getidViajero(self, id):
+        database = self.get_databaseXObj()
+        sql = (
+            f"SELECT idViajero FROM proyectozeus.viajeros where idUsuario='{id}';"
+        )
+        data = database.executeQuery(sql)
+        return data
