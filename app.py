@@ -140,6 +140,32 @@ def registerviajeroform():
         return render_template("RegisterViajero.html", message=message)
 
 
+@app.route("/registrarViajes", methods=["GET", "POST"])
+def registrarViajeform():
+    if request.method == "GET":
+        return render_template("registrarViaje.html")
+    else:  # "POST"
+        fechaInicio = request.form["fechaInicio"]
+        fechaRegreso = request.form["fechaRegreso"]
+        paisDestino = request.form["paisDestino"]
+        direccionEstadia = request.form["direccionEstadia"]
+        cobroLibra = request.form["cobroLibra"]
+        telefono = request.form["telefono"]
+        imagenReferencia = request.form["imagenReferencia"]
+        logic = RegisterViajeLogic()
+        rows = logic.NewRequest(
+            fechaInicio,
+            fechaRegreso,
+            paisDestino,
+            direccionEstadia,
+            cobroLibra,
+            telefono,
+            imagenReferencia,
+        )
+        message = f"{rows} affected"
+        return render_template("registrarViaje.html", message=message)
+
+
 @app.route("/solicitudes", methods=["GET", "POST"])
 def ShowRequests():
     if request.method == "GET":
