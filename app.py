@@ -17,6 +17,7 @@ from userlogic import (
     ShowViajesViajero,
     RegisterViajeLogic,
     calificarviajero,
+    ViajeroPedidos,
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -304,6 +305,24 @@ def CalificarViajeros():
         )
         message = f"{rows} affected"
         return render_template("calificarviajero.html", message=message)
+
+
+@app.route("/pedidosViajero", methods=["GET", "POST"])
+def ShowPedidosViajero():
+    if request.method == "GET":
+        logic = idViajeroLogic()
+        idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
+        idViajero = int("".join(map(str, idV[0])))
+        logic2 = ViajeroPedidos()
+        data = logic2.ShowPedidosViajero(idViajero)
+        return render_template("pedidosViajero.html", datos=data)
+    else:  # "POST"
+        logic = idViajeroLogic()
+        idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
+        idViajero = int("".join(map(str, idV[0])))
+        logic2 = ViajeroPedidos()
+        data = logic2.ShowPedidosViajero(idViajero)
+        return render_template("pedidosViajero.html", datos=data)
 
 
 if __name__ == "__main__":

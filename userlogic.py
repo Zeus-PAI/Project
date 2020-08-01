@@ -211,7 +211,7 @@ class UserShowPedidos(Logic):
 
     def ShowPedidos(self, id):
         database = self.get_databaseXObj()
-        sql = f"SELECT * FROM proyectozeus.pedidos where idUsuario='{id}';"
+        sql = f"SELECT * FROM proyectozeus.pedidos_view where idUsuario='{id}';"
         data = database.executeQuery(sql)
         return data
 
@@ -265,3 +265,13 @@ class calificarviajero(Logic):
         rows = database.executeNonQueryRows(sql)
         return rows
 
+
+class ViajeroPedidos(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def ShowPedidosViajero(self, id):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.pedidos_view where idViajero='{id}';"
+        data = database.executeQuery(sql)
+        return data
