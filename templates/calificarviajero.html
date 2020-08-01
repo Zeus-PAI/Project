@@ -4,27 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - Usuario</title>
+    <title>Calificar - Pedido</title>
 </head>
 
 <body>
-    <h1>Calificación de Viajero</h1>
+    <h1>Calificación de Pedido</h1>
     <br>
 
     {% if message %}
     <p style="color: red;">{{message}}</p>
     <br>
     {% endif %}
-    <form action="/calificarviajero" method="POST">
-        Evalue un viajero
-        <br><br>
-        ID del viajero a calificar: <br>
-        <input type="int" name="idUsuarioCalificado" id="idUsuarioCalificado">
+    <form action="/calificarviajero/{{id}}" method="POST">
+        Evalúe su pedido
         <br><br>
         ID del pedido: <br>
-        <input type="int" name="idPedido" id="idPedido">
+        <input type="show" name="idPedido" id="idPedido" value="{{datos[0][0]}}">
         <br><br>
-        Nota a darle al viajero: <br>
+        ID del viajero a calificar: <br>
+        <input type="show" name="idUsuarioCalificado" id="idUsuarioCalificado" value="{{datos[0][3]}}">
+        <br><br>
+        Nota a del pedido (0-10): <br>
         <input type="number" min="0" max="10" step="0.5" name="Nota" id="Nota">
         <br><br>
         Comentario: <br>

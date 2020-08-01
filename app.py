@@ -21,7 +21,7 @@ from userlogic import (
     PedidoLogic,
     SolicitudPedidos,
     UpdatePedidoLogic,
-    ActualizarLogic
+    ActualizarLogic,
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -324,10 +324,12 @@ def ShowViajesViajeros():
         return render_template("viajesviajeros.html", datos=data)
 
 
-@app.route("/calificarviajero", methods=["GET", "POST"])
-def CalificarViajeros():
+@app.route("/calificarviajero/<int:id>", methods=["GET", "POST"])
+def CalificarViajeros(id):
     if request.method == "GET":
-        return render_template("calificarviajero.html")
+        logic = ActualizarLogic()
+        data = logic.PedidoByid(id)
+        return render_template("calificarviajero.html", datos=data)
     else:  # "POST"
         Calificador = diccionarioUsuarios.get("idUser")
         Calificado = request.form["idUsuarioCalificado"]
@@ -339,7 +341,9 @@ def CalificarViajeros():
             Calificador, Calificado, IdPedido, Nota, comentario
         )
         message = f"{rows} affected"
-        return render_template("calificarviajero.html", message=message)
+        logic2 = UserShowPedidos()
+        data = logic2.ShowPedidos(diccionarioUsuarios.get("idUser"))
+        return render_template("ver_pedidos.html", message=message, datos=data)
 
 
 @app.route("/pedidosViajero", methods=["GET", "POST"])
@@ -385,6 +389,7 @@ def ShowSolicitudPedidos():
         data = logic2.SolicitudPedidos(idViajero)
         return render_template("dashboard_viajero.html", datos=data)
 
+
 @app.route("/pedidosUsuario/<int:id>", methods=["GET", "POST"])
 def ActualizarPedido(id):
     if request.method == "GET":
@@ -403,9 +408,7 @@ def ActualizarPedido(id):
         clase.UpdatePedido(idPedido, Estado)
         logic2 = UserShowPedidos()
         data = logic2.ShowPedidos(diccionarioUsuarios.get("idUser"))
-        return render_template(
-            "ver_pedidos.html", datos=data
-        )
+        return render_template("ver_pedidos.html", datos=data)
 
 
 if __name__ == "__main__":
