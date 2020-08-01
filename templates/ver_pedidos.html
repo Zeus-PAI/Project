@@ -37,15 +37,15 @@
 </style>
 </head>
 <body>
-    <h1><center>Actualiza tus solicitudes</center></h1>
+    <h1><center>Actualiza tus Pedidos</center></h1>
     {% if message %}
     <p style="color: red;">{{message}}</p>
     <br>
     {% endif %}
     <form action="/pedidosUsuario" method="POST">
-        Escribe el ID de la Solicitud que deseas actualizar:
+        Escribe el ID del Pedido que deseas actualizar:
         <br><br>
-        ID Solicitud: <br>
+        ID Pedido: <br>
         <input type="int" name="idsolicitud" id="idsolicitud">
         <br><br>
         Estado: <br>
