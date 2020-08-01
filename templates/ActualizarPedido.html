@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualiza tu Pedido</title>
+</head>
+<body>
+    <form action="/pedidosUsuario/{{id}}" method="POST">
+        ID Pedido: <br>
+        <input type="show" name="idpedido" id="idpedido" value="{{datos[0][0]}}">
+        <br><br>
+        Viajero: <br>
+        <input type="show" name="idviajero" id="idviajero" value="{{datos[0][4]}}">
+        <br><br>
+        ID Viaje: <br>
+        <input type="show" name="idpedido" id="idpedido" value="{{datos[0][5]}}">
+        <br><br>
+        Artículo: <br>
+        <input type="show" name="name" id="name" value="{{datos[0][6]}}">
+        <br><br>
+        Total: <br>
+        <input type="show" name="total" id="total" value="{{datos[0][15]}}">
+        <br><br>
+        Estado: <br>
+        <select class="" name="estado" id="estado">
+            <option value="none" selected>-</option>
+            <option value="Anulado">Anulado</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Actualizar">
+    </form>
+    
+</body>
+</html>

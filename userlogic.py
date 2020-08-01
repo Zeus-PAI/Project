@@ -311,3 +311,11 @@ class UpdatePedidoLogic(Logic):
         sql = f"UPDATE proyectozeus.pedidos SET EstadoPedido = '{estado}' WHERE (`idPedido` = '{id}');"
         rows = database.executeNonQueryRows(sql)
         return rows
+
+
+class ActualizarLogic(Logic):
+    def PedidoByid(self, id):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.pedidos_view where idPedido = {id};"
+        data = database.executeQuery(sql)
+        return data
