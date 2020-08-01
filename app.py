@@ -22,6 +22,7 @@ from userlogic import (
     SolicitudPedidos,
     UpdatePedidoLogic,
     ActualizarLogic,
+    idUserLogic
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -331,8 +332,10 @@ def CalificarViajeros(id):
         data = logic.PedidoByid(id)
         return render_template("calificarviajero.html", datos=data)
     else:  # "POST"
+        logic = idUserLogic()
+        idV = logic.getidViajeroUsuario(request.form["idUsuarioCalificado"])
+        Calificado = int("".join(map(str, idV[0])))
         Calificador = diccionarioUsuarios.get("idUser")
-        Calificado = request.form["idUsuarioCalificado"]
         IdPedido = request.form["idPedido"]
         Nota = request.form["Nota"]
         comentario = request.form["comentario"]

@@ -19,10 +19,12 @@
         Evalúe su pedido
         <br><br>
         ID del pedido: <br>
-        <input type="show" name="idPedido" id="idPedido" value="{{datos[0][0]}}">
+        <input type="hidden" name="idPedido" id="idPedido" value="{{datos[0][0]}}">
+        <input type="show" name="idPedido2" id="idPedido2" value="{{datos[0][0]}}" disabled>
         <br><br>
         ID del viajero a calificar: <br>
-        <input type="show" name="idUsuarioCalificado" id="idUsuarioCalificado" value="{{datos[0][3]}}">
+        <input type="hidden" name="idUsuarioCalificado" id="idUsuarioCalificado" value="{{datos[0][3]}}">
+        <input type="show" name="idUsuarioCalificado2" id="idUsuarioCalificado2" value="{{datos[0][3]}}" disabled>
         <br><br>
         Nota a del pedido (0-10): <br>
         <input type="number" min="0" max="10" step="0.5" name="Nota" id="Nota">

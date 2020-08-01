@@ -319,3 +319,14 @@ class ActualizarLogic(Logic):
         sql = f"SELECT * FROM proyectozeus.pedidos_view where idPedido = {id};"
         data = database.executeQuery(sql)
         return data
+
+
+class idUserLogic(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def getidViajeroUsuario(self, id):
+        database = self.get_databaseXObj()
+        sql = f"SELECT idUsuario FROM proyectozeus.viajeros where idViajero='{id}';"
+        data = database.executeQuery(sql)
+        return data
