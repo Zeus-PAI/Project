@@ -19,6 +19,8 @@ from userlogic import (
     calificarviajero,
     ViajeroPedidos,
     PedidoLogic,
+    SolicitudPedidos,
+    UpdatePedidoLogic,
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -355,6 +357,28 @@ def ShowPedidosViajero():
         logic2 = ViajeroPedidos()
         data = logic2.ShowPedidosViajero(idViajero)
         return render_template("pedidosViajero.html", datos=data)
+
+
+@app.route("/solicitudpedidosViajero", methods=["GET", "POST"])
+def ShowSolicitudPedidos():
+    if request.method == "GET":
+        logic = idViajeroLogic()
+        idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
+        idViajero = int("".join(map(str, idV[0])))
+        logic2 = SolicitudPedidos()
+        data = logic2.SolicitudPedidos(idViajero)
+        return render_template("solicitudes_pedidos.html", datos=data)
+    else:  # "POST"
+        idSolicitudPedido = request.form["idsolicitud"]
+        Estado = request.form["estadop"]
+        clase = UpdatePedidoLogic()
+        clase.UpdatePedido(idSolicitudPedido, Estado)
+        logic = idViajeroLogic()
+        idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
+        idViajero = int("".join(map(str, idV[0])))
+        logic2 = SolicitudPedidos()
+        data = logic2.SolicitudPedidos(idViajero)
+        return render_template("dashboard_viajero.html", datos=data)
 
 
 if __name__ == "__main__":
