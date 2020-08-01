@@ -19,6 +19,10 @@ from userlogic import (
     calificarviajero,
     ViajeroPedidos,
     PedidoLogic,
+    SolicitudPedidos,
+    UpdatePedidoLogic,
+    ActualizarLogic,
+    idUserLogic
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -321,13 +325,17 @@ def ShowViajesViajeros():
         return render_template("viajesviajeros.html", datos=data)
 
 
-@app.route("/calificarviajero", methods=["GET", "POST"])
-def CalificarViajeros():
+@app.route("/calificarviajero/<int:id>", methods=["GET", "POST"])
+def CalificarViajeros(id):
     if request.method == "GET":
-        return render_template("calificarviajero.html")
+        logic = ActualizarLogic()
+        data = logic.PedidoByid(id)
+        return render_template("calificarviajero.html", datos=data)
     else:  # "POST"
+        logic = idUserLogic()
+        idV = logic.getidViajeroUsuario(request.form["idUsuarioCalificado"])
+        Calificado = int("".join(map(str, idV[0])))
         Calificador = diccionarioUsuarios.get("idUser")
-        Calificado = request.form["idUsuarioCalificado"]
         IdPedido = request.form["idPedido"]
         Nota = request.form["Nota"]
         comentario = request.form["comentario"]
@@ -336,7 +344,9 @@ def CalificarViajeros():
             Calificador, Calificado, IdPedido, Nota, comentario
         )
         message = f"{rows} affected"
-        return render_template("calificarviajero.html", message=message)
+        logic2 = UserShowPedidos()
+        data = logic2.ShowPedidos(diccionarioUsuarios.get("idUser"))
+        return render_template("ver_pedidos.html", message=message, datos=data)
 
 
 @app.route("/pedidosViajero", methods=["GET", "POST"])
@@ -349,12 +359,59 @@ def ShowPedidosViajero():
         data = logic2.ShowPedidosViajero(idViajero)
         return render_template("pedidosViajero.html", datos=data)
     else:  # "POST"
+        idPedido = request.form["idpedido"]
+        Estado = request.form["estado"]
+        clase = UpdatePedidoLogic()
+        clase.UpdatePedido(idPedido, Estado)
         logic = idViajeroLogic()
         idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
         idViajero = int("".join(map(str, idV[0])))
         logic2 = ViajeroPedidos()
         data = logic2.ShowPedidosViajero(idViajero)
         return render_template("pedidosViajero.html", datos=data)
+
+
+@app.route("/solicitudpedidosViajero", methods=["GET", "POST"])
+def ShowSolicitudPedidos():
+    if request.method == "GET":
+        logic = idViajeroLogic()
+        idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
+        idViajero = int("".join(map(str, idV[0])))
+        logic2 = SolicitudPedidos()
+        data = logic2.SolicitudPedidos(idViajero)
+        return render_template("solicitudes_pedidos.html", datos=data)
+    else:  # "POST"
+        idSolicitudPedido = request.form["idsolicitud"]
+        Estado = request.form["estadop"]
+        clase = UpdatePedidoLogic()
+        clase.UpdatePedido(idSolicitudPedido, Estado)
+        logic = idViajeroLogic()
+        idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
+        idViajero = int("".join(map(str, idV[0])))
+        logic2 = SolicitudPedidos()
+        data = logic2.SolicitudPedidos(idViajero)
+        return render_template("dashboard_viajero.html", datos=data)
+
+
+@app.route("/pedidosUsuario/<int:id>", methods=["GET", "POST"])
+def ActualizarPedido(id):
+    if request.method == "GET":
+        logic = ActualizarLogic()
+        data = logic.PedidoByid(id)
+        return render_template(
+            "ActualizarPedido.html",
+            datos=data,
+            id=id,
+            user=diccionarioUsuarios.get("idUser"),
+        )
+    else:
+        idPedido = request.form["idpedido"]
+        Estado = request.form["estado"]
+        clase = UpdatePedidoLogic()
+        clase.UpdatePedido(idPedido, Estado)
+        logic2 = UserShowPedidos()
+        data = logic2.ShowPedidos(diccionarioUsuarios.get("idUser"))
+        return render_template("ver_pedidos.html", datos=data)
 
 
 if __name__ == "__main__":

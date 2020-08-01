@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualiza tu Pedido</title>
+</head>
+<body>
+    <form action="/pedidosUsuario/{{id}}" method="POST">
+        ID Pedido: <br>
+        <input type="hidden" name="idpedido" id="idpedido" value="{{datos[0][0]}}">
+        <input type="show" name="idpedido2" id="idpedido2" value="{{datos[0][0]}}" disabled>
+        <br><br>
+        Viajero: <br>
+        <input type="hidden" name="idviajero" id="idviajero" value="{{datos[0][4]}}">
+        <input type="show" name="idviajero2" id="idviajero2" value="{{datos[0][4]}}" disabled>
+        <br><br>
+        ID Viaje: <br>
+        <input type="hidden" name="idpedido" id="idpedido" value="{{datos[0][5]}}">
+        <input type="show" name="idpedido2" id="idpedido2" value="{{datos[0][5]}}" disabled>
+        <br><br>
+        Artículo: <br>
+        <input type="hidden" name="name" id="name" value="{{datos[0][6]}}">
+        <input type="show" name="name2" id="name2" value="{{datos[0][6]}}" disabled>
+        <br><br>
+        Total: <br>
+        <input type="hidden" name="total" id="total" value="{{datos[0][15]}}">
+        <input type="show" name="total2" id="total2" value="{{datos[0][15]}}" disabled>
+        <br><br>
+        Estado: <br>
+        <select class="" name="estado" id="estado">
+            <option value="none" selected>-</option>
+            <option value="Anulado">Anulado</option>
+            <option value="Entregado">Entregado</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Actualizar">
+    </form>
+    
+</body>
+</html>

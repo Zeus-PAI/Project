@@ -289,3 +289,44 @@ class ViajeroPedidos(Logic):
         sql = f"SELECT * FROM proyectozeus.pedidos_view where idViajero='{id}';"
         data = database.executeQuery(sql)
         return data
+
+
+class SolicitudPedidos(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def SolicitudPedidos(self, id):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.pedidos_view where idViajero='{id}' and Estado = 'Pendiente';"
+        data = database.executeQuery(sql)
+        return data
+
+
+class UpdatePedidoLogic(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def UpdatePedido(self, id, estado):
+        database = self.get_databaseXObj()
+        sql = f"UPDATE proyectozeus.pedidos SET EstadoPedido = '{estado}' WHERE (`idPedido` = '{id}');"
+        rows = database.executeNonQueryRows(sql)
+        return rows
+
+
+class ActualizarLogic(Logic):
+    def PedidoByid(self, id):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.pedidos_view where idPedido = {id};"
+        data = database.executeQuery(sql)
+        return data
+
+
+class idUserLogic(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def getidViajeroUsuario(self, id):
+        database = self.get_databaseXObj()
+        sql = f"SELECT idUsuario FROM proyectozeus.viajeros where idViajero='{id}';"
+        data = database.executeQuery(sql)
+        return data

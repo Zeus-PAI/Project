@@ -43,10 +43,15 @@
     <br>
     {% endif %}
     <form action="/deleteuser" method="POST">
-        Escribe el ID del Usuario que deseas eliminar:
+        Escoge el ID del Usuario que deseas eliminar:
         <br><br>
         ID Usuario: <br>
-        <input type="int" name="idUsuario" id="idUsuario">
+        <select class="" name="idUsuario" id="idUsuario">
+            <option value="none" selected>-</option>
+            {% for dato in datos%}
+            <option value="{{dato[0]}}"> Pedido {{dato[0]}}</option>
+            {% endfor %}
+        </select>
         <br><br>
         <input type="submit" value="Eliminar">
     </form>

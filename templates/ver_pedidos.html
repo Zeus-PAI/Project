@@ -44,21 +44,6 @@
     <p style="color: red;">{{message}}</p>
     <br>
     {% endif %}
-    <form action="/pedidosUsuario" method="POST">
-        Escribe el ID del Pedido que deseas actualizar:
-        <br><br>
-        ID Pedido: <br>
-        <input type="int" name="idsolicitud" id="idsolicitud">
-        <br><br>
-        Estado: <br>
-        <select class="" name="estado" id="estado">
-            <option value="none" selected>-</option>
-            <option value="Aprobada">Aprobada</option>
-            <option value="Denegada">Denegada</option>
-        </select>
-        <br><br>
-        <input type="submit" value="Actualizar">
-    </form>
     <br><br>
     <table class="tablaOrdenes" id="t01">
 
@@ -77,6 +62,8 @@
             <th>País</th>
             <th>Fecha estimada de entrega</th>
             <th>Total</th>
+            <th>Actualizar</th>
+            <th>Calificar</th>
         </tr>
         {% for dato in datos%}
         <tr>
@@ -94,6 +81,17 @@
             <td>{{dato[13]}}</td>
             <td>{{dato[14]}}</td>
             <td>{{dato[15]}}</td>
+            {% if (dato[7] == 'Aceptado' or dato[7] == 'Pendiente'): %}
+            <td> <a href="/pedidosUsuario/{{dato[0]}}">Actualizar tu Pedido</a></td>
+            {%else:%}
+            <td>Actualizado</td>
+            {%endif%}
+            {% if (dato[16] == 0): %}
+            <td> <a href="/calificarviajero/{{dato[0]}}">Califica tu Pedido</a></td>
+            {%else:%}
+            <td>Calificado</td>
+            {%endif%}
+
         </tr>
         {% endfor %}
     </table>
