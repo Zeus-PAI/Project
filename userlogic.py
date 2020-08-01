@@ -247,3 +247,21 @@ class ShowViajesViajero(Logic):
         sql = f"SELECT * FROM proyectozeus.viajes where idViajero='{id}';"
         data = database.executeQuery(sql)
         return data
+
+
+class calificarviajero(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def calificarviajero(
+        self, idUsuarioCalificador, idUsuarioCalificado, idPedido, Nota, Comentarios
+    ):
+        database = self.get_databaseXObj()
+        sql = (
+            "INSERT INTO `proyectozeus`.`calificaciones` (`idcalificaciones`, `idUsuarioCalificador`, `idUsuarioCalificado`, `idPedido`, `Nota`, `Comentarios`) "
+            + f"VALUES (0,'{idUsuarioCalificador}','{idUsuarioCalificado}', '{idPedido}', '{Nota}', '{Comentarios}');"
+        )
+
+        rows = database.executeNonQueryRows(sql)
+        return rows
+

@@ -16,6 +16,7 @@ from userlogic import (
     PedidosShowAdminLogic,
     ShowViajesViajero,
     RegisterViajeLogic,
+    calificarviajero,
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -146,12 +147,12 @@ def registrarViajeform():
     if request.method == "GET":
         logic = idViajeroLogic()
         idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
-        idViajero = int(''.join(map(str, idV[0])))
+        idViajero = int("".join(map(str, idV[0])))
         return render_template("registrarViaje.html", idViajero=idViajero)
     else:  # "POST"
         logic = idViajeroLogic()
         idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
-        idViajero = int(''.join(map(str, idV[0])))
+        idViajero = int("".join(map(str, idV[0])))
         fechaInicio = request.form["fechaInicio"]
         fechaRegreso = request.form["fechaRegreso"]
         paisDestino = request.form["paisDestino"]
@@ -160,9 +161,20 @@ def registrarViajeform():
         telefono = request.form["telefono"]
         imagenReferencia = request.form["imagenReferencia"]
         logic = RegisterViajeLogic()
-        rows = logic.insertNewViaje(idViajero, fechaInicio, fechaRegreso, paisDestino, direccionEstadia, cobroLibra, telefono, imagenReferencia)
+        rows = logic.insertNewViaje(
+            idViajero,
+            fechaInicio,
+            fechaRegreso,
+            paisDestino,
+            direccionEstadia,
+            cobroLibra,
+            telefono,
+            imagenReferencia,
+        )
         message = f"{rows} affected"
-        return render_template("registrarViaje.html", message=message, idViajero=idViajero)
+        return render_template(
+            "registrarViaje.html", message=message, idViajero=idViajero
+        )
 
 
 @app.route("/solicitudes", methods=["GET", "POST"])
@@ -266,7 +278,7 @@ def ShowViajesViajeros():
     if request.method == "GET":
         logic = idViajeroLogic()
         idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
-        idViajero = int(''.join(map(str, idV[0])))
+        idViajero = int("".join(map(str, idV[0])))
         logic2 = ShowViajesViajero()
         data = logic2.ShowViajesViajero(idViajero)
         return render_template("viajesviajeros.html", datos=data, Viajero=idViajero)
@@ -274,6 +286,24 @@ def ShowViajesViajeros():
         logic2 = ShowViajesViajero()
         data = logic2.ShowViajesViajero(diccionarioUsuarios.get("idUser"))
         return render_template("viajesviajeros.html", datos=data)
+
+
+@app.route("/calificarviajero", methods=["GET", "POST"])
+def CalificarViajeros():
+    if request.method == "GET":
+        return render_template("calificarviajero.html")
+    else:  # "POST"
+        Calificador = diccionarioUsuarios.get("idUser")
+        Calificado = request.form["idUsuarioCalificado"]
+        IdPedido = request.form["idPedido"]
+        Nota = request.form["Nota"]
+        comentario = request.form["comentario"]
+        logic = calificarviajero()
+        rows = logic.calificarviajero(
+            Calificador, Calificado, IdPedido, Nota, comentario
+        )
+        message = f"{rows} affected"
+        return render_template("calificarviajero.html", message=message)
 
 
 if __name__ == "__main__":
