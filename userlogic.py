@@ -182,13 +182,27 @@ class PedidoLogic(Logic):
         super().__init__()
 
     def insertNewPedido(
-        self, user, nombre_completo, correo, password, Fecha, telefono, pais, Foto
+        self,
+        idUsuario,
+        idViajero,
+        idViaje,
+        NombreArticulo,
+        Precio,
+        Peso,
+        Categoria,
+        Cantidad,
+        Especificaciones,
+        URL,
+        Pais,
+        Fecha,
+        Total,
     ):
         database = self.get_databaseXObj()
         sql = (
-            "insert into proyectozeus.usuarios (`idUsuario`, `Usuario`, `nombre_completo`, `correo`, "
-            + "`contraseña`, `FechaNacimiento`, `telefono`, `pais`, `idTipo`, `Foto`) "
-            + f"values (0, '{user}', '{nombre_completo}', '{correo}', '{password}', '{Fecha}', '{telefono}', '{pais}', 2, '{Foto}');"
+            "INSERT INTO `proyectozeus`.`pedidos` (`idPedido`, `idUsuario`, `idViajero`, `idViaje`, `NombreArticulo`, `EstadoPedido`, "
+            + "`Precio`, `Peso`, `Categoria`, `Cantidad`, `Especificaciones`, `URL`, `Pais`, `FechaEntrega`, `Total`, `Calificado`) "
+            + f"VALUES ('0', '{idUsuario}', '{idViajero}', '{idViaje}', '{NombreArticulo}', 'Pendiente', '{Precio}', '{Peso}', '{Categoria}',"
+            + f"'{Cantidad}', '{Especificaciones}', '{URL}', '{Pais}', '{Fecha}', '{Total}', '0');"
         )
         rows = database.executeNonQueryRows(sql)
         return rows

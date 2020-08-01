@@ -18,6 +18,7 @@ from userlogic import (
     RegisterViajeLogic,
     calificarviajero,
     ViajeroPedidos,
+    PedidoLogic,
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -235,7 +236,38 @@ def ConfirmarPedido(id):
             user=diccionarioUsuarios.get("idUser"),
         )
     else:  # "POST"
-        return render_template("ConfirmarPedido.html")
+        logic = ConfirmarLogic()
+        data = logic.ViajeByid(id)
+        idViajero = request.form["idviajero"]
+        idViaje = request.form["idviaje"]
+        Articulo = request.form["nombre"]
+        Precio = request.form["precio"]
+        Peso = request.form["peso"]
+        Categoria = request.form["categoria"]
+        Cantidad = request.form["cantidad"]
+        Especificaciones = request.form["descripcion"]
+        URL = request.form["url"]
+        Pais = request.form["pais"]
+        Fecha = request.form["fecharegreso"]
+        Total = request.form["total"]
+        logic2 = PedidoLogic()
+        rows = logic2.insertNewPedido(
+            diccionarioUsuarios.get("idUser"),
+            idViajero,
+            idViaje,
+            Articulo,
+            Precio,
+            Peso,
+            Categoria,
+            Cantidad,
+            Especificaciones,
+            URL,
+            Pais,
+            Fecha,
+            Total,
+        )
+        message = f"{rows} affected"
+        return render_template("dashboard_user.html", message=message)
 
 
 @app.route("/pedidosUsuario", methods=["GET", "POST"])

@@ -43,7 +43,7 @@
                 <input type="show" name="fecharegreso" id="fecharegreso" value="{{datos[0][4]}}">
                 <br><br>
                 País de importación: <br>
-                <input type="show" name="país" id="país" value="{{datos[0][6]}}">
+                <input type="show" name="pais" id="pais" value="{{datos[0][6]}}">
                 <br><br>
                 Cobro por libra (USD): <br>
                 <input type="show" name="costo" id="costo" value="{{datos[0][7]}}">
@@ -83,7 +83,7 @@
             <br><br>
             Cantidad:
             <br>
-            <input type="int" name="cantidad" id="cantidad">
+            <input type="number" min="1" step="1" name="cantidad" id="cantidad">
             <br><br>
             URL:
             <br>
@@ -98,7 +98,7 @@
     <br><br><br><br>
     <center>Total</center>
     <br><br>
-    <input type="show" name="total" id="total" value="100">
+    <center><input type="show" name="total" id="total" value="100"></center>
     <center><input type="submit" value="Solicitar Pedido"></center>
     </form>
 </body>
