@@ -22,7 +22,7 @@ from userlogic import (
     SolicitudPedidos,
     UpdatePedidoLogic,
     ActualizarLogic,
-    idUserLogic
+    idUserLogic,
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -305,10 +305,6 @@ def ShowTodosLosPedidosAdmin():
         data = logic2.ShowPedidosAdmin()
         return render_template("pedidosadmin.html", datos=data)
     else:  # "POST"
-        idPedido = request.form["idpedido"]
-        Estado = request.form["estado"]
-        clase = UpdatePedidoLogic()
-        clase.UpdatePedido(idPedido, Estado)
         logic2 = PedidosShowAdminLogic()
         data = logic2.ShowPedidosAdmin()
         return render_template("pedidosadmin.html", datos=data)

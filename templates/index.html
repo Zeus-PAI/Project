@@ -5,94 +5,89 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Travelers</title>
-    <!--
+<!--
 
 Template 2094 Mason
 
-http://www.tooplate.com/view/2094-mason
+http://www.tooplate.com/view/2094-mason "{{url_for('static' , filename = 'css/prueba.css')}}"
 
 -->
     <!-- load stylesheets -->
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400">
-    <!-- Google web font "Open Sans", https://fonts.google.com/ -->
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-    <!-- Font Awesome, http://fontawesome.io/ -->
-    <link rel="stylesheet" href="/templates/index/css/bootstrap.min.css">
-    <!-- Bootstrap styles, https://getbootstrap.com/ -->
-    <link rel="stylesheet" href="/templates/index/css/tooplate-style.css"> <!-- Templatemo style -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400"> <!-- Google web font "Open Sans", https://fonts.google.com/ -->
+    <link rel="stylesheet" href="{{url_for('static' , filename = 'font-awesome-4.7.0/css/font-awesome.min.css')}}">       <!-- Font Awesome, http://fontawesome.io/ -->
+    <link rel="stylesheet" href="{{url_for('static' , filename = 'css/bootstrap.min.css')}}">                               <!-- Bootstrap styles, https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="{{url_for('static' , filename = 'css/tooplate-style.css')}}">
+                              <!-- Templatemo style -->
 
+  
+      </head>
 
-</head>
-
-<body>
-    <div class="container-fluid">
-        <div class="tm-body">
-            <div class="tm-sidebar sticky">
-                <section id="welcome" class="tm-content-box tm-banner margin-b-15">
-                    <div class="tm-banner-inner">
-                        <img src="/templates/index/img/plane.png"class="logo" alt="imagen">
-                        <h1 class="tm-banner-title">Travelers</h1>
-                        <p class="tm-banner-subtitle">Viva el bichardo</p>
-                    </div>
-                </section>
-                <nav class="tm-main-nav">
-                    <ul class="tm-main-nav-ul">
-                        <li class="tm-nav-item"><a href="/loginform" class="tm-nav-item-link tm-button active">Log
-                                In</a>
-                        </li>
-                        </li>
-                        <li class="tm-nav-item"><a href="/registrousuario"
-                                class="tm-nav-item-link tm-button active">Registrate como usuario</a>
-                        </li>
-                        <li class="tm-nav-item"><a href="/registroviajero"
-                                class="tm-nav-item-link tm-button active">Aplica para ser viajero</a>
-                        </li>
-                    </ul>
-                </nav>
+      <body>
+        <div class="container-fluid">
+            <div class="tm-body">
+                <div class="tm-sidebar sticky">
+                    <section id="welcome" class="tm-content-box tm-banner margin-b-15">
+                        <div class="tm-banner-inner">
+                            <img src="{{url_for("static", filename="img/plane.png")}}" class="logo"></img>
+                            <h1 class="tm-banner-title">Travelers</h1>
+                            <p class="tm-banner-subtitle">Viva el bichardo</p>                   
+                        </div>                    
+                    </section>
+                    <nav class="tm-main-nav">
+                        <ul class="tm-main-nav-ul">
+                            <li class="tm-nav-item"><a href="/loginform" class="tm-nav-item-link tm-button active">Log In</a>
+                            </li>
+                            </li>
+                             <li class="tm-nav-item"><a href="/registrousuario" class="tm-nav-item-link tm-button active">Registrate como usuario</a>
+                            </li>
+                             <li class="tm-nav-item"><a href="/registroviajero" class="tm-nav-item-link tm-button active">Aplica para ser viajero</a>
+                            </li>
+                        </ul>
+                    </nav> 
+                </div>
+                
+                <div class="tm-main-content tm-gallery-container">                    
+                    <div class="grid">                                                    
+                        <div class="grid-item"><img src="{{url_for("static", filename="img/img1.jpg")}}" alt="Image"></div>
+                        <div class="grid-item"><img src="{{url_for("static", filename="img/img2.jpg")}}" alt="Image"></div>
+                        <div class="grid-item"><img src="{{url_for("static", filename="img/img3.jpg")}}" alt="Image"></div>
+                        <div class="grid-item"><img src="{{url_for("static", filename="img/img4.jpg")}}" alt="Image"></div>
+                        <div class="grid-item"><img src="{{url_for("static", filename="img/img5.jpg")}}" alt="Image"></div>
+                        <div class="grid-item"><img src="{{url_for("static", filename="img/img17.png")}}" alt="Image"></div>
+                        <div class="grid-item"><img src="{{url_for("static", filename="img/img7.jpg")}}" alt="Image"></div>
+                        <div class="grid-item"><img src="{{url_for("static", filename="img/img8.jpg")}}" alt="Image"></div>
+                        <div class="grid-item"><img src="{{url_for("static", filename="img/img9.jpg")}}" alt="Image"></div>
+                        <div class="grid-item"><img src="{{url_for("static", filename="img/img10.jpg")}}" alt="Image"></div>
+                        <div class="grid-item"><img src="{{url_for("static", filename="img/img11.jpg")}}" alt="Image"></div>
+                        <div class="grid-item"><img src="{{url_for("static", filename="img/img12.jpg")}}" alt="Image"></div>
+                        <div class="grid-item"><img src="{{url_for("static", filename="img/img13.jpg")}}" alt="Image"></div>
+                        <div class="grid-item"><img src="{{url_for("static", filename="img/img14.jpg")}}" alt="Image"></div>
+                        <div class="grid-item"><img src="{{url_for("static", filename="img/img15.jpg")}}" alt="Image"></div>
+                        
+                  
+                    </div>                    
+                </div> <!-- tm-main-content -->
             </div>
 
-            <div class="tm-main-content tm-gallery-container">
-                <div class="grid">
-                    <div class="grid-item"><img src="/templates/index/img/img1.jpg" alt="Image"></div>
-                    <div class="grid-item"><img src="/templates/index/img/img2.jpg" alt="Image"></div>
-                    <div class="grid-item"><img src="/templates/index/img/img3.jpg" alt="Image"></div>
-                    <div class="grid-item"><img src="/templates/index/img/img4.jpg" alt="Image"></div>
-                    <div class="grid-item"><img src="/templates/index/img/img5.jpg" alt="Image"></div>
-                    <div class="grid-item"><img src="/templates/index/img/img17.png" alt="Image"></div>
-                    <div class="grid-item"><img src="/templates/index/img/img7.jpg" alt="Image"></div>
-                    <div class="grid-item"><img src="/templates/index/img/img8.jpg" alt="Image"></div>
-                    <div class="grid-item"><img src="/templates/index/img/img9.jpg" alt="Image"></div>
-                    <div class="grid-item"><img src="/templates/index/img/img10.jpg" alt="Image"></div>
-                    <div class="grid-item"><img src="/templates/index/img/img11.jpg" alt="Image"></div>
-                    <div class="grid-item"><img src="/templates/index/img/img12.jpg" alt="Image"></div>
-                    <div class="grid-item"><img src="/templates/index/img/img13.jpg" alt="Image"></div>
-                    <div class="grid-item"><img src="/templates/index/img/img14.jpg" alt="Image"></div>
-                    <div class="grid-item"><img src="/templates/index/img/img15.jpg" alt="Image"></div>
+        
 
-
-                </div>
-            </div> <!-- tm-main-content -->
-        </div>
-
-
-
-    </div> <!-- container-fluid -->
-
-    <!-- load JS files -->
-
-    <script src="/templates/index/js/jquery-1.11.3.min.js"></script> <!-- jQuery (https://jquery.com/download/) -->
-    <script src="/templates/index/js/imagesloaded.pkgd.min.js"></script> <!-- https://masonry.desandro.com/ -->
-    <script src="/templates/index/js/masonry.pkgd.min.js"></script> <!-- https://masonry.desandro.com/ -->
-
-    <!-- Templatemo scripts -->
-    <script>
-
-        $(document).ready(function () {
+        </div> <!-- container-fluid -->
+        
+        <!-- load JS files -->
+        
+        <script src="js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
+        <script src="js/imagesloaded.pkgd.min.js"></script> <!-- https://masonry.desandro.com/ -->
+        <script src="js/masonry.pkgd.min.js"></script> <!-- https://masonry.desandro.com/ -->
+        
+        <!-- Templatemo scripts -->
+        <script>  
+    
+        $(document).ready(function(){
 
             // init Masonry
             // https://codepen.io/craigwheeler/pen/MYjBga
             var $grid = $('.grid').masonry({
-
+                
                 // set itemSelector so .grid-sizer is not used in layout
                 // itemSelector: '.grid-item',
                 // use element for option
@@ -104,14 +99,14 @@ http://www.tooplate.com/view/2094-mason
                 columnWidth: 1
             });
             // layout Masonry after each image loads
-            $grid.imagesLoaded().progress(function () {
-                $grid.masonry('layout');
-            });
+            $grid.imagesLoaded().progress( function() {
+              $grid.masonry('layout');
+            });            
 
             // Update the current year in copyright
-            $('.tm-current-year').text(new Date().getFullYear());
+            $('.tm-current-year').text(new Date().getFullYear());        
         });
 
-    </script>
-</body>
-</html>
+        </script>
+    </body>
+    </html>
