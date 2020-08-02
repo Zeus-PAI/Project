@@ -69,13 +69,17 @@
                 <br>
                 <input type="text" name="nombre" id="nombre">
                 <br><br>
+                Cantidad:
+                <br>
+                <input type="number" min="1" step="1" name="cantidad" id="cantidad" value="0" onchange="calcularCosto()">
+                <br><br>
                 Precio (USD):
                 <br>
-                $<input type="number" min="0" name="precio" id="precio" onchange="calcularCosto()">
+                $<input type="number" min="0" step="any" name="precio" id="precio" value="0" onchange="calcularCosto()">
                 <br><br>
                 Peso (lb):
                 <br>
-                <input type="number" min="0" name="peso" id="peso" onchange="calcularCosto()">
+                <input type="number" min="0" step="any" name="peso" id="peso" value="0" onchange="calcularCosto()">
                 <br><br>
                 Categoría:
                 <br>
@@ -88,10 +92,6 @@
                     <option name="deportivo" value="deportivo">Deportivo</option>
                     <option name="otro" value="otro">Otro</option>
                 </select>
-                <br><br>
-                Cantidad:
-                <br>
-                <input type="number" min="1" step="1" name="cantidad" id="cantidad" onchange="calcularCosto()">
                 <br>
                 URL:
                 <br>
@@ -107,9 +107,11 @@
         <center>Total</center>
         <br>
         <input type="hidden" name="total" id="total" value="0">
-        <center><div id="resultado" style="color: red; font-family: Arial, Helvetica, sans-serif;">
-            $0.00
-        </div></center>
+        <center>
+            <div id="resultado" style="color: red; font-family: Arial, Helvetica, sans-serif;">
+                $0.00
+            </div>
+        </center>
 
         <script type="text/javascript">
             function calcularCosto() {
