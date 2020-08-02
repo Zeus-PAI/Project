@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solicitudes de Viajero</title>
+    <title>Todos los pedidos</title>
 <style>
     table {
         width: 100%;
@@ -37,7 +37,7 @@
 </style>
 </head>
 <body>
-    <h1><center>Actualiza tus solicitudes</center></h1>
+    <h1><center>Actualiza los pedidos</center></h1>
     {% if message %}
     <p style="color: red;">{{message}}</p>
     <br>
@@ -56,11 +56,11 @@
         Estado: <br>
         <select class="" name="estado" id="estado">
             <option value="none" selected>-</option>
-            <option value="Entregado">Aprobada</option>
-            <option value="Anulado">Aprobada</option>
-            <option value="Comprado">Aprobada</option>
-            <option value="Aceptado">Aprobada</option>
-            <option value="Rechazado">Denegada</option>
+            <option value="Entregado">Entregado</option>
+            <option value="Anulado">Anulado</option>
+            <option value="Comprado">Comprado</option>
+            <option value="Aceptado">Aceptado</option>
+            <option value="Rechazado">Rechazado</option>
         </select>
         <br><br>
         <input type="submit" value="Actualizar">
