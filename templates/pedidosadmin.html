@@ -43,16 +43,24 @@
     <br>
     {% endif %}
     <form action="/verpedidos" method="POST">
-        Escribe el ID de la Solicitud que deseas actualizar:
+        Escribe el ID del pedido que deseas actualizar:
         <br><br>
-        ID Solicitud: <br>
-        <input type="int" name="idsolicitud" id="idsolicitud">
+        ID Pedido: <br>
+        <select class="" name="idpedido" id="idpedido">
+            <option value="none" selected>-</option>
+            {% for dato in datos%}
+            <option value="{{dato[0]}}"> Pedido {{dato[0]}}</option>
+            {% endfor %}
+        </select>
         <br><br>
         Estado: <br>
         <select class="" name="estado" id="estado">
             <option value="none" selected>-</option>
-            <option value="Aprobada">Aprobada</option>
-            <option value="Denegada">Denegada</option>
+            <option value="Entregado">Aprobada</option>
+            <option value="Anulado">Aprobada</option>
+            <option value="Comprado">Aprobada</option>
+            <option value="Aceptado">Aprobada</option>
+            <option value="Rechazado">Denegada</option>
         </select>
         <br><br>
         <input type="submit" value="Actualizar">
