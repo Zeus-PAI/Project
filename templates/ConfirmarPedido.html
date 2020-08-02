@@ -27,18 +27,19 @@
     <h2>
         <center>Confirma Tu Pedido</center>
     </h2>
-    <div class="row">
-        <div class="column" style="background-color:rgb(177, 180, 214);">
-            <h2>Datos de Viaje</h2>
+    <form action="/confirmarpedido/{{id}}" method="POST">
+        <div class="row">
+            <div class="column" style="background-color:rgb(177, 180, 214);">
+                <h2>Datos de Viaje</h2>
 
-            <form action="/confirmarpedido/{{id}}" method="POST">
+
                 Viaje Seleccionado: <br>
                 <input type="hidden" name="idviaje" id="idviaje" value="{{datos[0][0]}}">
                 <input type="show" name="idviaje2" id="idviaje2" value="{{datos[0][0]}}" disabled>
                 <br><br>
                 Viajero Seleccionado: <br>
                 <input type="show" name="viajero2" id="viajero2" value="{{datos[0][2]}}" disabled>
-                <input type="hidden" name ="idviajero" id="idviajero" value="{{datos[0][1]}}">
+                <input type="hidden" name="idviajero" id="idviajero" value="{{datos[0][1]}}">
                 <br><br>
                 Fecha Estimada de regreso: <br>
                 <input type="hidden" name="fecharegreso" id="fecharegreso" value="{{datos[0][4]}}">
@@ -49,63 +50,81 @@
                 <input type="show" name="pais2" id="pais2" value="{{datos[0][6]}}" disabled>
                 <br><br>
                 Cobro por libra (USD): <br>
-                <input type="hidden" name="costo" id="costo" value="{{datos[0][7]}}">
-                <input type="show" name="costo2" id="costo2" value="{{datos[0][7]}}" disabled>
+                <input type="hidden" name="costo" id="costo" value="{{datos[0][7]}}" onchange="calcularCosto()">
+                <input type="show" name="costo2" id="costo2" value="{{datos[0][7]}}" disabled
+                    onchange="calcularCosto()">
                 <br><br>
                 Teléfono de Contacto: <br>
                 <input type="hidden" name="telefono" id="telefono" value="{{datos[0][8]}}">
                 <input type="show" name="telefono2" id="telefono2" value="{{datos[0][8]}}" disabled>
+            </div>
+            <div class="column" style="background-color:#ffb555;">
+                <h2>Datos de Pedido</h2>
+                idUsuario Solicitante:
+                <br>
+                <input type="hidden" name="idUser" id="idUser" value="{{user}}">
+                <input type="show" name="idUser2" id="idUser2" value="{{user}}" disabled>
+                <br><br>
+                Nombre del Artículo:
+                <br>
+                <input type="text" name="nombre" id="nombre">
+                <br><br>
+                Precio (USD):
+                <br>
+                $<input type="number" min="0" name="precio" id="precio" onchange="calcularCosto()">
+                <br><br>
+                Peso (lb):
+                <br>
+                <input type="number" min="0" name="peso" id="peso" onchange="calcularCosto()">
+                <br><br>
+                Categoría:
+                <br>
+                <select name="categoria" id="categoria">
+                    <option selected name="none" value="none">-</option>
+                    <option name="tecnologia" value="tecnologia">Teconología</option>
+                    <option name="ropa" value="ropa">Ropa y Calzado</option>
+                    <option name="joyeria" value="joyeria">Joyería y Accesorios</option>
+                    <option name="hogar" value="hogar">Artículos de Hogar</option>
+                    <option name="deportivo" value="deportivo">Deportivo</option>
+                    <option name="otro" value="otro">Otro</option>
+                </select>
+                <br><br>
+                Cantidad:
+                <br>
+                <input type="number" min="1" step="1" name="cantidad" id="cantidad" onchange="calcularCosto()">
+                <br>
+                URL:
+                <br>
+                <input type="text" name="url" id="url">
+                <br>
+                Otras especificaciones:
+                <br>
+                <textarea name="descripcion" rows="2" cols="20"></textarea>
+                <br><br>
+            </div>
         </div>
-        <div class="column" style="background-color:#ffb555;">
-            <h2>Datos de Pedido</h2>
-            idUsuario Solicitante:
-            <br> 
-            <input type="hidden" name="idUser" id="idUser" value="{{user}}">
-            <input type="show" name="idUser2" id="idUser2" value="{{user}}" disabled>
-            <br><br>
-            Nombre del Artículo:
-            <br>
-            <input type="text" name="nombre" id="nombre">
-            <br><br>
-            Precio (USD):
-            <br>
-            $<input type="number" min="0" name="precio" id="precio">
-            <br><br>
-            Peso (lb):
-            <br>
-            <input type="number" min="0" name="peso" id="peso">
-            <br><br>
-            Categoría:
-            <br>
-            <select name="categoria" id="categoria">
-                <option selected name="none" value="none">-</option>
-                <option name="tecnologia" value="tecnologia">Teconología</option>
-                <option name="ropa" value="ropa">Ropa y Calzado</option>
-                <option name="joyeria" value="joyeria">Joyería y Accesorios</option>
-                <option name="hogar" value="hogar">Artículos de Hogar</option>
-                <option name="deportivo" value="deportivo">Deportivo</option>
-                <option name="otro" value="otro">Otro</option>
-            </select>
-            <br><br>
-            Cantidad:
-            <br>
-            <input type="number" min="1" step="1" name="cantidad" id="cantidad">
-            <br><br>
-            URL:
-            <br>
-            <input type="text" name="url" id="url">
-            <br><br>
-            Otras especificaciones:
-            <br>
-            <textarea name="descripcion" rows="2" cols="20"></textarea>
-            <br><br>
-        </div>
-    </div>
-    <br><br><br><br>
-    <center>Total</center>
-    <br><br>
-    <center><input type="show" name="total" id="total" value="100"></center>
-    <center><input type="submit" value="Solicitar Pedido"></center>
+        <br><br><br><br><br>
+        <center>Total</center>
+        <br>
+        <input type="hidden" name="total" id="total" value="0">
+        <center><div id="resultado" style="color: red; font-family: Arial, Helvetica, sans-serif;">
+            $0.00
+        </div></center>
+
+        <script type="text/javascript">
+            function calcularCosto() {
+                var precio = parseFloat(document.getElementById("precio").value);
+                var cantidad = parseFloat(document.getElementById("cantidad").value);
+                var cobro = parseFloat(document.getElementById("costo").value);
+                var peso = parseFloat(document.getElementById("peso").value);
+                result = (precio * cantidad) + (cobro * peso * cantidad);
+                console.log("result-->" + result)
+                document.getElementById("resultado").innerHTML = "$ " + result;
+                document.getElementById("total").value = result;
+            }
+        </script>
+        <center><input type="submit" value="Solicitar Pedido"></center>
     </form>
+
 </body>
 </html>
