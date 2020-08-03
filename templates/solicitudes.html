@@ -46,7 +46,12 @@
         Escribe el ID de la Solicitud que deseas actualizar:
         <br><br>
         ID Solicitud: <br>
-        <input type="int" name="idsolicitud" id="idsolicitud">
+        <select class="" name="idsolicitud" id="idsolicitud">
+            <option value="none" selected>-</option>
+            {% for dato in datos%}
+            <option value="{{dato[0]}}"> Pedido {{dato[0]}}</option>
+            {% endfor %}
+        </select>
         <br><br>
         Estado: <br>
         <select class="" name="estado" id="estado">
