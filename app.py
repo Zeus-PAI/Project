@@ -221,18 +221,37 @@ def registrarViajeform():
         direccionEstadia = request.form["direccionEstadia"]
         cobroLibra = request.form["cobroLibra"]
         telefono = request.form["telefono"]
-        imagenReferencia = request.form["imagenReferencia"]
-        logic = RegisterViajeLogic()
-        rows = logic.insertNewViaje(
-            idViajero,
-            fechaInicio,
-            fechaRegreso,
-            paisDestino,
-            direccionEstadia,
-            cobroLibra,
-            telefono,
-            imagenReferencia,
-        )
+        imagenReferencia = ""
+
+        print(f"request.files -> {request.files}")
+        if "file" not in request.files:
+            flash("No file part")
+            print(request.url)
+            return redirect(request.url)
+        file = request.files['file']
+        print(f"file.filename -> {file.filename}")
+        if file.filename == "":
+            flash("No image selected for uploading")
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+            flash("Image successfully uploaded and displayed")
+            imagenReferencia = file.filename
+            logic = RegisterViajeLogic()
+            rows = logic.insertNewViaje(
+                idViajero,
+                fechaInicio,
+                fechaRegreso,
+                paisDestino,
+                direccionEstadia,
+                cobroLibra,
+                telefono,
+                imagenReferencia,
+                )
+        else:
+            flash("Allowed image types are -> png, jpg, jpeg, gif")
+            return redirect(request.url)
         message = f"{rows} affected"
         return render_template(
             "registrarViaje.html", message=message, idViajero=idViajero
