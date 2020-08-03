@@ -23,6 +23,7 @@ from userlogic import (
     UpdatePedidoLogic,
     ActualizarLogic,
     idUserLogic,
+    DisponibilidadViajero,
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -324,8 +325,15 @@ def ShowViajesViajeros():
         data = logic2.ShowViajesViajero(idViajero)
         return render_template("viajesviajeros.html", datos=data, Viajero=idViajero)
     else:  # "POST"
+        idViaje = request.form["idviaje"]
+        Estado = request.form["estado"]
+        logic = DisponibilidadViajero()
+        logic.DisponibilidadViajero(idViaje, Estado)
+        logic3 = idViajeroLogic()
+        idV = logic3.getidViajero(diccionarioUsuarios.get("idUser"))
+        idViajero = int("".join(map(str, idV[0])))
         logic2 = ShowViajesViajero()
-        data = logic2.ShowViajesViajero(diccionarioUsuarios.get("idUser"))
+        data = logic2.ShowViajesViajero(idViajero)
         return render_template("viajesviajeros.html", datos=data)
 
 

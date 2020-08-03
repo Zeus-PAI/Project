@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `calificaciones`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `calificaciones` (
-  `idcalificaciones` int NOT NULL,
+  `idcalificaciones` int NOT NULL AUTO_INCREMENT,
   `idUsuarioCalificador` int NOT NULL,
   `idUsuarioCalificado` int NOT NULL,
   `idPedido` int NOT NULL,
@@ -31,11 +31,11 @@ CREATE TABLE `calificaciones` (
   `Comentarios` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idcalificaciones`,`idUsuarioCalificador`,`idUsuarioCalificado`),
   UNIQUE KEY `idcalificaciones_UNIQUE` (`idcalificaciones`),
-  KEY `fk_idPedido_idx` (`idPedido`),
   KEY `fk_idUsuario_idx` (`idUsuarioCalificado`),
   KEY `fk_idUsuario2_idx` (`idUsuarioCalificador`),
-  CONSTRAINT `fk_idPedido` FOREIGN KEY (`idPedido`) REFERENCES `pedidos` (`idPedido`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `fk_pedidos_idx` (`idPedido`),
+  CONSTRAINT `fk_pedidos` FOREIGN KEY (`idPedido`) REFERENCES `pedidos` (`idPedido`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `calificaciones` (
 
 LOCK TABLES `calificaciones` WRITE;
 /*!40000 ALTER TABLE `calificaciones` DISABLE KEYS */;
-INSERT INTO `calificaciones` VALUES (1,2,19,2,8,'Buen Servicio'),(2,2,19,3,5,'Mal Servicio'),(3,2,16,1,9.5,'Excelente'),(4,2,19,4,9,'Excelente'),(5,2,19,4,7,'Mas o menos'),(6,2,19,2,6,'Meh'),(7,2,16,1,7.5,'Mas o menos'),(8,9,16,1,9.5,'Excelente'),(9,9,16,1,8.5,'Bueno');
+INSERT INTO `calificaciones` VALUES (1,2,19,2,8,'Buen Servicio'),(2,2,19,3,5,'Mal Servicio'),(4,2,19,4,9,'Excelente'),(5,2,19,4,7,'Mas o menos'),(6,2,19,2,6,'Meh'),(9,6,19,5,7.5,'Bueno');
 /*!40000 ALTER TABLE `calificaciones` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -61,6 +61,10 @@ UPDATE viajeros
 SET Calificacion =  (Select avg(nota) from proyectozeus.calificaciones
 where idUsuarioCalificado = new.idUsuarioCalificado)
 WHERE idUsuario = new.idUsuarioCalificado;
+
+Update pedidos
+Set Calificado = 1
+Where idPedido = new.idPedido;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -93,21 +97,22 @@ DROP TABLE IF EXISTS `pedidos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pedidos` (
-  `idPedido` int NOT NULL,
+  `idPedido` int NOT NULL AUTO_INCREMENT,
   `idUsuario` int NOT NULL,
   `idViajero` int NOT NULL,
   `idViaje` int NOT NULL,
-  `Nombre del articulo` varchar(45) NOT NULL,
-  `Estado del pedido` varchar(20) NOT NULL COMMENT '''Denegado'', ''Aceptado'', ''Pagado'', ''Entregado'', ''Anulado''',
-  `Precio (USD)` decimal(12,2) NOT NULL,
-  `Peso (lb)` double NOT NULL,
+  `NombreArticulo` varchar(45) NOT NULL,
+  `EstadoPedido` varchar(20) NOT NULL COMMENT '''Denegado'', ''Aceptado'', ''Pagado'', ''Entregado'', ''Anulado''',
+  `Precio` decimal(12,2) NOT NULL,
+  `Peso` double NOT NULL,
   `Categoria` varchar(45) NOT NULL,
   `Cantidad` int NOT NULL,
-  `Otras especificaciones` varchar(45) DEFAULT NULL,
+  `Especificaciones` varchar(45) DEFAULT NULL,
   `URL` varchar(650) NOT NULL,
   `Pais` varchar(45) NOT NULL,
-  `Fecha estimada de entrega` date NOT NULL,
+  `FechaEntrega` date NOT NULL,
   `Total` decimal(12,2) NOT NULL,
+  `Calificado` int NOT NULL DEFAULT '0' COMMENT '''0'', ''1''',
   PRIMARY KEY (`idPedido`),
   UNIQUE KEY `idPedido_UNIQUE` (`idPedido`),
   KEY `fk_pedidos_usuarios1_idx` (`idUsuario`),
@@ -116,7 +121,7 @@ CREATE TABLE `pedidos` (
   CONSTRAINT `fk_pedidos_usuarios1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE,
   CONSTRAINT `fk_pedidos_Viajeros2` FOREIGN KEY (`idViajero`) REFERENCES `viajeros` (`idViajero`) ON DELETE CASCADE,
   CONSTRAINT `fk_pedidos_viajesinfo1` FOREIGN KEY (`idViaje`) REFERENCES `viajes` (`idviaje`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +130,7 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` VALUES (1,2,4,1,'Reloj Bulova','Entregado',500.00,0.5,'Joyería Accesorios',1,'Negro','www.fossil.com','','2020-12-12',0.25),(2,10,5,2,'Zapatos adidas','Entregado',80.00,4,'Ropa y Calzado',2,'Blancos','www.adidas.com','Argentina','2021-04-04',176.00),(3,9,5,3,'Camisa Polo','Entregado',100.00,2,'Ropa y Calzado',1,'none','www.ralphlauren.com','Estados Unidos','2021-07-07',106.00),(4,10,5,2,'Lentes','Entregado',50.00,0.5,'Joyería y Accesorios',1,'none','www.lentes.com','Argentina','2021-07-07',52.00);
+INSERT INTO `pedidos` VALUES (2,10,5,2,'Zapatos adidas','Entregado',80.00,4,'Ropa y Calzado',2,'Blancos','www.adidas.com','Argentina','2021-04-04',176.00,0),(3,9,5,3,'Camisa Polo','Entregado',100.00,2,'Ropa y Calzado',1,'none','www.ralphlauren.com','Estados Unidos','2021-07-07',106.00,0),(4,10,5,2,'Lentes','Entregado',50.00,0.5,'Joyería y Accesorios',1,'none','www.lentes.com','Argentina','2021-07-07',52.00,0),(5,6,5,4,'Raqueta de Tennis','Pendiente',30.00,3,'deportivo',1,'Verde','www.tennis.com','Francia','2021-09-09',42.00,1);
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -138,7 +143,7 @@ UNLOCK TABLES;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `pedidos_AFTER_UPDATE` AFTER UPDATE ON `pedidos` FOR EACH ROW BEGIN
-IF new.`Estado del pedido` = 'Entregado' THEN
+IF new.`EstadoPedido` = 'Entregado' THEN
 UPDATE viajeros
 set CantidadPedidos = CantidadPedidos +1
 WHERE idViajero = new.idViajero;
@@ -149,6 +154,33 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Temporary view structure for view `pedidos_view`
+--
+
+DROP TABLE IF EXISTS `pedidos_view`;
+/*!50001 DROP VIEW IF EXISTS `pedidos_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `pedidos_view` AS SELECT 
+ 1 AS `idPedido`,
+ 1 AS `idUsuario`,
+ 1 AS `UsuarioCliente`,
+ 1 AS `idViajero`,
+ 1 AS `Viajero`,
+ 1 AS `idViaje`,
+ 1 AS `Artículo`,
+ 1 AS `Estado`,
+ 1 AS `Precio`,
+ 1 AS `Peso`,
+ 1 AS `Cantidad`,
+ 1 AS `Especificaciones`,
+ 1 AS `URL`,
+ 1 AS `Pais`,
+ 1 AS `FechaEntrega`,
+ 1 AS `Total`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `solicitudes`
@@ -262,7 +294,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'RodriM10','Rodrigo Martinez','ro-martinez11@hotmail.com','rodrigo123','1999-09-02','676574-456745','El Salvador',1,NULL),(2,'usuario','UsuarioEjemplo','usuario@gmail.com','user123','2000-01-01','25213412','Guatemala',2,NULL),(6,'e','e','e@gmail.com','asdas','1999-01-01','2131231','e',2,NULL),(9,'intento','Intento 1','rod@gmail.com','1232','2020-07-19','21412421','España',2,NULL),(10,'intento2','Intento 2','rodrigo@hotmail.com','12312','2020-07-08','21412421','España',2,NULL),(13,'RM','Rodrigo','ro@gmail.com','rodrigo123','1999-01-01','78787878','El Salvador',3,NULL),(14,'AA','Luis','luis@gmail.com','luis123','1999-01-01','67676767','Dinamarca',3,NULL),(15,'FE','Fernando','fer@gmail.com','fer123','1999-01-01','75757575','Suecia',3,NULL),(16,'AA','Luis','luis@gmail.com','luis123','1999-01-01','67676767','Dinamarca',3,NULL),(17,'aa','qqq','@ggg','al123','1999-01-01','252345','España',2,NULL),(19,'AS','Andrés','andres@hotmail.com','andres123','1999-01-01','77777777','China',3,'foto.jpg'),(21,'Hector54','Hector','hector@gmail.com','hector123','1989-06-06','76082312','El Salvador',3,'hector.jpg'),(22,'RAMR','Rodrigo M','ro-martinez11@hotmail.com','rodrigo124','2020-07-21','76082312','El Salvador',3,'foto.jpg'),(23,'Davirr06','David Rivas','davidr@gmail.com','david123','1999-09-23','76757556','El Salvador',3,'david.jpg'),(24,'BichoCR7','El Bicho','CR7@hotmail.com','cristiano123','1985-02-05','76082312','Portugal',3,'cristiano.png'),(25,'Pollo87','Pollo M','pollo@hotmail.com','pollo123','1970-05-04','7969696','Guatemala',3,'pollo.png');
+INSERT INTO `usuarios` VALUES (1,'RodriM10','Rodrigo Martinez','ro-martinez11@hotmail.com','rodrigo123','1999-09-02','676574-456745','El Salvador',1,NULL),(2,'usuario','UsuarioEjemplo','usuario@gmail.com','user123','2000-01-01','25213412','Guatemala',2,NULL),(6,'e','e','e@gmail.com','asdas','1999-01-01','2131231','e',2,NULL),(9,'intento','Intento 1','rod@gmail.com','1232','2020-07-19','21412421','España',2,NULL),(10,'intento2','Intento 2','rodrigo@hotmail.com','12312','2020-07-08','21412421','España',2,NULL),(13,'RM','Rodrigo','ro@gmail.com','rodrigo123','1999-01-01','78787878','El Salvador',3,NULL),(15,'FE','Fernando','fer@gmail.com','fer123','1999-01-01','75757575','Suecia',3,NULL),(17,'aa','qqq','@ggg','al123','1999-01-01','252345','España',2,NULL),(19,'AS','Andrés','andres@hotmail.com','andres123','1999-01-01','77777777','China',3,'foto.jpg'),(21,'Hector54','Hector','hector@gmail.com','hector123','1989-06-06','76082312','El Salvador',3,'hector.jpg'),(22,'RAMR','Rodrigo M','ro-martinez11@hotmail.com','rodrigo124','2020-07-21','76082312','El Salvador',3,'foto.jpg'),(23,'Davirr06','David Rivas','davidr@gmail.com','david123','1999-09-23','76757556','El Salvador',3,'david.jpg'),(24,'BichoCR7','El Bicho','CR7@hotmail.com','cristiano123','1985-02-05','76082312','Portugal',3,'cristiano.png'),(25,'Pollo87','Pollo M','pollo@hotmail.com','pollo123','1970-05-04','7969696','Guatemala',3,'pollo.png');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -337,7 +369,7 @@ CREATE TABLE `viajeros` (
 
 LOCK TABLES `viajeros` WRITE;
 /*!40000 ALTER TABLE `viajeros` DISABLE KEYS */;
-INSERT INTO `viajeros` VALUES (4,16,'AA','Luis',0,1,8.75,'luis@gmail.com','luis123','67676767','Dinamarca',''),(5,19,'AS','Andrés',3,2,7,'andres@hotmail.com','andres123','77777777','China','foto.jpg'),(6,21,'Hector54','Hector',0,0,0,'hector@gmail.com','hector123','76082312','El Salvador','hector.jpg'),(7,22,'RAMR','Rodrigo M',0,0,0,'ro-martinez11@hotmail.com','rodrigo124','76082312','El Salvador','foto.jpg'),(8,23,'Davirr06','David Rivas',0,0,0,'davidr@gmail.com','david123','76757556','El Salvador','david.jpg'),(9,24,'BichoCR7','El Bicho',0,0,0,'CR7@hotmail.com','cristiano123','76082312','Portugal','cristiano.png'),(10,25,'Pollo87','Pollo M',0,0,0,'pollo@hotmail.com','pollo123','7969696','Guatemala','pollo.png');
+INSERT INTO `viajeros` VALUES (5,19,'AS','Andrés',5,2,7.08333,'andres@hotmail.com','andres123','77777777','China','foto.jpg'),(6,21,'Hector54','Hector',0,0,0,'hector@gmail.com','hector123','76082312','El Salvador','hector.jpg'),(7,22,'RAMR','Rodrigo M',0,0,0,'ro-martinez11@hotmail.com','rodrigo124','76082312','El Salvador','foto.jpg'),(8,23,'Davirr06','David Rivas',0,0,0,'davidr@gmail.com','david123','76757556','El Salvador','david.jpg'),(9,24,'BichoCR7','El Bicho',0,0,0,'CR7@hotmail.com','cristiano123','76082312','Portugal','cristiano.png'),(10,25,'Pollo87','Pollo M',0,0,0,'pollo@hotmail.com','pollo123','7969696','Guatemala','pollo.png');
 /*!40000 ALTER TABLE `viajeros` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -363,7 +395,7 @@ CREATE TABLE `viajes` (
   UNIQUE KEY `idviaje_UNIQUE` (`idviaje`),
   KEY `fk_Viajes_Viajeros1_idx` (`idViajero`),
   CONSTRAINT `fk_Viajes_Viajeros1` FOREIGN KEY (`idViajero`) REFERENCES `viajeros` (`idViajero`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -372,7 +404,7 @@ CREATE TABLE `viajes` (
 
 LOCK TABLES `viajes` WRITE;
 /*!40000 ALTER TABLE `viajes` DISABLE KEYS */;
-INSERT INTO `viajes` VALUES (1,4,'2021-01-01','2021-02-02','Sí','España','Madrid',0.50,7676766,'madrid.jpg'),(2,5,'2021-03-03','2021-04-04','No','Argentina','Buenos Aires',2.00,5214233,'argentina.jpg'),(3,5,'2021-06-06','2021-07-07','Sí','Estados Unidos','Washington DC',3.00,4123412,'washington.jpg');
+INSERT INTO `viajes` VALUES (2,5,'2021-03-03','2021-04-04','No','Argentina','Buenos Aires',2.00,5214233,'argentina.jpg'),(3,5,'2021-06-06','2021-07-07','Sí','Estados Unidos','Washington DC',3.00,4123412,'washington.jpg'),(4,5,'2021-08-08','2021-09-09','Sí','Francia','París',2.00,70607065,'paris.jpg'),(5,5,'2020-11-21','2020-12-30','Sí','Inglaterra','Londres',4.50,7565555,'londres.jpg');
 /*!40000 ALTER TABLE `viajes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -446,6 +478,24 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `pedidos_view`
+--
+
+/*!50001 DROP VIEW IF EXISTS `pedidos_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `pedidos_view` (`idPedido`,`idUsuario`,`UsuarioCliente`,`idViajero`,`Viajero`,`idViaje`,`Artículo`,`Estado`,`Precio`,`Peso`,`Cantidad`,`Especificaciones`,`URL`,`Pais`,`FechaEntrega`,`Total`) AS select `a`.`idPedido` AS `idPedido`,`b`.`idUsuario` AS `idUsuario`,`b`.`Usuario` AS `UsuarioCliente`,`c`.`idViajero` AS `idViajero`,`c`.`nombre_completo` AS `Viajero`,`d`.`idviaje` AS `idViaje`,`a`.`NombreArticulo` AS `Articulo`,`a`.`EstadoPedido` AS `Estado`,`a`.`Precio` AS `Precio`,`a`.`Peso` AS `Peso`,`a`.`Cantidad` AS `Cantidad`,`a`.`Especificaciones` AS `Especificaciones`,`a`.`URL` AS `URL`,`a`.`Pais` AS `Pais`,`a`.`FechaEntrega` AS `FechaEntrega`,`a`.`Total` AS `Total` from (((`pedidos` `a` join `usuarios` `b` on((`a`.`idUsuario` = `b`.`idUsuario`))) join `viajeros` `c` on((`a`.`idViajero` = `c`.`idViajero`))) join `viajes` `d` on((`a`.`idViaje` = `d`.`idviaje`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `viajes_view`
 --
 
@@ -472,4 +522,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-30 10:28:37
+-- Dump completed on 2020-07-31 23:56:34

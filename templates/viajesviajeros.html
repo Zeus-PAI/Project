@@ -44,16 +44,21 @@
     <br>
     {% endif %}
     <form action="/viajesViajero" method="POST">
-        Escribe el ID de la Solicitud que deseas actualizar:
+        Escribe el ID del viaje que deseas actualizar:
         <br><br>
-        ID Solicitud: <br>
-        <input type="int" name="idsolicitud" id="idsolicitud">
+        ID Viaje: <br>
+        <select class="" name="idviaje" id="idviaje">
+            <option value="none" selected>-</option>
+            {% for dato in datos%}
+            <option value="{{dato[0]}}"> Viaje {{dato[0]}}</option>
+            {% endfor %}
+        </select>
         <br><br>
-        Estado: <br>
+        Disponibilidad(activo): <br>
         <select class="" name="estado" id="estado">
             <option value="none" selected>-</option>
-            <option value="Aprobada">Aprobada</option>
-            <option value="Denegada">Denegada</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
         </select>
         <br><br>
         <input type="submit" value="Actualizar">

@@ -330,3 +330,14 @@ class idUserLogic(Logic):
         sql = f"SELECT idUsuario FROM proyectozeus.viajeros where idViajero='{id}';"
         data = database.executeQuery(sql)
         return data
+
+
+class DisponibilidadViajero(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def DisponibilidadViajero(self, id, estado):
+        database = self.get_databaseXObj()
+        sql = f"UPDATE proyectozeus.viajes SET Activo = '{estado}' WHERE (`idviaje` = '{id}');"
+        rows = database.executeNonQueryRows(sql)
+        return rows
