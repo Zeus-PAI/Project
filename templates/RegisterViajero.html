@@ -17,49 +17,60 @@
     <p style="color: red;">{{message}}</p>
     <br>
     {% endif %}
-<form action="/registroviajero" method="POST">
-    Nombre completo: <br>
-    <input type="text" name="nombre" id="nombre">
-    <br><br>
-    Elige un nombre de usuario: <br>
-    <input type="text" name="usuario" id="usuario">
-    <br><br>
-    Correo Electrónico: <br>
-    <input type="email" name="correo" id="correo">
-    <br><br>
-    Contraseña: <br>
-    <input type="password" name="contraseña" id="contraseña">
-    <br><br>
-    Fecha de Nacimiento: <br>
-    <input type="date" name="fecha" id="fecha">
-    <br><br>
-    Número de teléfono: <br>
-    <input type="text" name="telefono" id="telefono">
-    <br><br>
-    País de Origen: <br>
-    <input type="text" name="pais" id="pais">
-    <br><br>
-    Motivos de Viaje: <br>
-    <select class="" name="motivos" id="motivos", unselected>
-        <option value="none" selected>-</option>
-        <option value="Placer">Placer</option>
-        <option value="Negocios">Negocios</option>
-        <option value="Otro">Otro</option>
-    </select>
-    <br><br>
-    Frecuencia de viaje: <br>
-    <select class="" name="frecuencia" id="frecuencia">
-        <option value="none" selected>-</option>
-        <option value="Alta">Alta</option>
-        <option value="Intermedia">Intermedia</option>
-        <option value="Baja">Baja</option>
-    </select>
-    <br><br>
-    Foto: <br>
-    <input type="text" name="foto" id="foto">
-    <br><br>
-    <input type="submit" value="Send">
-</form>
+    {% with messages = get_flashed_messages() %}
+    
+    {% if messages %}
+    <ul class=flashes>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    
+    {% endwith %}
+    <form action="/registroviajero" method="POST" enctype="multipart/form-data">
+        Nombre completo: <br>
+        <input type="text" name="nombre" id="nombre" required>
+        <br><br>
+        Elige un nombre de usuario: <br>
+        <input type="text" name="usuario" id="usuario" required>
+        <br><br>
+        Correo Electrónico: <br>
+        <input type="email" name="correo" id="correo" required>
+        <br><br>
+        Contraseña: <br>
+        <input type="password" name="contraseña" id="contraseña" required>
+        <br><br>
+        Fecha de Nacimiento: <br>
+        <input type="date" name="fecha" id="fecha" required>
+        <br><br>
+        Número de teléfono: <br>
+        <input type="text" name="telefono" id="telefono" required>
+        <br><br>
+        País de Origen: <br>
+        <input type="text" name="pais" id="pais" required>
+        <br><br>
+        Motivos de Viaje: <br>
+        <select class="" name="motivos" id="motivos" unselected required>
+            <option value="none" selected>-</option>
+            <option value="Placer">Placer</option>
+            <option value="Negocios">Negocios</option>
+            <option value="Otro">Otro</option>
+        </select>
+        <br><br>
+        Frecuencia de viaje: <br>
+        <select class="" name="frecuencia" id="frecuencia" required>
+            <option value="none" selected>-</option>
+            <option value="Alta">Alta</option>
+            <option value="Intermedia">Intermedia</option>
+            <option value="Baja">Baja</option>
+        </select>
+        <br><br>
+        Foto: <br>
+        <input type="file" name="file" id="file" autocomplete="off" required>
+        <br><br>
+        <input type="submit" value="Send">
+    </form>
 </body>
 
 </html>

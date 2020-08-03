@@ -15,29 +15,29 @@
     <p style="color: red;">{{message}}</p>
     <br>
     {% endif %}
-    <form action="/registrarViajes" method="POST">
+    <form action="/registrarViajes" method="POST" enctype="multipart/form-data">
         Ingrese los datos solicitados
         <br><br>
         Fecha de incio de viaje: <br>
-        <input type="date" name="fechaInicio" id="fechaInicio">
+        <input type="date" name="fechaInicio" id="fechaInicio" required>
         <br><br>
         Fecha de regreso del viaje: <br>
-        <input type="date" name="fechaRegreso" id="fechaRegreso">
+        <input type="date" name="fechaRegreso" id="fechaRegreso" required>
         <br><br>
         País de destino: <br>
-        <input type="text" name="paisDestino" id="paisDestino">
+        <input type="text" name="paisDestino" id="paisDestino" required>
         <br><br>
         Dirección de estadía: <br>
-        <input type="text" name="direccionEstadia" id="direccionEstadia">
+        <input type="text" name="direccionEstadia" id="direccionEstadia" required>
         <br><br>
         Cobro por libra: <br>
-        <input type="number" name="cobroLibra" min="0" step="0.5">
+        <input type="number" name="cobroLibra" min="0" step="0.5" required>
         <br><br>
         Número de teléfono: <br>
-        <input type="text" name="telefono" id="telefono">
+        <input type="text" name="telefono" id="telefono" required>
         <br><br>
         Imagen de referencia (Opcional): <br>
-        <input type="text" name="imagenReferencia" id="imagenReferencia">
+        <input type="file" name="file" id="file" autocomplete="off">
         <br><br>
         <input type="submit" value="Send">
     </form>
