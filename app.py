@@ -150,7 +150,7 @@ def registerform():
             flash("Allowed image types are -> png, jpg, jpeg, gif")
             return redirect(request.url)
         message = f"{rows} affected"
-        return render_template("RegisterUser.html", message=message)
+        return render_template("index.html", message=message)
 
 
 @app.route("/registroviajero", methods=["GET", "POST"])
@@ -201,7 +201,7 @@ def registerviajeroform():
             flash("Allowed image types are -> png, jpg, jpeg, gif")
             return redirect(request.url)
         message = f"{rows} affected"
-        return render_template("RegisterViajero.html", message=message)
+        return render_template("index.html", message=message)
 
 
 @app.route("/registrarViajes", methods=["GET", "POST"])
@@ -265,7 +265,7 @@ def registrarViajeform():
             return redirect(request.url)
         message = f"{rows} affected"
         return render_template(
-            "registrarViaje.html", message=message, idViajero=idViajero
+            "dashboard_viajero.html", message=message, idViajero=idViajero
         )
 
 
@@ -443,7 +443,7 @@ def CalificarViajeros(id):
         message = f"{rows} affected"
         logic2 = UserShowPedidos()
         data = logic2.ShowPedidos(diccionarioUsuarios.get("idUser"))
-        return render_template("ver_pedidos.html", message=message, datos=data)
+        return render_template("dashboard_user.html", message=message, datos=data)
 
 
 @app.route("/pedidosViajero", methods=["GET", "POST"])
