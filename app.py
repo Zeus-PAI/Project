@@ -232,6 +232,17 @@ def registrarViajeform():
         print(f"file.filename -> {file.filename}")
         if file.filename == "":
             flash("No image selected for uploading")
+            logic = RegisterViajeLogic()
+            rows = logic.insertNewViaje(
+                idViajero,
+                fechaInicio,
+                fechaRegreso,
+                paisDestino,
+                direccionEstadia,
+                cobroLibra,
+                telefono,
+                imagenReferencia,
+                )
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)

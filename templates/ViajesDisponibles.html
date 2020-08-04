@@ -59,7 +59,7 @@
             <th>Cantidad de Pedidos</th>
             <th>Calificación</th>
             <th> </th>
-            </tr>
+        </tr>
         {% for dato in datos%}
         <tr>
             <td>{{dato[0]}}</td>
@@ -69,14 +69,14 @@
             <td>{{dato[6]}}</td>
             <td>${{dato[7]}}</td>
             <td>{{dato[8]}}</td>
-            {% if (dato[9] != ""): %}
-            <td><img src=static\uploads\{{dato[9]}} alt="Image" height="128" width="128"></td>
-            {%else:%}
-            <td> </td>
-            {%endif%}
+            <td><img src="static\uploads\{{dato[9]}}" alt="Image" height="128" width="128"></td>
             <td>{{dato[10]}}</td>
             <td>{{dato[11]}}</td>
+            {% if dato[12] != none: %}
             <td>{{dato[12]}}</td>
+            {%else:%}
+            <td>Sin Calificar</td>
+            {%endif%}
             <td> <a href="/confirmarpedido/{{dato[0]}}">Haz tu Pedido</a></td>
         </tr>
         {% endfor %}
