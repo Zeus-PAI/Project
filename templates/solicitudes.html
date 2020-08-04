@@ -92,7 +92,11 @@
             <td>{{dato[8]}}</td>
             <td>{{dato[9]}}</td>
             <td>{{dato[10]}}</td>
-            <td><img src="{{url_for("static", filename="uploads/5.png")}}" alt="Image" height="128" width="128"></td>
+            {% if (dato[11] != ""): %}
+            <td><img src= static\uploads\{{dato[11]}} alt="Image" height="128" width="128"></td>
+            {%else:%}
+            <td> </td>
+            {%endif%}
         </tr>
         {% endfor %}
     </table>

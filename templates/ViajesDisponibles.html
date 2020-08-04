@@ -69,7 +69,11 @@
             <td>{{dato[6]}}</td>
             <td>{{dato[7]}}</td>
             <td>{{dato[8]}}</td>
-            <td>{{dato[9]}}</td>
+            {% if (dato[9] != ""): %}
+            <td><img src=static\uploads\{{dato[9]}} alt="Image" height="128" width="128"></td>
+            {%else:%}
+            <td> </td>
+            {%endif%}
             <td>{{dato[10]}}</td>
             <td>{{dato[11]}}</td>
             <td>{{dato[12]}}</td>
