@@ -50,13 +50,13 @@
                 <input type="show" name="pais2" id="pais2" value="{{datos[0][6]}}" disabled>
                 <br><br>
                 Cobro por libra (USD): <br>
-                <input type="hidden" name="costo" id="costo" value="{{datos[0][7]}}" onchange="calcularCosto()">
-                <input type="show" name="costo2" id="costo2" value="{{datos[0][7]}}" disabled
+                <input type="hidden" name="costo" id="costo" value="{{datos[0][8]}}" onchange="calcularCosto()">
+                <input type="show" name="costo2" id="costo2" value="{{datos[0][8]}}" disabled
                     onchange="calcularCosto()">
                 <br><br>
                 Teléfono de Contacto: <br>
-                <input type="hidden" name="telefono" id="telefono" value="{{datos[0][8]}}">
-                <input type="show" name="telefono2" id="telefono2" value="{{datos[0][8]}}" disabled>
+                <input type="hidden" name="telefono" id="telefono" value="{{datos[0][9]}}">
+                <input type="show" name="telefono2" id="telefono2" value="{{datos[0][9]}}" disabled>
             </div>
             <div class="column" style="background-color:#ffb555;">
                 <h2>Datos de Pedido</h2>
@@ -67,23 +67,26 @@
                 <br><br>
                 Nombre del Artículo:
                 <br>
-                <input type="text" name="nombre" id="nombre">
+                <input type="text" name="nombre" id="nombre" required>
                 <br><br>
                 Cantidad:
                 <br>
-                <input type="number" min="1" step="1" name="cantidad" id="cantidad" value="0" onchange="calcularCosto()">
+                <input type="number" min="1" step="1" name="cantidad" id="cantidad" value="0" onchange="calcularCosto()"
+                    required>
                 <br><br>
                 Precio (USD):
                 <br>
-                $<input type="number" min="0" step="any" name="precio" id="precio" value="0" onchange="calcularCosto()">
+                $<input type="number" min="0" step="any" name="precio" id="precio" value="0" onchange="calcularCosto()"
+                    required>
                 <br><br>
                 Peso (lb):
                 <br>
-                <input type="number" min="0" step="any" name="peso" id="peso" value="0" onchange="calcularCosto()">
+                <input type="number" min="0" step="any" name="peso" id="peso" value="0" onchange="calcularCosto()"
+                    required>
                 <br><br>
                 Categoría:
                 <br>
-                <select name="categoria" id="categoria">
+                <select name="categoria" id="categoria" required>
                     <option selected name="none" value="none">-</option>
                     <option name="tecnologia" value="tecnologia">Teconología</option>
                     <option name="ropa" value="ropa">Ropa y Calzado</option>
@@ -95,9 +98,9 @@
                 <br>
                 URL:
                 <br>
-                <input type="text" name="url" id="url">
+                <input type="text" name="url" id="url" required>
                 <br>
-                Otras especificaciones:
+                Otras especificaciones (Opcional):
                 <br>
                 <textarea name="descripcion" rows="2" cols="20"></textarea>
                 <br><br>
@@ -109,7 +112,7 @@
         <input type="hidden" name="total" id="total" value="0">
         <center>
             <div id="resultado" style="color: red; font-family: Arial, Helvetica, sans-serif;">
-                $0.00
+                $ 0
             </div>
         </center>
 
@@ -121,8 +124,8 @@
                 var peso = parseFloat(document.getElementById("peso").value);
                 result = (precio * cantidad) + (cobro * peso * cantidad);
                 console.log("result-->" + result)
-                document.getElementById("resultado").innerHTML = "$ " + result;
-                document.getElementById("total").value = result;
+                document.getElementById("resultado").innerHTML = "$ " + +result.toFixed(2);
+                document.getElementById("total").value = +result.toFixed(2);
             }
         </script>
         <center><input type="submit" value="Solicitar Pedido"></center>

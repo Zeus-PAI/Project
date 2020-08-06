@@ -38,7 +38,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # git push --set-upstream https://github.com/Zeus-PAI/Project master
 app = Flask(__name__)
 app.secret_key = "python es bien chivo"
-diccionarioUsuarios = {"idUser": "", "User": "", "Nombre": ""}
+diccionarioUsuarios = {"idUser": "", "User": "", "Nombre": "", "Pais": ""}
 
 UPLOAD_FOLDER = "static/uploads/"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
@@ -80,6 +80,7 @@ def loginform():
                     diccionarioUsuarios.update({"idUser": userdata.id})
                     diccionarioUsuarios.update({"User": userdata.user})
                     diccionarioUsuarios.update({"Nombre": userdata.name})
+                    diccionarioUsuarios.update({"Pais": userdata.country})
                     return render_template(
                         "dashboard_admin.html",
                         userdata=userdata.user,
@@ -89,6 +90,7 @@ def loginform():
                     diccionarioUsuarios.update({"idUser": userdata.id})
                     diccionarioUsuarios.update({"User": userdata.user})
                     diccionarioUsuarios.update({"Nombre": userdata.name})
+                    diccionarioUsuarios.update({"Pais": userdata.country})
                     return render_template(
                         "dashboard_user.html",
                         userdata=userdata.user,
@@ -98,6 +100,7 @@ def loginform():
                     diccionarioUsuarios.update({"idUser": userdata.id})
                     diccionarioUsuarios.update({"User": userdata.user})
                     diccionarioUsuarios.update({"Nombre": userdata.name})
+                    diccionarioUsuarios.update({"Pais": userdata.country})
                     return render_template(
                         "dashboard_viajero.html",
                         userdata=userdata.user,
@@ -128,7 +131,7 @@ def registerform():
             flash("No file part")
             print(request.url)
             return redirect(request.url)
-        file = request.files['file']
+        file = request.files["file"]
         print(f"file.filename -> {file.filename}")
         if file.filename == "":
             flash("No image selected for uploading")
@@ -174,7 +177,7 @@ def registerviajeroform():
             flash("No file part")
             print(request.url)
             return redirect(request.url)
-        file = request.files['file']
+        file = request.files["file"]
         print(f"file.filename -> {file.filename}")
         if file.filename == "":
             flash("No image selected for uploading")
@@ -196,7 +199,7 @@ def registerviajeroform():
                 Frecuencia,
                 pais,
                 Foto,
-                )
+            )
         else:
             flash("Allowed image types are -> png, jpg, jpeg, gif")
             return redirect(request.url)
@@ -228,7 +231,7 @@ def registrarViajeform():
             flash("No file part")
             print(request.url)
             return redirect(request.url)
-        file = request.files['file']
+        file = request.files["file"]
         print(f"file.filename -> {file.filename}")
         if file.filename == "":
             flash("No image selected for uploading")
@@ -242,7 +245,7 @@ def registrarViajeform():
                 cobroLibra,
                 telefono,
                 imagenReferencia,
-                )
+            )
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
@@ -259,7 +262,7 @@ def registrarViajeform():
                 cobroLibra,
                 telefono,
                 imagenReferencia,
-                )
+            )
         else:
             flash("Allowed image types are -> png, jpg, jpeg, gif")
             return redirect(request.url)
@@ -305,12 +308,14 @@ def DelUsers():
 @app.route("/viajesactivos", methods=["GET", "POST"])
 def ShowTrips():
     if request.method == "GET":
-        return render_template("Buscarviajes.html")
+        PaisOrigen = diccionarioUsuarios.get("Pais")
+        return render_template("Buscarviajes.html", PaisOrigen=PaisOrigen)
     else:  # "POST"
         FechaInicio = request.form["fechainicio"]
         FechaFinal = request.form["fechafinal"]
+        PaisOrigen = diccionarioUsuarios.get("Pais")
         logic = ViajesLogic()
-        datos = logic.GetViajes(FechaInicio, FechaFinal)
+        datos = logic.GetViajes(FechaInicio, FechaFinal, PaisOrigen)
         return render_template("ViajesDisponibles.html", datos=datos)
 
 

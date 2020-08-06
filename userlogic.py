@@ -162,9 +162,9 @@ class ViajesLogic(Logic):
     def __init__(self):
         super().__init__()
 
-    def GetViajes(self, fechainicio, fechafinal):
+    def GetViajes(self, fechainicio, fechafinal, paisOrigen):
         database = self.get_databaseXObj()
-        sql = f"SELECT * FROM proyectozeus.viajes_view where `Inicio de Viaje` >= '{fechainicio}' and `Regreso de Viaje` <= '{fechafinal}' and `Activo` = 'Sí';"
+        sql = f"SELECT * FROM proyectozeus.viajes_view where `Inicio de Viaje` >= '{fechainicio}' and `Regreso de Viaje` <= '{fechafinal}' and `Activo` = 'Sí' and `PaisOrigen` = '{paisOrigen}';"
         data = database.executeQuery(sql)
         return data
 
