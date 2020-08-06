@@ -52,6 +52,7 @@
             <th>Inicio de Viaje</th>
             <th>Regreso de Viaje</th>
             <th>País Destino</th>
+            <th>Dirección de Estadía</th>
             <th>Costo por libra</th>
             <th>Teléfono</th>
             <th>Foto</th>
@@ -67,13 +68,14 @@
             <td>{{dato[3]}}</td>
             <td>{{dato[4]}}</td>
             <td>{{dato[6]}}</td>
-            <td>${{dato[8]}}</td>
+            <td>${{dato[7]}}</td>
             <td>{{dato[9]}}</td>
-            <td><img src="static\uploads\{{dato[10]}}" alt="Image" height="128" width="128"></td>
-            <td>{{dato[11]}}</td>
+            <td>{{dato[10]}}</td>
+            <td><img src="static\uploads\{{dato[11]}}" alt="Image" height="128" width="128"></td>
             <td>{{dato[12]}}</td>
-            {% if dato[13] != none: %}
             <td>{{dato[13]}}</td>
+            {% if dato[14] != none: %}
+            <td>{{dato[14]}}</td>
             {%else:%}
             <td>Sin Calificar</td>
             {%endif%}
