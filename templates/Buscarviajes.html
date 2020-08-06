@@ -3,20 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar Viajes</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Buscar Viajes Disponibles</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet"
+        href="{{url_for('static' , filename = 'fonts/material-icon/css/material-design-iconic-font2.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static' , filename = 'vendor/jquery-ui/jquery-ui.min.css')}}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{{url_for('static' , filename = 'css/styleViaje.css')}}">
 </head>
 <body>
-    <form action="/viajesactivos" method="POST">
-        País de Origen: <br>
-        <input type="text" value="{{PaisOrigen}}" disabled>
-        <br><br>
-        Escribe la Fecha de inicio de Viaje: <br>
-        <input type="date" name="fechainicio" id="fechainicio">
-        <br><br>
-        Escribe la Fecha de regreso de Viaje: <br>
-        <input type="date" name="fechafinal" id="fechafinal">
-        <br><br>
-        <input type="submit" value="Buscar">
-    </form>
-</body>
+    <div class="titulo">
+        <h1>BUSCA TU VIAJE</h1>
+    </div>
+    <div class="main">
+
+        <div class="header">
+            <img src="{{url_for('static' , filename = 'img/dots.png')}}" alt="">
+        </div>
+        <div class="container">
+            <form action="/viajesactivos" id="booking-form" class="booking-form" method="POST">
+                <div class="form-group">
+                    <div class="form-destination">
+                        <label for="destination">Destination</label>
+                        <input type="text" id="destination" name="destination" placeholder="{{PaisOrigen}}" disabled />
+                    </div>
+                    <div class="form-date-from form-icon">
+                        <label for="date_from">Inicio</label>
+                        <input type="date" name="fechainicio" id="fechainicio" class="date_from"
+                            placeholder="Pick a date" required />
+                        <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
+                    </div>
+                    <div class="form-date-to form-icon">
+                        <label for="date_to">Regreso</label>
+                        <input type="date" name="fechafinal" id="fechafinal" class="date_to" placeholder="Pick a date"
+                            required />
+                        <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
+                    </div>
+                    <div class="form-submit">
+                        <input type="submit" id="submit" class="submit" value="Buscar Ahora" />
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="static\vendor\jquery\jquery.min.js"></script>
+    <script src="static\vendor\jquery-ui\jquery-ui.min.js"></script>
+    <script src="static\js\main2.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

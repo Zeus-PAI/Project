@@ -1,5 +1,5 @@
 /* @extend display-flex; */
-display-flex, .signup-content, .form-row, .form-radio, .select-icon, .select-icon i {
+display-flex, .header, .form-group {
   display: flex;
   display: -webkit-flex; }
 
@@ -9,54 +9,6 @@ list-type-ulli {
   margin: 0;
   padding: 0; }
 
-/* Montserrat-300 - latin */
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 300;
-  src: url("../fonts/montserrat/Montserrat-Light.ttf");
-  /* IE9 Compat Modes */ }
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  src: url("../fonts/montserrat/Montserrat-Regular.ttf");
-  /* IE9 Compat Modes */ }
-@font-face {
-  font-family: 'Montserrat';
-  font-style: italic;
-  font-weight: 400;
-  src: url("../fonts/montserrat/Montserrat-Italic.ttf");
-  /* IE9 Compat Modes */ }
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  src: url("../fonts/montserrat/Montserrat-Medium.ttf");
-  /* IE9 Compat Modes */ }
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  src: url("../fonts/montserrat/Montserrat-SemiBold.ttf");
-  /* IE9 Compat Modes */ }
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  src: url("../fonts/montserrat/Montserrat-Bold.ttf");
-  /* IE9 Compat Modes */ }
-@font-face {
-  font-family: 'Montserrat';
-  font-style: italic;
-  font-weight: 700;
-  src: url("../fonts/montserrat/Montserrat-BoldItalic.ttf");
-  /* IE9 Compat Modes */ }
-@font-face {
-  font-family: 'Montserrat';
-  font-style: italic;
-  font-weight: 900;
-  src: url("../fonts/montserrat/montserrat-v12-latin-900.ttf"), url("../fonts/montserrat/montserrat-v12-latin-900.eot") format("embedded-opentype"), url("../fonts/montserrat/montserrat-v12-latin-900.svg") format("woff2"), url("../fonts/montserrat/montserrat-v12-latin-900.woff") format("woff"), url("../fonts/montserrat/montserrat-v12-latin-900.woff2") format("truetype"); }
 /* poppins-300 - latin */
 @font-face {
   font-family: 'Poppins';
@@ -214,285 +166,186 @@ input[type=radio] {
 
 img {
   max-width: 100%;
-  height: 15cm; }
+  height: auto; }
 
 figure {
   margin: 0; }
 
-input[type=number] {
-  -moz-appearance: textfield !important;
-  appearance: none !important;
-  -webkit-appearance: none !important; }
+p {
+  margin-bottom: 0px; }
 
-input:-webkit-autofill {
-  box-shadow: 0 0 0 30px transparent inset;
-  -moz-box-shadow: 0 0 0 30px transparent inset;
-  -webkit-box-shadow: 0 0 0 30px transparent inset;
-  -o-box-shadow: 0 0 0 30px transparent inset;
-  -ms-box-shadow: 0 0 0 30px transparent inset; }
-
-h2 {
-  line-height: 1.66;
+h1 {
+  line-height: 1.8;
   margin: 0;
   padding: 0;
-  font-weight: 700;
-  color: #222;
-  font-family: 'Montserrat';
-  font-size: 20px;
-  text-transform: uppercase;
-  margin-bottom: 32px; }
+  font-weight: bold;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 21px;
+  text-align: center;
+  margin-bottom: 28px; }
 
 .clear {
   clear: both; }
 
 body {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.8;
-  color: #222;
-  font-weight: 400;
-  background: #282828;
-  background-image: url('https://iesvirgendelrosariocom.files.wordpress.com/2019/05/cieloprin.jpg_1740910061.jpg');
-}
+  color: #fff;
+  background-image: url("https://tecnohotelnews.com/wp-content/uploads/2017/08/shutterstock_144112840.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  background-position: center center;
+  font-weight: 600;
+  font-family: Poppins;
+  margin: 0px; }
+
+.main {
+  position: relative; }
 
 .container {
-  width: 1400px;
-  position: center;
-  background: #fff;
-}
+  width: 960px;
+  background: rgba(11, 13, 24, 0.6);
+  margin: 100px auto;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px; }
 
-.signup-img, .signup-form {
-  width: 50%; }
+.booking-form {
+  padding: 35px 70px 51px 70px; }
 
-.signup-img {
-  background-color: #ff6801;
-  padding-right: 0cm;
-  padding-top: 1cm;
-}
-
-.header{
-width: 18cm;
-}
-.signup-form {
-  line-height: 0.3cm; padding-left: 0.3cm; padding-right: 0.2cm;
-}
-.register-form {
-  padding: 80px 100px 80px 70px;  }
-
-.form-row {
-  margin: 0 -15px; padding-top: 0.5cm; }
-  .form-row .form-group {
-    width: 50%;
-    padding: 0 15px; }
-
-.form-group {
-  margin-bottom: 23px;
-  position: relative; }
-
-input, select {
-  display: block;
-  width: 100%;
-  border: 1px solid #ebebeb;
-  padding: 11px 20px;
-  box-sizing: border-box;
-  font-family: 'Montserrat';
-  font-weight: 500;
-  font-size: 13px; }
-  input:focus, select:focus {
-    border: 1px solid #ff6801; }
-
-label {
-  font-size: 14px;
-  font-weight: bold;
-  font-family: 'Montserrat';
-  margin-bottom: 2px;
-  display: block; }
-
-.form-radio {
-  margin-bottom: 18px; }
-  .form-radio input {
-    width: auto;
-    display: inline-block; }
-
-.radio-label {
-  padding-right: 72px; }
-
-.form-radio-item {
-  position: relative;
-  margin-right: 45px; }
-  .form-radio-item label {
-    font-weight: 500;
-    font-size: 13px;
-    padding-left: 25px;
-    position: relative;
-    z-index: 9;
-    display: block;
-    cursor: pointer; }
-
-.check {
-  display: inline-block;
-  position: absolute;
-  border: 1px solid #ebebeb;
-  border-radius: 50%;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -o-border-radius: 50%;
-  -ms-border-radius: 50%;
-  height: 13px;
-  width: 13px;
-  top: 4px;
-  left: 0px;
-  z-index: 5;
-  transition: border .25s linear;
-  -webkit-transition: border .25s linear; }
-  .check:before {
-    position: absolute;
-    display: block;
-    content: '';
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -o-border-radius: 50%;
-    -ms-border-radius: 50%;
-    top: 2px;
-    left: 2px;
-    margin: auto;
-    transition: background 0.25s linear;
-    -webkit-transition: background 0.25s linear; }
-
-input[type=radio] {
-  position: absolute;
-  visibility: hidden; }
-  input[type=radio]:checked ~ .check {
-    border: 1px solid #ff6801; }
-  input[type=radio]:checked ~ .check::before {
-    background: #ff6801; }
-
-.form-select {
-  position: relative; }
-
-select {
-  appearance: none !important;
-  -moz-appearance: none !important;
-  -webkit-appearance: none !important;
-  -o-appearance: none !important;
-  -ms-appearance: none !important;
-  position: relative;
-  background: 0 0;
-  z-index: 10;
-  cursor: pointer; }
-
-.select-icon {
-  z-index: 0;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  justify-content: center;
-  -moz-justify-content: center;
-  -webkit-justify-content: center;
-  -o-justify-content: center;
-  -ms-justify-content: center;
+.header {
   align-items: center;
   -moz-align-items: center;
   -webkit-align-items: center;
   -o-align-items: center;
-  -ms-align-items: center; }
-  .select-icon i {
-    justify-content: center;
-    -moz-justify-content: center;
-    -webkit-justify-content: center;
-    -o-justify-content: center;
-    -ms-justify-content: center;
-    align-items: center;
-    -moz-align-items: center;
-    -webkit-align-items: center;
-    -o-align-items: center;
-    -ms-align-items: center;
-    width: 40px;
-    height: 20px;
-    font-size: 18px;
+  -ms-align-items: center;
+  justify-content: space-between;
+  -moz-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -o-justify-content: space-between;
+  -ms-justify-content: space-between;
+  padding: 50px 57px; }
+
+input {
+  border: none;
+  background: #fff;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 13px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #222;
+  display: block;
+  font-family: Poppins;
+  position: relative;
+  z-index: 9; }
+  input::-webkit-input-placeholder {
+    color: #999; }
+  input::-moz-placeholder {
+    color: #999; }
+  input:-ms-input-placeholder {
+    color: #999; }
+  input:-moz-placeholder {
     color: #999; }
 
-.form-submit {
-  text-align: right;
-  padding-top: 1px; }
-
 .submit {
-  width: 140px;
-  height: 40px;
-  display: inline-block;
-  font-family: 'Poppins';
-  font-weight: 400;
-  font-size: 13px;
-  padding: 10px;
+  background: #f8ba0f;
+  color: #fff;
+  font-size: 14px;
+  margin-top: 23px;
+  padding: 15px 20px;
+  cursor: pointer; }
+  .submit:hover {
+    background-color: #ce9906; }
+
+label {
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 2px;
+  display: block; }
+
+#quantity {
+  color: #999; }
+
+.form-group {
+  align-items: baseline;
+  -moz-align-items: center;
+  -webkit-align-items: center;
+  -o-align-items: center;
+  -ms-align-items: center;
+  justify-content: space-between;
+  -moz-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  -o-justify-content: space-between;
+  -ms-justify-content: space-between; }
+
+.form-destination {
+  width: 230px; }
+
+.form-date-from, .form-date-to {
+  width: 215px; }
+
+.form-submit {
+  width: 140px; }
+
+.plus {
+  top: 23px; }
+
+.minus {
+  bottom: 0px; }
+
+.form-icon {
+  position: relative; }
+
+.ui-datepicker-trigger {
+  position: absolute;
+  right: 16px;
+  top: 40px;
+  color: #999;
+  font-size: 16px;
+  z-index: 99;
+  background: transparent;
   border: none;
+  outline: none;
   cursor: pointer; }
 
-#reset {
-  background: #f8f8f8;
-  color: #999;
-  margin-right: 8px; }
-  #reset:hover {
-    background: #ff6801;
-    color: #fff; }
-
-#submit {
-  background: #ff6801;
-  color: #fff; }
-  #submit:hover {
-    background-color: #cd5300; }
-
-@media screen and (max-width: 800px) {
-  .container {
-    width: calc(100% - 40px);
-    max-width: 100%; }
-
-  .signup-content {
-    flex-direction: column;
-    -moz-flex-direction: column;
-    -webkit-flex-direction: column;
-    -o-flex-direction: column;
-    -ms-flex-direction: column; }
-
-  .signup-img, .signup-form {
-    width: 100%;
-} }
+  .titulo {
+    background: transparent;
+    background-color:#222;
+    display: block;
+    box-sizing: border-box;
+    font-size: x-large;
+  }
 @media screen and (max-width: 768px) {
-  .register-form {
-    padding: 50px 40px 50px 40px; } }
-@media screen and (max-width: 575px) {
-  .form-row {
-    flex-direction: column;
-    -moz-flex-direction: column;
-    -webkit-flex-direction: column;
-    -o-flex-direction: column;
-    -ms-flex-direction: column;
-    margin: 0px; }
+  .container {
+    width: calc( 100% - 30px);
+    max-width: 100%;
+}
 
-  .form-row .form-group {
-    width: 100%;
-    padding-bottom: 0px; }
-
-  .radio-label {
-    padding-right: 22px; }
-
-  .form-radio-item {
-    margin-right: 25px; } }
-@media screen and (max-width: 480px) {
-  .form-radio {
+  .form-group {
     flex-direction: column;
     -moz-flex-direction: column;
     -webkit-flex-direction: column;
     -o-flex-direction: column;
     -ms-flex-direction: column; }
 
-  .submit {
-    width: 100%; }
-
-  #reset {
-    margin-right: 0px;
-    margin-bottom: 10px; } }
+  .form-destination, .form-date-from, .form-date-to, .form-quantity {
+    width: 100%;
+    margin-bottom: 20px; } }
+@media screen and (max-width: 480px) {
+  .booking-form {
+    padding: 35px 30px 51px 30px; } }
 
 /*# sourceMappingURL=style.css.map */
