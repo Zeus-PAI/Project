@@ -27,6 +27,9 @@ from userlogic import (
     ActualizarLogic,
     idUserLogic,
     DisponibilidadViajero,
+    PerfilUsuario,
+    PerfilViajero,
+    NotasViajero,
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -514,6 +517,40 @@ def ActualizarPedido(id):
         logic2 = UserShowPedidos()
         data = logic2.ShowPedidos(diccionarioUsuarios.get("idUser"))
         return render_template("ver_pedidos.html", datos=data)
+
+
+@app.route("/perfilUsuario", methods=["GET", "POST"])
+def ShowPerfilUsuario():
+    if request.method == "GET":
+        logic = PerfilUsuario()
+        data = logic.getPerfilUsuario(diccionarioUsuarios.get("idUser"))
+        return render_template("perfilUsuario.html", datos=data)
+    else:  # "POST"
+        logic = PerfilUsuario()
+        data = logic.getPerfilUsuario(diccionarioUsuarios.get("idUser"))
+        return render_template("perfilUsuario.html", datos=data)
+
+
+@app.route("/perfilViajero", methods=["GET", "POST"])
+def ShowPerfilViajero():
+    if request.method == "GET":
+        logic = idViajeroLogic()
+        idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
+        idViajero = int("".join(map(str, idV[0])))
+        logic2 = PerfilViajero()
+        data = logic2.getPerfilViajero(idViajero)
+        logic3 = NotasViajero()
+        Notas = logic3.getNotasViajero(diccionarioUsuarios.get("idUser"))
+        return render_template("perfilViajero.html", datos=data, Notas=Notas)
+    else:  # "POST"
+        logic = idViajeroLogic()
+        idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
+        idViajero = int("".join(map(str, idV[0])))
+        logic2 = PerfilViajero()
+        data = logic2.getPerfilViajero(idViajero)
+        logic3 = NotasViajero()
+        Notas = logic3.getNotasViajero(diccionarioUsuarios.get("idUser"))
+        return render_template("perfilViajero.html", datos=data, Notas=Notas)
 
 
 if __name__ == "__main__":

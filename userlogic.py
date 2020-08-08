@@ -341,3 +341,36 @@ class DisponibilidadViajero(Logic):
         sql = f"UPDATE proyectozeus.viajes SET Activo = '{estado}' WHERE (`idviaje` = '{id}');"
         rows = database.executeNonQueryRows(sql)
         return rows
+
+
+class PerfilUsuario(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def getPerfilUsuario(self, id):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.usuarios where idUsuario='{id}';"
+        data = database.executeQuery(sql)
+        return data
+
+
+class PerfilViajero(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def getPerfilViajero(self, id):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.viajeros where idViajero='{id}';"
+        data = database.executeQuery(sql)
+        return data
+
+
+class NotasViajero(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def getNotasViajero(self, id):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.calificaciones where idUsuarioCalificado='{id}';"
+        data = database.executeQuery(sql)
+        return data
