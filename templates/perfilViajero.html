@@ -6,28 +6,45 @@
     <title>Tu Perfil</title>
 </head>
 <body>
-    {%for dato in datos %}
+    <h1>Tu Perfil</h1>
+    {% for dato in datos%}
     {{dato[0]}}
+    <br>
     {{dato[2]}}
+    <br>
     {{dato[3]}}
+    <br>
     {{dato[4]}}
+    <br>
     {{dato[5]}}
+    <br>
     {{dato[6]}}
+    <br>
     {{dato[7]}}
+    <br>
     {{dato[8]}}
+    <br>
     {{dato[9]}}
+    <br>
     {{dato[10]}}
+    <br>
     <td><img src="static\uploads\{{dato[11]}}" alt="Image" height="128" width="128"></td>
-
+    <br><br>
     {%endfor%}
 
-    {%for nota in Notas %}
+    {% for nota in Notas%}
+    <br><br>
     {{nota[0]}}
-    {{dato[1]}}
-    {{dato[3]}}
-    {{dato[4]}}
-    {{dato[5]}}
+    <br>
+    {{nota[1]}}
+    <br>
+    {{nota[3]}}
+    <br>
+    {{nota[4]}}
+    <br>
+    {{nota[5]}}
+    <br>
     {%endfor%}
-    
+
 </body>
 </html>

@@ -6,15 +6,24 @@
     <title>Tu Perfil</title>
 </head>
 <body>
-    {%for dato in datos %}
+    <h1>Tu Perfil</h1>
+    {% for dato in datos%}
     {{dato[0]}}
+    <br><br>
     {{dato[1]}}
+    <br><br>
     {{dato[2]}}
+    <br><br>
     {{dato[3]}}
+    <br><br>
     {{dato[4]}}
+    <br><br>
     {{dato[5]}}
+    <br><br>
     {{dato[6]}}
+    <br><br>
     {{dato[7]}}
+    <br><br>
     <td><img src="static\uploads\{{dato[9]}}" alt="Image" height="128" width="128"></td>
 
     {%endfor%}
