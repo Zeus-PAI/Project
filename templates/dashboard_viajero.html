@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Sidebar Dashboard Template</title>
-    <link rel="stylesheet" href="{{url_for('static' , filename = 'css/dashboard_viajero.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title>Menú - Viajero</title>
+  <link rel="stylesheet" href="{{url_for('static' , filename = 'css/dashboard_viajero.css')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+</head>
+<body>
 
-    <input type="checkbox" id="check">
-    <!--header area start-->
-    <header>
-      <label for="check">
-        <i class="fas fa-bars" id="sidebar_btn"></i>
-      </label>
-      <div class="left_area">
-        <h3>Viajero <span>Travelers</span></h3>
-      </div>
-      <div class="right_area">
-        <a href="/" class="logout_btn">Logout</a>
-      </div>
-    </header>
-    <!--header area end-->
-    <!--sidebar start-->
-    <div class="sidebar">
-      <center>
-        <img src="{{url_for('static', filename='img/Ronaldo.jpg')}}" class="profile_image" alt="">
-        <h4>{{userdata}}</h4>
-      </center>
-        <a href="/registrarViajes"><i class="fas fa-plane"></i><span>Agrega un nuevo viaje</span></a>
-        <a href="/viajesViajero"><i class="fas fa-eye"></i><span>Ver tus viajes</span></a>
-        <a href="/pedidosViajero"><i class="fas fa-archive"></i><span>Ver tus Pedidos</span></a>
-        <a href="/solicitudpedidosViajero"><i class="fas fa-bell"></i><span>Solicitudes de Pedidos</span></a>
+  <input type="checkbox" id="check">
+  <!--header area start-->
+  <header>
+    <label for="check">
+      <i class="fas fa-bars" id="sidebar_btn"></i>
+    </label>
+    <div class="left_area">
+      <h3>Viajero <span>Travelers</span></h3>
     </div>
-    <!--sidebar end-->
+    <div class="right_area">
+      <a href="/" class="logout_btn">Logout</a>
+    </div>
+  </header>
+  <!--header area end-->
+  <!--sidebar start-->
+  <div class="sidebar">
+    <center>
+      {%if userfoto =="":%}
+      <img src="static\img\blankpic.png" alt="Circle Image" class="profile_image">
+      {%elif userfoto != none:%}
+      <img src="static\uploads\{{userfoto}}" alt="Circle Image" class="profile_image">
+      {%else:%}
+      <img src="static\img\blankpic.png" alt="Circle Image" class="profile_image">
+      {%endif%}
+      <h4>{{userdata}}</h4>
+    </center>
+    <a href="/registrarViajes"><i class="fas fa-plane"></i><span>Agrega un nuevo viaje</span></a>
+    <a href="/viajesViajero"><i class="fas fa-eye"></i><span>Ver tus viajes</span></a>
+    <a href="/pedidosViajero"><i class="fas fa-archive"></i><span>Ver tus Pedidos</span></a>
+    <a href="/solicitudpedidosViajero"><i class="fas fa-bell"></i><span>Solicitudes de Pedidos</span></a>
+    <a href="/perfilViajero"><i class="fas fa-user-circle"></i><span>Tu Perfil</span></a>
+  </div>
+  <!--sidebar end-->
 
-    <div class="content"></div>
-  </body>
+  <div class="content"></div>
+</body>
 </html>
-           
-

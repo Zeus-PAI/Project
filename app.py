@@ -41,7 +41,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # git push --set-upstream https://github.com/Zeus-PAI/Project master
 app = Flask(__name__)
 app.secret_key = "python es bien chivo"
-diccionarioUsuarios = {"idUser": "", "User": "", "Nombre": "", "Pais": ""}
+diccionarioUsuarios = {"idUser": "", "User": "", "Nombre": "", "Pais": "", "Foto": ""}
 
 UPLOAD_FOLDER = "static/uploads/"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
@@ -84,30 +84,36 @@ def loginform():
                     diccionarioUsuarios.update({"User": userdata.user})
                     diccionarioUsuarios.update({"Nombre": userdata.name})
                     diccionarioUsuarios.update({"Pais": userdata.country})
+                    diccionarioUsuarios.update({"Foto": userdata.Foto})
                     return render_template(
                         "dashboard_admin.html",
                         userdata=userdata.user,
                         userid=userdata.id,
+                        userfoto=userdata.Foto,
                     )
                 elif userdata.Tipo == 2:
                     diccionarioUsuarios.update({"idUser": userdata.id})
                     diccionarioUsuarios.update({"User": userdata.user})
                     diccionarioUsuarios.update({"Nombre": userdata.name})
                     diccionarioUsuarios.update({"Pais": userdata.country})
+                    diccionarioUsuarios.update({"Foto": userdata.Foto})
                     return render_template(
                         "dashboard_user.html",
                         userdata=userdata.user,
                         userid=userdata.id,
+                        userfoto=userdata.Foto,
                     )
                 elif userdata.Tipo == 3:
                     diccionarioUsuarios.update({"idUser": userdata.id})
                     diccionarioUsuarios.update({"User": userdata.user})
                     diccionarioUsuarios.update({"Nombre": userdata.name})
                     diccionarioUsuarios.update({"Pais": userdata.country})
+                    diccionarioUsuarios.update({"Foto": userdata.Foto})
                     return render_template(
                         "dashboard_viajero.html",
                         userdata=userdata.user,
                         userid=userdata.id,
+                        userfoto=userdata.Foto,
                     )
             else:
                 return render_template("loginform.html", message="hubo error")
@@ -156,7 +162,7 @@ def registerform():
             flash("Allowed image types are -> png, jpg, jpeg, gif")
             return redirect(request.url)
         message = f"{rows} affected"
-        return render_template("index.html", message=message)
+    return render_template("index.html", message=message)
 
 
 @app.route("/registroviajero", methods=["GET", "POST"])
@@ -206,8 +212,8 @@ def registerviajeroform():
         else:
             flash("Allowed image types are -> png, jpg, jpeg, gif")
             return redirect(request.url)
-        message = f"{rows} affected"
-        return render_template("index.html", message=message)
+    message = f"{rows} affected"
+    return render_template("index.html", message=message)
 
 
 @app.route("/registrarViajes", methods=["GET", "POST"])
