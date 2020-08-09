@@ -1,24 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - Usuario</title>
+  <meta charset="utf-8">
+  <title>Menú - Travelers</title>
+  <link rel="stylesheet" href="{{url_for('static' , filename = 'css/dashboard_user.css')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 </head>
-
 <body>
-    <h1>Bienvenido</h1>
-    <br>
-    <p style="color: red;">{{message}}</p>
-    <p>este es el dashboard del user</p>
-    <p>esta loggeado como {{userdata}}</p>
-    <a href="/viajesactivos">Realiza un nuevo Pedido</a>
-    <br><br>
-    <a href="/pedidosUsuario">Historial de pedidos</a>
-    <br><br>
-    <a href="perfilUsuario">Ver tu Perfil</a>
 
+  <input type="checkbox" id="check">
+  <!--header area start-->
+  <header>
+    <label for="check">
+      <i class="fas fa-bars" id="sidebar_btn"></i>
+    </label>
+    <div class="left_area">
+      <h3>Welcome <span>Travelers</span></h3>
+    </div>
+    <div class="right_area">
+      <a href="/" class="logout_btn">Logout</a>
+    </div>
+  </header>
+  <!--header area end-->
+  <!--sidebar start-->
+  <div class="sidebar">
+    <center>
+      {%if userfoto =="":%}
+      <img src="static\img\blankpic.png" alt="Circle Image" class="profile_image">
+      {%elif userfoto != none:%}
+      <img src="static\uploads\{{userfoto}}" alt="Circle Image" class="profile_image">
+      {%else:%}
+      <img src="static\img\blankpic.png" alt="Circle Image" class="profile_image">
+      {%endif%}
+      <h4>{{userdata}}</h4>
+    </center>
+    <a href="/viajesactivos"><i class="fas fa-plus-square"></i><span>Realizar un pedido</span></a>
+    <a href="/pedidosUsuario"><i class="fas fa-book"></i><span>Historial de pedidos</span></a>
+    <a href="/perfilUsuario"><i class="fas fa-user-alt"></i><span>Mi Perfil</span></a>
+  </div>
+  <!--sidebar end-->
+
+  <div class="content"></div>
 </body>
-
 </html>
