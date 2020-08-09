@@ -13,16 +13,16 @@
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
     <link rel="stylesheet"
         href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
-    <link rel="stylesheet" href="{{url_for('static' , filename = 'css/PerfilDiseño.css')}}">
+    <link rel="stylesheet" href="PerfilDiseño.css">
 </head>
 
 <body class="profile-page">
     <nav class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg " color-on-scroll="100"
         id="sectionsNav">
-        {% for dato in datos%}
         <div class="container">
             <div class="navbar-translate">
-                Perfil del Viajero No {{dato[0]}}
+                <a class="navbar-brand" href="https://demos.creative-tim.com/material-kit/index.html"
+                    target="_blank">Material Kit </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -72,8 +72,9 @@
             </div>
         </div>
     </nav>
+
     <div class="page-header header-filter" data-parallax="true"
-        style="background-image:url('../static/img/Travel_main.jpg');">
+        style="background-image:url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');">
     </div>
     <div class="main main-raised">
         <div class="profile-content">
@@ -82,24 +83,12 @@
                     <div class="col-md-6 ml-auto mr-auto">
                         <div class="profile">
                             <div class="avatar">
-                                <img src="static\uploads\{{dato[11]}}" alt="Circle Image"
-                                    class="img-raised rounded-circle img-fluid">
+                                <img src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg"
+                                    alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
                             <div class="name">
-                                <h3 class="title">{{dato[3]}}</h3>
-                                <h4>@{{dato[2]}}</h4>
-                                <div class="Datos">
-                                <div class="row">
-                                    <h3 class="subtitle1">Cantidad de Viajes</h3>
-                                    <h3 class="subtitle2">Cantidad de Pedidos</h3>
-                                    <h3 class="subtitle3">Calificación Promedio</h3>
-                                </div>
-                                </div>
-                                <div class="row">
-                                    <h4 class="Dato1">{{dato[4]}}</h4>
-                                    <h4 class="Dato2">{{dato[5]}}</h4>
-                                    <h4 class="Dato3">{{dato[6]}}</h4>
-                                </div>
+                                <h3 class="title">Christian Louboutin</h3>
+                                <h6>Designer</h6>
                                 <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i
                                         class="fa fa-dribbble"></i></a>
                                 <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i
@@ -141,7 +130,7 @@
                         </div>
                     </div>
                 </div>
-                {%endfor%}
+
                 <div class="tab-content tab-space">
                     <div class="tab-pane active text-center gallery" id="studio">
                         <div class="row">
@@ -206,6 +195,7 @@
             by Creative Tim</p>
     </footer>
 
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
         integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
@@ -213,7 +203,7 @@
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
         integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
         crossorigin="anonymous"></script>
-    <script src="static\js\PerfilDiseño.js"></script>
+    <script src="PerfilDiseño.js"></script>
 
 
 
