@@ -258,15 +258,22 @@ body {
   width: 1400px;
   position: center;
   background: #fff;
+  margin-top: -1.5cm;
 }
 
-.signup-img, .signup-form {
+.signup-img, .signup-form, .signup-img2 {
   width: 50%; }
 
 .signup-img {
   background-color: #ff6801;
   padding-right: 0cm;
   padding-top: 1cm;
+}
+
+.signup-img2 {
+  background-color: #ff6801;
+  padding-right: 0cm;
+  padding-top: 1.5cm;
 }
 
 .header{

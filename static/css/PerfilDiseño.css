@@ -15,13 +15,16 @@ html *{
     margin-bottom: 10px;
 }
 
+body {
+    background-color: #838281;
+}
 .navbar {
     border: 0;
     border-radius: 3px;
     padding: .625rem 0;
     margin-bottom: 20px;
     color: #555;
-    background-color: #fff!important;
+    background-color: #22242A!important;
     box-shadow: 0 4px 18px 0 rgba(0,0,0,.12), 0 7px 10px -5px rgba(0,0,0,.15) !important;
     z-index: 1000 !important;
     transition: all 150ms ease 0s;
@@ -124,9 +127,50 @@ a .material-icons {
 }
 
 .main {
-    background: #FFF;
+    background: #22242A;
     position: relative;
     z-index: 3;
+}
+
+.iconos {
+    font-size: x-large;
+    color: rgb(170, 167, 165);
+    margin-top: 0cm;
+}
+
+.icon1 {
+    text-align: left;
+    text-indent: 0.8cm;
+    padding-right: 3cm;
+}
+
+.icon2 {
+    text-align: center;
+    text-indent: 1.05cm;
+    padding-right: 3cm;
+}
+
+.icon3 {
+    text-align: right;
+    padding-left: 2.15cm;
+}
+
+
+.icon11 {
+    text-align: left;
+    text-indent: 0.8cm;
+    padding-right: 3cm;
+}
+
+.icon22 {
+    text-align: center;
+    text-indent: 1.15cm;
+    padding-right: 2.9cm;
+}
+
+.icon33 {
+    text-align: right;
+    padding-left: 2.1cm;
 }
 
 .profile-page .profile {
@@ -144,6 +188,9 @@ a .material-icons {
     transform: translate3d(0,-50%,0);
 }
 
+.profname {
+    color: #fff;
+}
 .img-raised {
     box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
 }
@@ -158,10 +205,10 @@ a .material-icons {
 }
 
 .title {
-    margin-top: 30px;
+    margin-top: 15px;
     margin-bottom: 25px;
     min-height: 32px;
-    color: #3C4858;
+    color: rgb(170, 165, 165);
     font-weight: 700;
     font-family: "Roboto Slab","Times New Roman",serif;
 }
@@ -170,7 +217,7 @@ a .material-icons {
     margin-top: 30px;
     margin-bottom: 5px;
     min-height: 25px;
-    color: #3C4858;
+    color: rgb(170, 165, 165);
     font-weight: 700;
     font-size: medium;
     font-family: "Roboto Slab","Times New Roman",serif;
@@ -181,7 +228,7 @@ a .material-icons {
     margin-top: 30px;
     margin-bottom: 5px;
     min-height: 25px;
-    color: #3C4858;
+    color: rgb(170, 165, 165);
     font-weight: 700;
     font-size: medium;
     font-family: "Roboto Slab","Times New Roman",serif;
@@ -192,7 +239,7 @@ a .material-icons {
     margin-top: 30px;
     margin-bottom: 5px;
     min-height: 25px;
-    color: #3C4858;
+    color: rgb(170, 165, 165);
     font-weight: 700;
     font-size: medium;
     font-family: "Roboto Slab","Times New Roman",serif;
@@ -201,12 +248,48 @@ a .material-icons {
     padding-right: 3cm;
 }
 
+.subtitle11 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    min-height: 25px;
+    color: rgb(170, 165, 165);
+    font-weight: 700;
+    font-size: medium;
+    font-family: "Roboto Slab","Times New Roman",serif;
+    text-align: left;
+    text-indent: 1cm;
+}
+
+.subtitle22 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    min-height: 25px;
+    color: rgb(170, 165, 165);
+    font-weight: 700;
+    font-size: medium;
+    font-family: "Roboto Slab","Times New Roman",serif;
+    text-indent: 3.1cm;
+    text-align: center;
+}
+.subtitle33 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    min-height: 25px;
+    color: rgb(170, 165, 165);
+    font-weight: 700;
+    font-size: medium;
+    font-family: "Roboto Slab","Times New Roman",serif;
+    text-align: right;
+    text-indent: 2.5cm;
+    padding-right: 3cm;
+}
+
 .Dato1 {
     margin-top: 10px;
     margin-bottom: 25px;
     min-height: 25px;
-    color: #3C4858;
-    font-weight: 700;
+    color: #fff;
+    font-weight: 400;
     font-size: medium;
     font-family: "Roboto Slab","Times New Roman",serif;
     text-align: left;
@@ -218,8 +301,8 @@ a .material-icons {
     margin-top: 10px;
     margin-bottom: 25px;
     min-height: 25px;
-    color: #3C4858;
-    font-weight: 700;
+    color: #fff;
+    font-weight: 400;
     font-size: medium;
     font-family: "Roboto Slab","Times New Roman",serif;
     text-align: center;
@@ -231,21 +314,58 @@ a .material-icons {
     margin-top: 10px;
     margin-bottom: 25px;
     min-height: 25px;
-    color: #3C4858;
-    font-weight: 700;
+    color: #fff;
+    font-weight: 400;
     font-size: medium;
     font-family: "Roboto Slab","Times New Roman",serif;
     text-align: right;
     padding-left: 2.2cm;
 }
+
+.Dato11 {
+    margin-top: 10px;
+    margin-bottom: 25px;
+    min-height: 25px;
+    color: #fff;
+    font-weight: 400;
+    font-size: medium;
+    font-family: "Roboto Slab","Times New Roman",serif;
+    text-align: left;
+    text-indent: 0.8cm;
+}
+
+.Dato22 {
+    margin-top: 10px;
+    margin-bottom: 25px;
+    min-height: 25px;
+    color: #fff;
+    font-weight: 400;
+    font-size: medium;
+    font-family: "Roboto Slab","Times New Roman",serif;
+    text-align: center;
+    text-indent: 2.6cm;
+}
+
+.Dato33 {
+    margin-top: 10px;
+    margin-bottom: 25px;
+    min-height: 25px;
+    color: #fff;
+    font-weight: 400;
+    font-size: medium;
+    font-family: "Roboto Slab","Times New Roman",serif;
+    text-align: right;
+    padding-left: 2.3cm;
+}
+
 .Datos {
-    width: 3000px;
+    width: 1000px;
 
 }
 .profile-page .description {
     margin: 1.071rem auto 0;
     max-width: 600px;
-    color: #999;
+    color: rgb(170, 165, 165);
     font-weight: 300;
 }
 
@@ -274,9 +394,9 @@ p {
 }
 
 .nav-pills .nav-item .nav-link.active {
-    color: #fff;
-    background-color: #9c27b0;
-    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px rgba(156,39,176,.6);
+    color: rgb(170, 165, 165);
+    background-color: #d15c0e;
+    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px #d15c0e;
 }
 
 .nav-pills .nav-item .nav-link {
@@ -284,7 +404,7 @@ p {
     font-size: 12px;
     font-weight: 500;
     min-width: 100px;
-    color: #555;
+    color: rgb(110, 110, 110);
     transition: all .3s;
     border-radius: 30px;
     padding: 10px 15px;
@@ -370,7 +490,7 @@ img.rounded {
 }
 .btn.btn-link{
     background-color: transparent;
-    color: #999;
+    color: #555;
 }
 
 /* dropdown */
@@ -387,9 +507,9 @@ img.rounded {
     min-width: 11rem !important;
     margin: .125rem 0 0;
     font-size: 1rem;
-    color: #212529;
+    color: #fff;
     text-align: left;
-    background-color: #fff;
+    background-color: #22242A;
     background-clip: padding-box;
     border-radius: .25rem;
     transition: transform .3s cubic-bezier(.4,0,.2,1),opacity .2s cubic-bezier(.4,0,.2,1);
@@ -401,9 +521,9 @@ img.rounded {
 
 
 .dropdown-menu .dropdown-item:focus, .dropdown-menu .dropdown-item:hover, .dropdown-menu a:active, .dropdown-menu a:focus, .dropdown-menu a:hover {
-    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(156,39,176,.4);
-    background-color: #9c27b0;
-    color: #FFF;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px #d15c0e;
+    background-color: #d15c0e;
+    color: #22242A;
 }
 .show .dropdown-toggle:after {
     transform: rotate(180deg);
@@ -421,7 +541,7 @@ img.rounded {
     display: flex;
     flex-flow: nowrap;
     align-items: center;
-    color: #333;
+    color: #fff;
     font-weight: 400;
     text-decoration: none;
     font-size: .8125rem;
@@ -472,6 +592,6 @@ footer p a{
 }
 
 footer p a:hover {
-    color: #9f26aa;
+    color: #f17725;
     text-decoration: none;
 }

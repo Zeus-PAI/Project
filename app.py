@@ -148,7 +148,7 @@ def registerform():
             rows = logic.insertNewUser(
                 usuario, nombre, email, contraseña, Fecha, telefono, pais, Foto
             )
-            return redirect(request.url)
+            return render_template("index.html")
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
@@ -158,6 +158,7 @@ def registerform():
             rows = logic.insertNewUser(
                 usuario, nombre, email, contraseña, Fecha, telefono, pais, Foto
             )
+            return render_template("index.html")
         else:
             flash("Allowed image types are -> png, jpg, jpeg, gif")
             return redirect(request.url)
@@ -211,7 +212,7 @@ def registerviajeroform():
             )
         else:
             flash("Allowed image types are -> png, jpg, jpeg, gif")
-            return redirect(request.url)
+            return render_template("index.html")
     message = f"{rows} affected"
     return render_template("index.html", message=message)
 

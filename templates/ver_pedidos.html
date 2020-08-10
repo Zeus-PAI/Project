@@ -80,8 +80,8 @@
             <td>{{dato[12]}}</td>
             <td>{{dato[13]}}</td>
             <td>{{dato[14]}}</td>
-            <td>{{dato[15]}}</td>
-            {% if (dato[7] == 'Aceptado' or dato[7] == 'Pendiente'): %}
+            <td>${{dato[15]}}</td>
+            {% if (dato[7] != 'Entregado'): %}
             <td> <a href="/pedidosUsuario/{{dato[0]}}">Actualizar tu Pedido</a></td>
             {%else:%}
             <td>Actualizado</td>

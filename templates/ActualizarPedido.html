@@ -16,8 +16,8 @@
         <input type="show" name="idviajero2" id="idviajero2" value="{{datos[0][4]}}" disabled>
         <br><br>
         ID Viaje: <br>
-        <input type="hidden" name="idpedido" id="idpedido" value="{{datos[0][5]}}">
-        <input type="show" name="idpedido2" id="idpedido2" value="{{datos[0][5]}}" disabled>
+        <input type="hidden" name="idviaje" id="idviaje" value="{{datos[0][5]}}">
+        <input type="show" name="idviaje2" id="idviaje2" value="{{datos[0][5]}}" disabled>
         <br><br>
         Artículo: <br>
         <input type="hidden" name="name" id="name" value="{{datos[0][6]}}">
@@ -30,12 +30,16 @@
         Estado: <br>
         <select class="" name="estado" id="estado">
             <option value="none" selected>-</option>
+            {%if datos[0][7] != 'Comprado':%}
             <option value="Anulado">Anulado</option>
             <option value="Entregado">Entregado</option>
+            {%else:%}
+            <option value="Entregado">Entregado</option>
+            {%endif%}
         </select>
         <br><br>
         <input type="submit" value="Actualizar">
     </form>
-    
+
 </body>
 </html>
