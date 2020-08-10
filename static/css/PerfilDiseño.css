@@ -16,7 +16,7 @@ html *{
 }
 
 body {
-    background-color: #838281;
+    background-color: #d15c0e;
 }
 .navbar {
     border: 0;
@@ -208,7 +208,7 @@ a .material-icons {
     margin-top: 15px;
     margin-bottom: 25px;
     min-height: 32px;
-    color: rgb(170, 165, 165);
+    color: #fff;
     font-weight: 700;
     font-family: "Roboto Slab","Times New Roman",serif;
 }
