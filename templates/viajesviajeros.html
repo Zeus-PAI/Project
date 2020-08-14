@@ -1,206 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tus viajes</title>
-<style>
-body{
-    background-image: url(https://a57.foxnews.com/static.foxbusiness.com/foxbusiness.com/content/uploads/2020/02/0/0/iStock-airline.jpg?ve=1&tl=1) no-repeat;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: #eceffc;
-  font-family: "Roboto", sans-serif;
-}
-
-.btn {
-  padding: 8px 20px;
-  border-radius: 0;
-  overflow: hidden;
-
-  &::before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      120deg,
-      transparent,
-      var(--primary-color),
-      transparent
-    );
-    transform: translateX(-100%);
-    transition: 0.6s;
-  }
-
-  &:hover {
-    background: transparent;
-    box-shadow: 0 0 20px 10px hsla(204, 70%, 53%, 0.5);
-
-    &::before {
-      transform: translateX(100%);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tus viajes</title>
+  <style>
+    body {
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: url(https://a57.foxnews.com/static.foxbusiness.com/foxbusiness.com/content/uploads/2020/02/0/0/iStock-airline.jpg?ve=1&tl=1) fixed;
+      font-family: "Roboto", sans-serif;
     }
-  }
-}
 
-.form-input-material {
-  --input-default-border-color: white;
-  --input-border-bottom-color: white;
-  align-content: center;
-  
-  input {
-    color: white;
-  }
-}
+    .btn {
+      padding: 8px 20px;
+      border-radius: 0;
+      overflow: hidden;
 
-.login-form {
-    font-family: "Roboto", sans-serif;
-  width:1825px;
-  align-content: center;
+      &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(120deg,
+            transparent,
+            var(--primary-color),
+            transparent);
+        transform: translateX(-100%);
+        transition: 0.6s;
+      }
 
-  align-items: center;
-  padding: 50px 40px;
-  color: white;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 10px;
-  box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109),
-    0 1px 1px rgba(128, 128, 128, 0.155),
-    0 2.1px 2.1px rgba(128, 128, 128, 0.195),
-    0 4.4px 4.4px rgba(128, 128, 128, 0.241),
-    0 12px 12px rgba(128, 128, 128, 0.35);
+      &:hover {
+        background: transparent;
+        box-shadow: 0 0 20px 10px hsla(204, 70%, 53%, 0.5);
 
-  h1 {
-    margin: 0 0 24px 0;
-  }
+        &::before {
+          transform: translateX(100%);
+        }
+      }
+    }
 
-  .form-input-material {
-    margin: 12px 0;
-  }
+    .form-input-material {
+      --input-default-border-color: white;
+      --input-border-bottom-color: white;
+      align-content: center;
 
-  .btn {
-    width: 100%;
-    margin: 18px 0 9px 0;
-  }
-}
+      input {
+        color: white;
+      }
+    }
 
+    .login-form {
+      font-family: "Roboto", sans-serif;
+      width: 1520px;
+      align-content: center;
 
-</style>
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="{{url_for('static' , filename = 'images/icons/favicon.ico')}}"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'vendor-copy/bootstrap/css/bootstrap.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'vendor-copy/animate/animate.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'vendor-copy/select2/select2.min.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'vendor-copy/perfect-scrollbar/perfect-scrollbar.css')}}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/util.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/main.css')}}">
-<!--===============================================================================================-->
+      align-items: center;
+      padding: 50px 40px;
+      color: white;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109),
+        0 1px 1px rgba(128, 128, 128, 0.155),
+        0 2.1px 2.1px rgba(128, 128, 128, 0.195),
+        0 4.4px 4.4px rgba(128, 128, 128, 0.241),
+        0 12px 12px rgba(128, 128, 128, 0.35);
+
+      h1 {
+        margin: 0 0 24px 0;
+      }
+
+      .form-input-material {
+        margin: 12px 0;
+      }
+
+      .btn {
+        width: 100%;
+        margin: 18px 0 9px 0;
+      }
+    }
+  </style>
+  <!--===============================================================================================-->
+  <link rel="icon" type="image/png" href="{{url_for('static' , filename = 'images/icons/favicon.ico')}}" />
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css"
+    href="{{url_for('static' , filename = 'vendor-copy/bootstrap/css/bootstrap.min.css')}}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css"
+    href="{{url_for('static' , filename = 'font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'vendor-copy/animate/animate.css')}}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css"
+    href="{{url_for('static' , filename = 'vendor-copy/select2/select2.min.css')}}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css"
+    href="{{url_for('static' , filename = 'vendor-copy/perfect-scrollbar/perfect-scrollbar.css')}}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/util.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/main.css')}}">
+  <!--===============================================================================================-->
 
 </head>
 
 <body>
-    {% if message %}
-    <p style="color: red;">{{message}}</p>
-    <br>
-    {% endif %}
-    <form class="login-form" action="/viajesViajero" method="POST">
-    
-   <center>
-  <h1>ACTUALIZA TUS VIAJES</h1> </center>
-  <h4> Mostrando Viajes del Viajero id: {{Viajero}}</h4>
-  <center>
-  <div class="form-input-material">
-    <select name="idviaje" id="idviaje" class="form-control-material" required>
-            <option value="none" selected>-</option>
-            {% for dato in datos%}
-            <option value="{{dato[0]}}"> Viaje {{dato[0]}}</option>
-            {% endfor %}
+  {% if message %}
+  <p style="color: red;">{{message}}</p>
+  <br>
+  {% endif %}
+  <form class="login-form" action="/viajesViajero" method="POST">
+
+    <center>
+      <h1>ACTUALIZA TUS VIAJES</h1>
+    </center>
+    <h4> Mostrando Viajes del Viajero id: {{Viajero}}</h4>
+    <center>
+      <div class="form-input-material">
+        <select name="idviaje" id="idviaje" class="form-control-material" required>
+          <option value="none" selected>-</option>
+          {% for dato in datos%}
+          <option value="{{dato[0]}}"> Viaje {{dato[0]}}</option>
+          {% endfor %}
         </select>
-    <label for="username">ID Viaje</label>
-  </div>
-  <br><br>
-  <div class="form-input-material">
-  <select name="estado" id="estado" class="form-control-material" required>
-            <option value="none" selected>-</option>
-            <option value="Sí">Activo</option>
-            <option value="No">Inactivo</option>
+        <label for="username">ID Viaje</label>
+      </div>
+      <br><br>
+      <div class="form-input-material">
+        <select name="estado" id="estado" class="form-control-material" required>
+          <option value="none" selected>-</option>
+          <option value="Sí">Activo</option>
+          <option value="No">Inactivo</option>
         </select>
-        
-    
-    <label for="password">Estado</label>
-  </div>
-  </center>
-  <br><br>
-  <center>
-  <button type="submit" class="btn btn-primary btn-ghost">Actualizar</button>
-  </center>
-</form>
+
+
+        <label for="password">Estado</label>
+      </div>
+    </center>
     <br><br>
-    	<div class="limiter">
-		<div class="container-table100">
-			<div class="wrap-table100">
-				<div class="table100 ver5 m-b-110">
-					<table data-vertable="ver5">
-						<thead>
-							<tr class="row100 head">
-                                <th class="column100 column0" data-column="column0">id Viaje</th>
-								<th class="column100 column1" data-column="column1">id Viajero</th>
-								<th class="column100 column2" data-column="column2">Fecha de inicio</th>
-								<th class="column100 column3" data-column="column3">Fecha de regreso</th>
-								<th class="column100 column4" data-column="column4">Activo</th>
-								<th class="column100 column5" data-column="column5">País Destino</th>
-								<th class="column100 column6" data-column="column6">Dirección de estadía</th>
-								<th class="column100 column7" data-column="column7">Cobro por libra (USD)</th>
-								<th class="column100 column8" data-column="column8">Teléfono</th>
-                                <th class="column100 column9" data-column="column9">Imagen de referencia</th>
-                            
-							</tr>
-						</thead>
-						<tbody>
-                            {% for dato in datos%}
-							<tr class="row100">
-                                <td class="column100 column0" data-column="column0">{{dato[0]}}</td>
-								<td class="column100 column1" data-column="column1">{{dato[1]}}</td>
-								<td class="column100 column2" data-column="column2">{{dato[2]}}</td>
-								<td class="column100 column3" data-column="column3">{{dato[3]}}</td>
-								<td class="column100 column4" data-column="column4">{{dato[4]}}</td>
-								<td class="column100 column5" data-column="column5">{{dato[5]}}</td>
-								<td class="column100 column6" data-column="column6">{{dato[6]}}</td>
-								<td class="column100 column7" data-column="column7">{{dato[7]}}</td>
-								<td class="column100 column8" data-column="column8">{{dato[8]}}</td>
-                                <td class="column100 column9" data-column="column9">{{dato[9]}}</td>
-							</tr>
-                            {% endfor %}
-						</tbody>
-					</table>
-				</div>
+    <center>
+      <button type="submit" class="btn btn-primary btn-ghost">Actualizar</button>
+    </center>
+  </form>
+  <br><br>
+  <div class="limiter">
+    <div class="container-table100">
+      <div class="wrap-table100">
+        <div class="table100 ver5 m-b-110">
+          <table data-vertable="ver5">
+            <thead>
+              <tr class="row100 head">
+                <th class="column100 column0" data-column="column0">id Viaje</th>
+                <th class="column100 column1" data-column="column1">id Viajero</th>
+                <th class="column100 column2" data-column="column2">Fecha de inicio</th>
+                <th class="column100 column3" data-column="column3">Fecha de regreso</th>
+                <th class="column100 column4" data-column="column4">Activo</th>
+                <th class="column100 column5" data-column="column5">País Destino</th>
+                <th class="column100 column6" data-column="column6">Dirección de estadía</th>
+                <th class="column100 column7" data-column="column7">Cobro por libra (USD)</th>
+                <th class="column100 column8" data-column="column8">Teléfono</th>
+                <th class="column100 column9" data-column="column9">Imagen de referencia</th>
 
-			
-			</div>
-		</div>
-	</div>
+              </tr>
+            </thead>
+            <tbody>
+              {% for dato in datos%}
+              <tr class="row100">
+                <td class="column100 column0" data-column="column0">{{dato[0]}}</td>
+                <td class="column100 column1" data-column="column1">{{dato[1]}}</td>
+                <td class="column100 column2" data-column="column2">{{dato[2]}}</td>
+                <td class="column100 column3" data-column="column3">{{dato[3]}}</td>
+                <td class="column100 column4" data-column="column4">{{dato[4]}}</td>
+                <td class="column100 column5" data-column="column5">{{dato[5]}}</td>
+                <td class="column100 column6" data-column="column6">{{dato[6]}}</td>
+                <td class="column100 column7" data-column="column7">${{dato[7]}}</td>
+                <td class="column100 column8" data-column="column8">{{dato[8]}}</td>
+                <td class="column100 column9" data-column="column9">{{dato[9]}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
 
 
-	
+      </div>
+    </div>
+  </div>
 
-<!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="js/main3.js"></script>
+
+
+
+  <!--===============================================================================================-->
+  <script src="static\vendor-copy\jquery\jquery-3.2.1.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="static\vendor-copy\bootstrap\js\popper.js"></script>
+  <script src="static\vendor-copy\bootstrap\js\bootstrap.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="static\vendor-copy\select2\select2.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="static\js\main3.js"></script>
 
 </body>
 </html>
