@@ -371,6 +371,6 @@ class NotasViajero(Logic):
 
     def getNotasViajero(self, id):
         database = self.get_databaseXObj()
-        sql = f"SELECT * FROM proyectozeus.calificaciones where idUsuarioCalificado='{id}';"
+        sql = f"SELECT * FROM proyectozeus.calificaciones_view where idUserCalificado='{id}';"
         data = database.executeQuery(sql)
         return data

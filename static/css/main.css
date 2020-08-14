@@ -20,6 +20,18 @@
 	box-sizing: border-box;
 }
 
+.left_area h2{
+    color: #fff;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 900;
+  }
+  
+  .left_area span{
+    color: #c76728;
+  }
+  
 body, html {
 	height: 100%;
 	font-family: sans-serif;

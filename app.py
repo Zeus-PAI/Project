@@ -548,7 +548,9 @@ def ShowPerfilViajero():
         data = logic2.getPerfilViajero(idViajero)
         logic3 = NotasViajero()
         Notas = logic3.getNotasViajero(diccionarioUsuarios.get("idUser"))
-        return render_template("perfilViajero.html", datos=data, Notas=Notas)
+        logic4 = ShowViajesViajero()
+        viajes = logic4.ShowViajesViajero(idViajero)
+        return render_template("perfilViajero.html", datos=data, Notas=Notas, Viajes=viajes)
     else:  # "POST"
         logic = idViajeroLogic()
         idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
@@ -557,7 +559,9 @@ def ShowPerfilViajero():
         data = logic2.getPerfilViajero(idViajero)
         logic3 = NotasViajero()
         Notas = logic3.getNotasViajero(diccionarioUsuarios.get("idUser"))
-        return render_template("perfilViajero.html", datos=data, Notas=Notas)
+        logic4 = ShowViajesViajero()
+        viajes = logic4.ShowViajesViajero(idViajero)
+        return render_template("perfilViajero.html", datos=data, Notas=Notas, Viajes=viajes)
 
 
 if __name__ == "__main__":
