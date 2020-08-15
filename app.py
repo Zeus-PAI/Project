@@ -30,6 +30,7 @@ from userlogic import (
     PerfilUsuario,
     PerfilViajero,
     NotasViajero,
+    ViajesDispViajero,
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -469,7 +470,7 @@ def ShowPedidosViajero():
         idViajero = int("".join(map(str, idV[0])))
         logic2 = ViajeroPedidos()
         data = logic2.ShowPedidosViajero(idViajero)
-        return render_template("pedidosViajero.html", datos=data)
+        return render_template("pedidosViajero.html", datos=data, idViajero=idViajero)
     else:  # "POST"
         idPedido = request.form["idpedido"]
         Estado = request.form["estado"]
@@ -480,7 +481,7 @@ def ShowPedidosViajero():
         idViajero = int("".join(map(str, idV[0])))
         logic2 = ViajeroPedidos()
         data = logic2.ShowPedidosViajero(idViajero)
-        return render_template("pedidosViajero.html", datos=data)
+        return render_template("pedidosViajero.html", datos=data, idViajero=idViajero)
 
 
 @app.route("/solicitudpedidosViajero", methods=["GET", "POST"])
@@ -550,7 +551,18 @@ def ShowPerfilViajero():
         Notas = logic3.getNotasViajero(diccionarioUsuarios.get("idUser"))
         logic4 = ShowViajesViajero()
         viajes = logic4.ShowViajesViajero(idViajero)
-        return render_template("perfilViajero.html", datos=data, Notas=Notas, Viajes=viajes)
+        logic5 = ViajeroPedidos()
+        pedidos = logic5.ShowPedidosViajero(idViajero)
+        logic6 = ViajesDispViajero()
+        viajesDisponibles = logic6.ShowViajesDisp(idViajero)
+        return render_template(
+            "perfilViajero.html",
+            datos=data,
+            Notas=Notas,
+            Viajes=viajes,
+            Pedidos=pedidos,
+            Activos=viajesDisponibles,
+        )
     else:  # "POST"
         logic = idViajeroLogic()
         idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
@@ -561,7 +573,66 @@ def ShowPerfilViajero():
         Notas = logic3.getNotasViajero(diccionarioUsuarios.get("idUser"))
         logic4 = ShowViajesViajero()
         viajes = logic4.ShowViajesViajero(idViajero)
-        return render_template("perfilViajero.html", datos=data, Notas=Notas, Viajes=viajes)
+        logic5 = ViajeroPedidos()
+        pedidos = logic5.ShowPedidosViajero(idViajero)
+        logic6 = ViajesDispViajero()
+        viajesDisponibles = logic6.ShowViajesDisp(idViajero)
+        return render_template(
+            "perfilViajero.html",
+            datos=data,
+            Notas=Notas,
+            Viajes=viajes,
+            Pedidos=pedidos,
+            Activos=viajesDisponibles,
+        )
+
+
+@app.route("/perfilViajero/<int:id>", methods=["GET", "POST"])
+def ShowPerfilViajero2(id):
+    if request.method == "GET":
+        logic = idViajeroLogic()
+        idV = logic.getidViajero(id)
+        idViajero = int("".join(map(str, idV[0])))
+        logic2 = PerfilViajero()
+        data = logic2.getPerfilViajero(idViajero)
+        logic3 = NotasViajero()
+        Notas = logic3.getNotasViajero(id)
+        logic4 = ShowViajesViajero()
+        viajes = logic4.ShowViajesViajero(idViajero)
+        logic5 = ViajeroPedidos()
+        pedidos = logic5.ShowPedidosViajero(idViajero)
+        logic6 = ViajesDispViajero()
+        viajesDisponibles = logic6.ShowViajesDisp(idViajero)
+        return render_template(
+            "perfilViajero2.html",
+            datos=data,
+            Notas=Notas,
+            Viajes=viajes,
+            Pedidos=pedidos,
+            Activos=viajesDisponibles,
+        )
+    else:  # "POST"
+        logic = idViajeroLogic()
+        idV = logic.getidViajero(id)
+        idViajero = int("".join(map(str, idV[0])))
+        logic2 = PerfilViajero()
+        data = logic2.getPerfilViajero(idViajero)
+        logic3 = NotasViajero()
+        Notas = logic3.getNotasViajero(id)
+        logic4 = ShowViajesViajero()
+        viajes = logic4.ShowViajesViajero(idViajero)
+        logic5 = ViajeroPedidos()
+        pedidos = logic5.ShowPedidosViajero(idViajero)
+        logic6 = ViajesDispViajero()
+        viajesDisponibles = logic6.ShowViajesDisp(idViajero)
+        return render_template(
+            "perfilViajero2.html",
+            datos=data,
+            Notas=Notas,
+            Viajes=viajes,
+            Pedidos=pedidos,
+            Activos=viajesDisponibles,
+        )
 
 
 if __name__ == "__main__":

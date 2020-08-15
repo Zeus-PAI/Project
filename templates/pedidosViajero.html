@@ -3,104 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tus pedidos</title>
-    <style>
-        table {
-            width: 100%;
-        }
+    <title>Tus Pedidos</title>
 
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{{url_for('static' , filename = 'images/icons/favicon.ico')}}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'vendor-copy/bootstrap/css/bootstrap.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'vendor-copy/animate/animate.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'vendor-copy/select2/select2.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'vendor-copy/perfect-scrollbar/perfect-scrollbar.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/util.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/main2.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/form.css')}}">
 
-        th,
-        td {
-            padding: 15px;
-            text-align: left;
-        }
-
-        #t01 tr:nth-child(even) {
-            background-color: #eee;
-        }
-
-        #t01 tr:nth-child(odd) {
-            background-color: #fff;
-        }
-
-        #t01 th {
-            background-color: black;
-            color: white;
-        }
-    </style>
 </head>
+
 <body>
-    <h1>
-        <center>Actualiza tus Pedidos</center>
-    </h1>
     {% if message %}
     <p style="color: red;">{{message}}</p>
     <br>
     {% endif %}
-    <form action="/pedidosViajero" method="POST">
-        Escoge el ID del Pedido que deseas actualizar:
+    <form class="login-form" action="/pedidosViajero" method="POST">
+
+        <center>
+            <div class="left_area">
+                <h2>ACTUALIZA TUS <span>PEDIDOS</span></h2>
+            </div>
+        </center>
+        <h4> Mostrando Pedidos del Viajero id: {{idViajero}}</h4>
+        <center>
+            <div class="form-input-material">
+                <select name="idpedido" id="idpedido" class="form-control-material" required>
+                    <option value="none" selected>-</option>
+                    {% for dato in datos%}
+                    <option value="{{dato[0]}}"> Pedido {{dato[0]}}</option>
+                    {% endfor %}
+                </select>
+                <label for="username">ID Pedido</label>
+            </div>
+            <br><br>
+            <div class="form-input-material">
+                <select name="estado" id="estado" class="form-control-material" required>
+                    <option value="none" selected>-</option>
+                    <option value="Comprado">Comprado</option>
+                    <option value="Anulado">Anulado</option>
+                </select>
+
+
+                <label for="password">Estado</label>
+            </div>
+        </center>
         <br><br>
-        ID Pedido: <br>
-        <select class="" name="idpedido" id="idpedido">
-            <option value="none" selected>-</option>
-            {% for dato in datos%}
-            <option value="{{dato[0]}}"> Pedido {{dato[0]}}</option>
-            {% endfor %}
-        </select>
-        <br><br>
-        Estado: <br>
-        <select class="" name="estado" id="estado">
-            <option value="none" selected>-</option>
-            <option value="Comprado">Comprado</option>
-            <option value="Anulado">Anulado</option>
-        </select>
-        <br><br>
-        <input type="submit" value="Actualizar">
+        <center>
+            <button type="submit" class="btn btn-primary btn-ghost">Actualizar</button>
+        </center>
     </form>
     <br><br>
-    <table class="tablaOrdenes" id="t01">
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100 ver5 m-b-110">
+                    <table data-vertable="ver5">
+                        <thead>
+                            <tr class="row100 head">
+                                <th class="column100 column0" data-column="column0">ID Pedido</th>
+                                <th class="column100 column1" data-column="column1">Usuario</th>
+                                <th class="column100 column2" data-column="column2">Viajero</th>
+                                <th class="column100 column3" data-column="column3">ID Viaje</th>
+                                <th class="column100 column4" data-column="column4">Nombre del artículo</th>
+                                <th class="column100 column5" data-column="column5">Estado</th>
+                                <th class="column100 column6" data-column="column6">Precio (USD)</th>
+                                <th class="column100 column7" data-column="column7">Peso (lb)</th>
+                                <th class="column100 column8" data-column="column8">Cantidad</th>
+                                <th class="column100 column9" data-column="column9">Otras especificaciones</th>
+                                <th class="column100 column10" data-column="column10">URL</th>
+                                <th class="column100 column11" data-column="column11">País</th>
+                                <th class="column100 column12" data-column="column12">Fecha estimada de entrega</th>
+                                <th class="column100 column13" data-column="column13">Total</th>
 
-        <tr>
-            <th>ID Pedido</th>
-            <th>Usuario</th>
-            <th>Viajero</th>
-            <th>ID Viaje</th>
-            <th>Nombre del artículo</th>
-            <th>Estado</th>
-            <th>Precio (USD)</th>
-            <th>Peso (lb)</th>
-            <th>Cantidad</th>
-            <th>Otras especificaciones</th>
-            <th>URL</th>
-            <th>País</th>
-            <th>Fecha estimada de entrega</th>
-            <th>Total</th>
-        </tr>
-        {% for dato in datos%}
-        <tr>
-            <td>{{dato[0]}}</td>
-            <td>{{dato[2]}}</td>
-            <td>{{dato[4]}}</td>
-            <td>{{dato[5]}}</td>
-            <td>{{dato[6]}}</td>
-            <td>{{dato[7]}}</td>
-            <td>{{dato[8]}}</td>
-            <td>{{dato[9]}}</td>
-            <td>{{dato[10]}}</td>
-            <td>{{dato[11]}}</td>
-            <td>{{dato[12]}}</td>
-            <td>{{dato[13]}}</td>
-            <td>{{dato[14]}}</td>
-            <td>{{dato[15]}}</td>
-        </tr>
-        {% endfor %}
-    </table>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for dato in datos%}
+                            <tr class="row100">
+                                <td class="column100 column0" data-column="column0">{{dato[0]}}</td>
+                                <td class="column100 column1" data-column="column1">{{dato[2]}}</td>
+                                <td class="column100 column2" data-column="column2">{{dato[4]}}</td>
+                                <td class="column100 column3" data-column="column3">{{dato[5]}}</td>
+                                <td class="column100 column4" data-column="column4">{{dato[6]}}</td>
+                                <td class="column100 column5" data-column="column5">{{dato[7]}}</td>
+                                <td class="column100 column6" data-column="column6">${{dato[8]}}</td>
+                                <td class="column100 column7" data-column="column7">{{dato[9]}}</td>
+                                <td class="column100 column8" data-column="column8">{{dato[10]}}</td>
+                                <td class="column100 column9" data-column="column9">{{dato[11]}}</td>
+                                <td class="column100 column10" data-column="column10">{{dato[12]}}</td>
+                                <td class="column100 column11" data-column="column11">{{dato[13]}}</td>
+                                <td class="column100 column12" data-column="column12">{{dato[14]}}</td>
+                                <td class="column100 column13" data-column="column13">{{dato[15]}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--===============================================================================================-->
+    <script src="static\vendor-copy\jquery\jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="static\vendor-copy\bootstrap\js\popper.js"></script>
+    <script src="static\vendor-copy\bootstrap\js\bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="static\vendor-copy\select2\select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="static\js\main3.js"></script>
+
 </body>
 </html>

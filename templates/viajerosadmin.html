@@ -4,50 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Viajeros</title>
-<style>
-    table {
-        width: 100%;
-    }
+    <style>
+        table {
+            width: 100%;
+        }
 
-    table,
-    th,
-    td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
 
-    th,
-    td {
-        padding: 15px;
-        text-align: left;
-    }
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+        }
 
-    #t01 tr:nth-child(even) {
-        background-color: #eee;
-    }
+        #t01 tr:nth-child(even) {
+            background-color: #eee;
+        }
 
-    #t01 tr:nth-child(odd) {
-        background-color: #fff;
-    }
+        #t01 tr:nth-child(odd) {
+            background-color: #fff;
+        }
 
-    #t01 th {
-        background-color: black;
-        color: white;
-    }
-</style>
+        #t01 th {
+            background-color: black;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <h1><center>Lista de todos los viajeros</center></h1>
+    <h1>
+        <center>Lista de todos los viajeros</center>
+    </h1>
     {% if message %}
     <p style="color: red;">{{message}}</p>
     <br>
     {% endif %}
     <br><br>
     <table class="tablaOrdenes" id="t01">
-    
+
         <tr>
             <th>ID Viajero</th>
-            <th>Id Usuario</th>
+            <th>ID Usuario</th>
             <th>Usuario</th>
             <th>Nombre Completo</th>
             <th>Correo</th>
@@ -59,6 +61,7 @@
             <th>Telefono</th>
             <th>Pais</th>
             <th>Foto</th>
+            <th>Perfil</th>
         </tr>
         {% for dato in datos%}
         <tr>
@@ -75,6 +78,7 @@
             <td>{{dato[10]}}</td>
             <td>{{dato[11]}}</td>
             <td>{{dato[12]}}</td>
+            <td> <a href="/perfilViajero/{{dato[1]}}">Ver Perfil</a></td>
         </tr>
         {% endfor %}
     </table>

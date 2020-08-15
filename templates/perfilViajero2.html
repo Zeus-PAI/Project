@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Perfil</title>
+    <title>Perfil del Viajero</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
     <link rel="stylesheet"
         href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
@@ -32,43 +32,7 @@
             </div>
 
             <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="dropdown nav-item">
-                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
-                            <i class="material-icons">apps</i> Opciones
-                        </a>
-                        <div class="dropdown-menu dropdown-with-icons">
-                            <a href="../index.html" class="dropdown-item">
-                                <i class="material-icons">edit</i> Editar tu Perfil
-                            </a>
 
-                            <a href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html"
-                                class="dropdown-item">
-                                <i class="material-icons">content_paste</i> Documentation
-                            </a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0)">
-                            <i class="material-icons">cloud_download</i> Download
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://twitter.com/CreativeTim" target="_blank">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://www.facebook.com/CreativeTim" target="_blank">
-                            <i class="fa fa-facebook-square"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
-                            <i class="fa fa-instagram"></i>
-                        </a>
-                    </li>
-                </ul>
             </div>
         </div>
     </nav>
@@ -305,6 +269,8 @@
                                                         <th class="column100 column7" data-column="column7">Imagen
                                                             de
                                                             referencia</th>
+                                                        <th class="column100 column8" data-column="column8">Ordenar
+                                                        </th>
 
 
                                                     </tr>
@@ -336,6 +302,9 @@
                                                         <td class="column100 column7" data-column="column7">
                                                             {{viaje[9]}}
                                                         </td>
+                                                        <td class="column100 column8" data-column="column8"> <a
+                                                                href="/confirmarpedido/{{viaje[0]}}">Haz tu
+                                                                Pedido</a></td>
 
                                                     </tr>
                                                     {% endfor %}

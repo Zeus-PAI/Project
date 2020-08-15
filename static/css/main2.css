@@ -103,17 +103,18 @@ iframe {
 
 .limiter {
   width: 1500px;
-  margin: -5cm auto;
+  margin: -1cm auto;
+  margin-left: 1.45cm;
   display: block;
-
+  position: static;
 display: run-in;
   
 }
 
 .container-table100 {
-  width: 1500px;
+  width: 1200px;
   min-height: 100vh;
-
+  position: absolute;
 
   display: -webkit-box;
   display: -webkit-flex;
@@ -133,8 +134,9 @@ display: run-in;
 /*//////////////////////////////////////////////////////////////////
 [ Table ]*/
 table {
-  width: 100%;
+
   background-color: #fff;
+  position: static;
 }
 
 th, td {

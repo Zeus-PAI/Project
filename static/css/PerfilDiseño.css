@@ -9,7 +9,10 @@ html *{
     line-height: 1.5em;
     text-transform: uppercase;
 }
-
+.row2 {
+    width: 1300px;
+    margin-left: -2.5cm;
+}
 .name h6 {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -627,7 +630,7 @@ footer p a:hover {
 table {
   width: 100%;
   background-color: #fff;
-  
+  margin-top: 5cm;
 }
 
 th, td {

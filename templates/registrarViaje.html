@@ -5,41 +5,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registra un nuevo Viaje</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/form.css')}}">
 </head>
 
 <body>
-    <h1>Registra un nuevo Viaje</h1>
-    <br>
+    <form class="login-form" action="/registrarViajes" method="POST" enctype="multipart/form-data">
 
-    {% if message %}
-    <p style="color: red;">{{message}}</p>
-    <br>
-    {% endif %}
-    <form action="/registrarViajes" method="POST" enctype="multipart/form-data">
-        Ingrese los datos solicitados
+        <center>
+            <div class="left_area">
+                <h2>REGISTRA UN <span>NUEVO VIAJE</span></h2>
+            </div>
+        </center>
+        <center>
+            <div class="form-input-material">
+                Fecha de incio de viaje: <br>
+                <input type="date" name="fechaInicio" id="fechaInicio" class="form-control-material" required>
+                
+            </div>
+            <br><br>
+            <div class="form-input-material">
+                Fecha de regreso del viaje: <br>
+                <input type="date" name="fechaRegreso" id="fechaRegreso" class="form-control-material" required>
+                
+            </div>
+            <br><br>
+            <div class="form-input-material">
+                País de destino: <br>
+                <input type="text" name="paisDestino" id="paisDestino" class="form-control-material" required>
+                
+            </div>
+            <br><br>
+            <div class="form-input-material">
+                Dirección de estadía: <br>
+                <input type="text" name="direccionEstadia" id="direccionEstadia" class="form-control-material" required>
+                
+            </div>
+            <br><br>
+            <div class="form-input-material">
+                Cobro por libra: <br>
+                <input type="number" name="cobroLibra" min="0" step="0.5" class="form-control-material" required>
+                
+            </div>
+            <br><br>
+            <div class="form-input-material">
+                Número de teléfono: <br>
+                <input type="text" name="telefono" id="telefono" class="form-control-material" required>
+                
+            </div>
+            <br><br>
+            <div class="form-input-material">
+                Imagen de referencia (Opcional y Nombre de archivo sin espacios): <br>
+                <input type="file" name="file" id="file" class="form-control-material" autocomplete="off">
+                
+            </div>
+        </center>
         <br><br>
-        Fecha de incio de viaje: <br>
-        <input type="date" name="fechaInicio" id="fechaInicio" required>
-        <br><br>
-        Fecha de regreso del viaje: <br>
-        <input type="date" name="fechaRegreso" id="fechaRegreso" required>
-        <br><br>
-        País de destino: <br>
-        <input type="text" name="paisDestino" id="paisDestino" required>
-        <br><br>
-        Dirección de estadía: <br>
-        <input type="text" name="direccionEstadia" id="direccionEstadia" required>
-        <br><br>
-        Cobro por libra: <br>
-        <input type="number" name="cobroLibra" min="0" step="0.5" required>
-        <br><br>
-        Número de teléfono: <br>
-        <input type="text" name="telefono" id="telefono" required>
-        <br><br>
-        Imagen de referencia (Opcional y Nombre de archivo sin espacios): <br>
-        <input type="file" name="file" id="file" autocomplete="off">
-        <br><br>
-        <input type="submit" value="Send">
+        <center>
+            <button type="submit" class="btn btn-primary btn-ghost">Agregar</button>
+        </center>
     </form>
 </body>
 

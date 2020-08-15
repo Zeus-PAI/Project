@@ -374,3 +374,14 @@ class NotasViajero(Logic):
         sql = f"SELECT * FROM proyectozeus.calificaciones_view where idUserCalificado='{id}';"
         data = database.executeQuery(sql)
         return data
+
+
+class ViajesDispViajero(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def ShowViajesDisp(self, id):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.viajes where idViajero='{id}' and Activo = 'Sí';"
+        data = database.executeQuery(sql)
+        return data
