@@ -381,11 +381,13 @@ def ShowPedidos2():
     if request.method == "GET":
         logic2 = UserShowPedidos()
         data = logic2.ShowPedidos(diccionarioUsuarios.get("idUser"))
-        return render_template("ver_pedidos.html", datos=data)
+        User = diccionarioUsuarios.get("User")
+        return render_template("ver_pedidos.html", datos=data, User=User)
     else:  # "POST"
         logic2 = UserShowPedidos()
         data = logic2.ShowPedidos(diccionarioUsuarios.get("idUser"))
-        return render_template("ver_pedidos.html", datos=data)
+        User = diccionarioUsuarios.get("User")
+        return render_template("ver_pedidos.html", datos=data, User=User)
 
 
 @app.route("/verviajeros", methods=["GET", "POST"])
@@ -492,7 +494,7 @@ def ShowSolicitudPedidos():
         idViajero = int("".join(map(str, idV[0])))
         logic2 = SolicitudPedidos()
         data = logic2.SolicitudPedidos(idViajero)
-        return render_template("solicitudes_pedidos.html", datos=data)
+        return render_template("solicitudes_pedidos.html", datos=data, idViajero=idViajero)
     else:  # "POST"
         idSolicitudPedido = request.form["idsolicitud"]
         Estado = request.form["estadop"]
@@ -503,7 +505,7 @@ def ShowSolicitudPedidos():
         idViajero = int("".join(map(str, idV[0])))
         logic2 = SolicitudPedidos()
         data = logic2.SolicitudPedidos(idViajero)
-        return render_template("dashboard_viajero.html", datos=data)
+        return render_template("dashboard_viajero.html", datos=data, idViajero=idViajero)
 
 
 @app.route("/pedidosUsuario/<int:id>", methods=["GET", "POST"])

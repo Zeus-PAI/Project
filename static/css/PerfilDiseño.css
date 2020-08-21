@@ -379,6 +379,8 @@ p {
 
 .profile-page .profile-tabs {
     margin-top: 4.284rem;
+    margin-bottom: 1cm;
+    padding-bottom: 1cm;
 }
 
 .nav-pills, .nav-tabs {
@@ -603,6 +605,7 @@ footer p a:hover {
   width: 1500px;
   margin: -9cm auto;
   margin-left: -5cm;
+  margin-top: -9cm;
   
 }
 

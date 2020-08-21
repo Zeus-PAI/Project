@@ -91,13 +91,13 @@ iframe {
 
 .limiter {
   width: 1500px;
-  margin: 0 auto;
   position: static;
+  margin-left: -1.5cm;
   
 }
 
 .container-table100 {
-  width: 1500px;
+  width: 1400px;
   
 
   display: -webkit-box;
@@ -118,10 +118,10 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Table ]*/
 table {
-  width: 90%;
+  width: 900px;
   background-color: #fff;
   position: absolute;
-  margin-left: -2.4cm;
+  margin-left: 4.5cm;
 }
 
 th, td {
@@ -130,29 +130,23 @@ th, td {
   align-content: center;
 }
 
-.column100 {
-  padding-left: 25px;
-}
 
-.column100.column1 {
-  width: 100px;
-}
+
 
 .column100.column0 {
   width: 50px;
+  padding-left: 25px;
 }
 
-.column100.column2 {
-  width: 50px;
+
+.column100.column12 {
+  padding-right: 25px;
+  padding-left: 25px;
+  margin-right: 25px;
+  margin-left: 25px;
+  width: 200px;
 }
 
-.column100.column3 {
-  width: 100px;
-}
-
-.column100.column4 {
-  width: 100px;
-}
 .row100.head th {
   padding-top: 24px;
   padding-bottom: 20px;

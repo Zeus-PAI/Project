@@ -9,8 +9,12 @@ body {
 
     .btn {
       padding: 8px 20px;
-      border-radius: 0;
+      border-radius: 4;
       overflow: hidden;
+      margin-left:-1.3cm;
+      background-color: #c76728;
+      border-color: #c76728;
+    
       ::before {
         position: absolute;
         content: "";
@@ -25,6 +29,7 @@ body {
         color: #c76728;
         transform: translateX(-100%);
         transition: 0.6s;
+      
       }
 
       &:hover {

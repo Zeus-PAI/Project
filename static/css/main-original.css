@@ -91,14 +91,14 @@ iframe {
 
 .limiter {
   width: 1500px;
-  margin: 0 auto;
-  position: static;
+  margin: -5cm auto;
   
 }
 
 .container-table100 {
   width: 1500px;
-  
+  min-height: 100vh;
+
 
   display: -webkit-box;
   display: -webkit-flex;
@@ -118,41 +118,25 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Table ]*/
 table {
-  width: 90%;
+  width: 100%;
   background-color: #fff;
-  position: absolute;
-  margin-left: -2.4cm;
 }
 
 th, td {
   font-weight: unset;
   padding-right: 10px;
-  align-content: center;
 }
 
 .column100 {
+  width: 130px;
   padding-left: 25px;
 }
 
 .column100.column1 {
-  width: 100px;
+  width: 265px;
+  padding-left: 42px;
 }
 
-.column100.column0 {
-  width: 50px;
-}
-
-.column100.column2 {
-  width: 50px;
-}
-
-.column100.column3 {
-  width: 100px;
-}
-
-.column100.column4 {
-  width: 100px;
-}
 .row100.head th {
   padding-top: 24px;
   padding-bottom: 20px;
@@ -188,10 +172,10 @@ th, td {
 }
 
 .table100.ver5 .row100:hover td {
-  color: #e25f07;
+  color: #fe3e64;
 }
 
-.table100.ver5 .hov-column-ver5 {color: #e25f07;}
+.table100.ver5 .hov-column-ver5 {color: #fe3e64;}
 .table100.ver5 .hov-column-ver5::before {
   content: "";
   display: block;
@@ -207,11 +191,11 @@ th, td {
 
 .table100.ver5 .hov-column-head-ver5 {
   background-color: #1a3f48 !important;
-  color: #e25f07;
+  color: #fe3e64;
 }
 
 .table100.ver5 .row100 td:hover {
-  color: #e25f07;
+  color: #fe3e64;
 }
 
 .table100.ver5 .row100 td:hover:before {
@@ -223,13 +207,10 @@ th, td {
   top: 0;
   left: 0;
   pointer-events: none;
-  border: 1px solid #e25f07;
+  border: 1px solid #fe3e64;
 }
 
-table,
-        th,
-        td {
-            
-            border-collapse: collapse;
-        }
+
 /*==================================================================
+
+
