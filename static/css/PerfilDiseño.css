@@ -641,7 +641,7 @@ th, td {
   padding-right: 10px;
 }
 
-.column100 {
+.column100.column0 {
   width: 130px;
   padding-left: 25px;
 }

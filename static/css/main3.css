@@ -92,12 +92,12 @@ iframe {
 .limiter {
   width: 1500px;
   position: static;
-  margin-left: -1.5cm;
+  margin-left: -5cm;
   
 }
 
 .container-table100 {
-  width: 1400px;
+  width: 1500px;
   
 
   display: -webkit-box;
@@ -118,7 +118,7 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Table ]*/
 table {
-  width: 900px;
+  width: 90%;
   background-color: #fff;
   position: absolute;
   margin-left: 4.5cm;
@@ -139,7 +139,7 @@ th, td {
 }
 
 
-.column100.column12 {
+.column100.column11 {
   padding-right: 25px;
   padding-left: 25px;
   margin-right: 25px;

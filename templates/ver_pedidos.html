@@ -38,7 +38,7 @@
 
         <center>
             <div class="left_area">
-                <h2>ACTUALIZA TUS <span>PEDIDOS</span></h2>
+                <h2>TUS <span>PEDIDOS</span></h2>
             </div>
         </center>
         <h4> Mostrando Pedidos de: {{User}}</h4>
@@ -53,20 +53,20 @@
                         <thead>
                             <tr class="row100 head">
                                 <th class="column100 column0" data-column="column0">ID Pedido</th>
-                                <th class="column100 column2" data-column="column2">Viajero</th>
-                                <th class="column100 column3" data-column="column3">ID Viaje</th>
-                                <th class="column100 column4" data-column="column4">Nombre del artículo</th>
-                                <th class="column100 column5" data-column="column5">Estado</th>
-                                <th class="column100 column6" data-column="column6">Precio (USD)</th>
-                                <th class="column100 column7" data-column="column7">Peso (lb)</th>
-                                <th class="column100 column8" data-column="column8">Cantidad</th>
-                                <th class="column100 column9" data-column="column9">Otras especificaciones</th>
-                                <th class="column100 column10" data-column="column10">URL</th>
-                                <th class="column100 column11" data-column="column11">País</th>
-                                <th class="column100 column12" data-column="column12">Fecha estimada de entrega</th>
-                                <th class="column100 column13" data-column="column13">Total</th>
-                                <th class="column100 column14" data-column="column14">Actualizar</th>
-                                <th class="column100 column15" data-column="column15">Calificar</th>
+                                <th class="column100 column1" data-column="column1">Viajero</th>
+                                <th class="column100 column2" data-column="column2">ID Viaje</th>
+                                <th class="column100 column3" data-column="column3">Nombre del artículo</th>
+                                <th class="column100 column4" data-column="column4">Estado</th>
+                                <th class="column100 column5" data-column="column5">Precio (USD)</th>
+                                <th class="column100 column6" data-column="column6">Peso (lb)</th>
+                                <th class="column100 column7" data-column="column7">Cantidad</th>
+                                <th class="column100 column8" data-column="column8">Otras especificaciones</th>
+                                <th class="column100 column9" data-column="column9">URL</th>
+                                <th class="column100 column10" data-column="column10">País</th>
+                                <th class="column100 column11" data-column="column11">Fecha estimada de entrega</th>
+                                <th class="column100 column12" data-column="column12">Total</th>
+                                <th class="column100 column13" data-column="column13">Actualizar</th>
+                                <th class="column100 column14" data-column="column14">Calificar</th>
 
                             </tr>
                         </thead>
@@ -74,29 +74,29 @@
                             {% for dato in datos%}
                             <tr class="row100">
                                 <td class="column100 column0" data-column="column0">{{dato[0]}}</td>
-                                <td class="column100 column2" data-column="column2">{{dato[4]}}</td>
-                                <td class="column100 column3" data-column="column3">{{dato[5]}}</td>
-                                <td class="column100 column4" data-column="column4">{{dato[6]}}</td>
-                                <td class="column100 column5" data-column="column5">{{dato[7]}}</td>
-                                <td class="column100 column6" data-column="column6">${{dato[8]}}</td>
-                                <td class="column100 column7" data-column="column7">{{dato[9]}}</td>
-                                <td class="column100 column8" data-column="column8">{{dato[10]}}</td>
-                                <td class="column100 column9" data-column="column9">{{dato[11]}}</td>
-                                <td class="column100 column10" data-column="column10">{{dato[12]}}</td>
-                                <td class="column100 column11" data-column="column11">{{dato[13]}}</td>
-                                <td class="column100 column12" data-column="column12">{{dato[14]}}</td>
-                                <td class="column100 column13" data-column="column13">${{dato[15]}}</td>
+                                <td class="column100 column1" data-column="column1">{{dato[4]}}</td>
+                                <td class="column100 column2" data-column="column2">{{dato[5]}}</td>
+                                <td class="column100 column3" data-column="column3">{{dato[6]}}</td>
+                                <td class="column100 column4" data-column="column4">{{dato[7]}}</td>
+                                <td class="column100 column5" data-column="column5">${{dato[8]}}</td>
+                                <td class="column100 column6" data-column="column6">{{dato[9]}}</td>
+                                <td class="column100 column7" data-column="column7">{{dato[10]}}</td>
+                                <td class="column100 column8" data-column="column8">{{dato[11]}}</td>
+                                <td class="column100 column9" data-column="column9">{{dato[12]}}</td>
+                                <td class="column100 column10" data-column="column10">{{dato[13]}}</td>
+                                <td class="column100 column11" data-column="column11">{{dato[14]}}</td>
+                                <td class="column100 column12" data-column="column12">${{dato[15]}}</td>
                                 {% if (dato[7] != 'Entregado'): %}
-                                <td class="column100 column14" data-column="column14"> <a
+                                <td class="column100 column13" data-column="column13"> <a
                                         href="/pedidosUsuario/{{dato[0]}}">Actualizar tu Pedido</a></td>
                                 {%else:%}
-                                <td class="column100 column14" data-column="column14">Actualizado</td>
+                                <td class="column100 column13" data-column="column13">Actualizado</td>
                                 {%endif%}
                                 {% if (dato[16] == 0): %}
-                                <td class="column100 column15" data-column="column15"> <a
+                                <td class="column100 column14" data-column="column14"> <a
                                         href="/calificarviajero/{{dato[0]}}">Califica tu Pedido</a></td>
                                 {%else:%}
-                                <td class="column100 column15" data-column="column15">Calificado</td>
+                                <td class="column100 column14" data-column="column14">Calificado</td>
                                 {%endif%}
 
                             </tr>

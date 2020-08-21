@@ -5,7 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registra un nuevo Viaje</title>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/form.css')}}">
+    <link rel="icon" type="image/png" href="{{url_for('static' , filename = 'images/icons/favicon.ico')}}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'vendor-copy/bootstrap/css/bootstrap.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'vendor-copy/animate/animate.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'vendor-copy/select2/select2.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'vendor-copy/perfect-scrollbar/perfect-scrollbar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/form2.css')}}">
 </head>
 
 <body>
@@ -20,50 +35,61 @@
             <div class="form-input-material">
                 Fecha de incio de viaje: <br>
                 <input type="date" name="fechaInicio" id="fechaInicio" class="form-control-material" required>
-                
+
             </div>
-            <br><br>
+            <br>
             <div class="form-input-material">
                 Fecha de regreso del viaje: <br>
                 <input type="date" name="fechaRegreso" id="fechaRegreso" class="form-control-material" required>
-                
+
             </div>
-            <br><br>
+            <br>
             <div class="form-input-material">
                 País de destino: <br>
                 <input type="text" name="paisDestino" id="paisDestino" class="form-control-material" required>
-                
+
             </div>
-            <br><br>
+            <br>
             <div class="form-input-material">
                 Dirección de estadía: <br>
                 <input type="text" name="direccionEstadia" id="direccionEstadia" class="form-control-material" required>
-                
+
             </div>
-            <br><br>
+            <br>
             <div class="form-input-material">
                 Cobro por libra: <br>
                 <input type="number" name="cobroLibra" min="0" step="0.5" class="form-control-material" required>
-                
+
             </div>
-            <br><br>
+            <br>
             <div class="form-input-material">
                 Número de teléfono: <br>
                 <input type="text" name="telefono" id="telefono" class="form-control-material" required>
-                
+
             </div>
-            <br><br>
+            <br>
             <div class="form-input-material">
                 Imagen de referencia (Opcional y Nombre de archivo sin espacios): <br>
-                <input type="file" name="file" id="file" class="form-control-material" autocomplete="off">
-                
+                <center><input type="file" name="file" id="file" class="form-control-material" autocomplete="off">
+                </center>
+
             </div>
         </center>
-        <br><br>
+        <br>
         <center>
             <button type="submit" class="btn btn-primary btn-ghost">Agregar</button>
         </center>
     </form>
+
+    <!--===============================================================================================-->
+    <script src="static\vendor-copy\jquery\jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="static\vendor-copy\bootstrap\js\popper.js"></script>
+    <script src="static\vendor-copy\bootstrap\js\bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="static\vendor-copy\select2\select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="static\js\main3.js"></script>
 </body>
 
 </html>
