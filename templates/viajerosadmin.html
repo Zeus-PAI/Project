@@ -4,83 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Viajeros</title>
-    <style>
-        table {
-            width: 100%;
-        }
-
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 15px;
-            text-align: left;
-        }
-
-        #t01 tr:nth-child(even) {
-            background-color: #eee;
-        }
-
-        #t01 tr:nth-child(odd) {
-            background-color: #fff;
-        }
-
-        #t01 th {
-            background-color: black;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="{{url_for('static' , filename = 'css/DiseñoCard.css')}}">
 </head>
 <body>
-    <h1>
-        <center>Lista de todos los viajeros</center>
-    </h1>
-    {% if message %}
-    <p style="color: red;">{{message}}</p>
-    <br>
-    {% endif %}
-    <br><br>
-    <table class="tablaOrdenes" id="t01">
+    <div class="boxContent">
+        <center>
+            <div class="left_area">
+                <h1>VIAJEROS <span>DISPONIBLES</span></h1>
+            </div>
+        </center>
+    </div>
 
-        <tr>
-            <th>ID Viajero</th>
-            <th>ID Usuario</th>
-            <th>Usuario</th>
-            <th>Nombre Completo</th>
-            <th>Correo</th>
-            <th>Cantidades Viajes</th>
-            <th>Cantidad Pedidos</th>
-            <th>Calificacion</th>
-            <th>Correo</th>
-            <th>Contraseña</th>
-            <th>Telefono</th>
-            <th>Pais</th>
-            <th>Foto</th>
-            <th>Perfil</th>
-        </tr>
+    <br>
+    <div class="center">
         {% for dato in datos%}
-        <tr>
-            <td>{{dato[0]}}</td>
-            <td>{{dato[1]}}</td>
-            <td>{{dato[2]}}</td>
-            <td>{{dato[3]}}</td>
-            <td>{{dato[4]}}</td>
-            <td>{{dato[5]}}</td>
-            <td>{{dato[6]}}</td>
-            <td>{{dato[7]}}</td>
-            <td>{{dato[8]}}</td>
-            <td>{{dato[9]}}</td>
-            <td>{{dato[10]}}</td>
-            <td>{{dato[11]}}</td>
-            <td>{{dato[12]}}</td>
-            <td> <a href="/perfilViajero/{{dato[1]}}">Ver Perfil</a></td>
-        </tr>
+        <div class="card">
+            <div class="additional">
+                <div class="user-card">
+                    <div class="level center">
+                        Viajero {{dato[0]}}
+                    </div>
+                    <div class="points center">
+                        <a href="/perfilViajero/{{dato[1]}}">Ver Perfil</a>
+                    </div>
+                    <svg width="110" height="110" viewbox="0 0 250 250" xmlns="http://www.w3.org/2000/svg" role="img"
+                        aria-labelledby="title desc" class="center">
+                        <g stroke="none" stroke-width="0" clip-path="url(#scene)">
+                            <g id="head">
+                                <img src="static\uploads\{{dato[11]}}" alt="Avatar" height="100" r="100">
+                            </g>
+                            <g id="shirt">
+
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <div class="more-info">
+                    <h1>{{dato[3]}}</h1>
+                    <div class="coords">
+                        <span>Teléfono</span>
+                        <span>{{dato[9]}}</span>
+                    </div>
+                    <div class="coords">
+                        <span>Correo</span>
+                        <span>{{dato[7]}}</span>
+                    </div>
+                    <div class="stats">
+                        <div>
+                            <div class="title">Viajes</div>
+                            <i class="fas fa-trophy"></i>
+                            <div class="value">{{dato[4]}}</div>
+                        </div>
+                        <div>
+                            <div class="title">Pedidos</div>
+                            <i class="fas fa-gamepad"></i>
+                            <div class="value">{{dato[5]}}</div>
+                        </div>
+                        <div>
+                            <div class="title">Calificación</div>
+                            <i class="fas fa-group"></i>
+                            {%if dato[5] == 0 :%}
+                            <div class="value">N/A</div>
+                            {%elif dato[6] != none:%}
+                            <div class="value">{{dato[6]}}</div>
+                            {%else:%}
+                            <div class="value">N/A</div>
+                            {%endif%}
+
+                        </div>
+                        <div>
+                            <div class="title">Eficiencia</div>
+                            <i class="fas fa-coffee"></i>
+                            <div class="value infinity">∞</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="general">
+                <h1>{{dato[3]}}</h1>
+                <div class="left_area">
+                    <h2>Usuario: <span>@{{dato[2]}}</span></h2>
+                </div>
+                <br>
+                <div class="left_area">
+                    <h2>País: <span>{{dato[10]}}</span></h2>
+                </div>
+                <span class="more">Muevete sobre la carta para más info</span>
+            </div>
+        </div>
         {% endfor %}
-    </table>
+
+
+    </div>
+
 </body>
 </html>

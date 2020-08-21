@@ -187,10 +187,10 @@ th, td {
 }
 
 .table100.ver5 .row100:hover td {
-  color: #fe3e64;
+  color: #e25f07;
 }
 
-.table100.ver5 .hov-column-ver5 {color: #fe3e64;}
+.table100.ver5 .hov-column-ver5 {color: #e25f07;}
 .table100.ver5 .hov-column-ver5::before {
   content: "";
   display: block;
@@ -206,11 +206,11 @@ th, td {
 
 .table100.ver5 .hov-column-head-ver5 {
   background-color: #1a3f48 !important;
-  color: #fe3e64;
+  color: #e25f07;
 }
 
 .table100.ver5 .row100 td:hover {
-  color: #fe3e64;
+  color: #e25f07;
 }
 
 .table100.ver5 .row100 td:hover:before {
@@ -222,7 +222,7 @@ th, td {
   top: 0;
   left: 0;
   pointer-events: none;
-  border: 1px solid #fe3e64;
+  border: 1px solid #e25f07;
 }
 
 /*==================================================================
