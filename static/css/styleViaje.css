@@ -348,4 +348,32 @@ label {
   .booking-form {
     padding: 35px 30px 51px 30px; } }
 
+.boxContent {
+      font-family: "Roboto", sans-serif;
+      width: 1520px;
+      align-content: center;
+
+      align-items: center;
+      padding: 50px 40px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 0.4px 0.4px rgba(29, 29, 29, 0.109),
+        0 1px 1px rgba(29, 29, 29, 0.109),
+        0 2.1px 2.1px rgba(29, 29, 29, 0.109),
+        0 4.4px 4.4px rgba(29, 29, 29, 0.109),
+        0 12px 12px rgba(29, 29, 29, 0.109);
+  }
+
+  .left_area h1{
+    color: #fff;
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 900;
+  }
+  
+  .left_area span{
+    color: #c76728;
+  }
+
 /*# sourceMappingURL=style.css.map */
