@@ -2,119 +2,176 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        .column {
-            float: left;
-            width: 50%;
-            padding: 15px;
-            height: 450px;
-        }
-
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-    </style>
     <title>Confirma Tu Pedido</title>
+
+    <link rel="icon" type="image/png" href="{{url_for('static' , filename = 'images/icons/favicon.ico')}}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'vendor-copy/bootstrap/css/bootstrap.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'vendor-copy/animate/animate.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'vendor-copy/select2/select2.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'vendor-copy/perfect-scrollbar/perfect-scrollbar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/formPedido.css')}}">
 </head>
 <body>
 
-    <h2>
-        <center>Confirma Tu Pedido</center>
-    </h2>
-    <form action="/confirmarpedido/{{id}}" method="POST">
+    <div class="left_area">
+        <center>
+            <h2>CONFIRMA TU <span>PEDIDO</span></h2>
+        </center>
+    </div>
+    <form class="login-form" action="/confirmarpedido/{{id}}" method="POST">
         <div class="row">
-            <div class="column" style="background-color:rgb(177, 180, 214);">
-                <h2>Datos de Viaje</h2>
+            <div class="column">
+                <div class="left_area">
+                    <h2>DATOS DEL <span>VIAJE</span></h2>
+                </div>
+                <div class="form-input-material">
+                    Viaje Seleccionado: <br>
+                    <input type="hidden" name="idviaje" id="idviaje" value="{{datos[0][0]}}"
+                        class="form-control-material">
+                    <input type="show" name="idviaje2" id="idviaje2" value="{{datos[0][0]}}"
+                        class="form-control-material" disabled>
 
+                </div>
+                <br><br>
+                <div class="form-input-material">
+                    Viajero Seleccionado: <br>
+                    <input type="show" name="viajero2" id="viajero2" value="{{datos[0][2]}}"
+                        class="form-control-material" disabled>
+                    <input type="hidden" name="idviajero" id="idviajero" value="{{datos[0][1]}}"
+                        class="form-control-material">
+                </div>
+                <br><br>
+                <div class="form-input-material">
 
-                Viaje Seleccionado: <br>
-                <input type="hidden" name="idviaje" id="idviaje" value="{{datos[0][0]}}">
-                <input type="show" name="idviaje2" id="idviaje2" value="{{datos[0][0]}}" disabled>
+                    Fecha Estimada de regreso: <br>
+                    <input type="hidden" name="fecharegreso" id="fecharegreso" value="{{datos[0][4]}}"
+                        class="form-control-material">
+                    <input type="show" name="fecharegreso2" id="fecharegreso2" value="{{datos[0][4]}}"
+                        class="form-control-material" disabled></div>
                 <br><br>
-                Viajero Seleccionado: <br>
-                <input type="show" name="viajero2" id="viajero2" value="{{datos[0][2]}}" disabled>
-                <input type="hidden" name="idviajero" id="idviajero" value="{{datos[0][1]}}">
+                <div class="form-input-material">
+
+                    País de importación: <br>
+                    <input type="hidden" name="pais" id="pais" value="{{datos[0][6]}}" class="form-control-material">
+                    <input type="show" name="pais2" id="pais2" value="{{datos[0][6]}}" class="form-control-material"
+                        disabled></div><br><br>
+                <div class="form-input-material">
+
+                    Cobro por libra (USD): <br>
+                    <input type="hidden" name="costo" id="costo" value="{{datos[0][9]}}" onchange="calcularCosto()"
+                        class="form-control-material">
+                    <input type="show" name="costo2" id="costo2" value="${{datos[0][9]}}" disabled
+                        onchange="calcularCosto()" class="form-control-material"></div>
                 <br><br>
-                Fecha Estimada de regreso: <br>
-                <input type="hidden" name="fecharegreso" id="fecharegreso" value="{{datos[0][4]}}">
-                <input type="show" name="fecharegreso2" id="fecharegreso2" value="{{datos[0][4]}}" disabled>
-                <br><br>
-                País de importación: <br>
-                <input type="hidden" name="pais" id="pais" value="{{datos[0][6]}}">
-                <input type="show" name="pais2" id="pais2" value="{{datos[0][6]}}" disabled>
-                <br><br>
-                Cobro por libra (USD): <br>
-                <input type="hidden" name="costo" id="costo" value="{{datos[0][9]}}" onchange="calcularCosto()">
-                <input type="show" name="costo2" id="costo2" value="${{datos[0][9]}}" disabled
-                    onchange="calcularCosto()">
-                <br><br>
-                Teléfono de Contacto: <br>
-                <input type="hidden" name="telefono" id="telefono" value="{{datos[0][10]}}">
-                <input type="show" name="telefono2" id="telefono2" value="{{datos[0][10]}}" disabled>
+                <div class="form-input-material">
+
+                    Teléfono de Contacto: <br>
+                    <input type="hidden" name="telefono" id="telefono" value="{{datos[0][10]}}"
+                        class="form-control-material">
+                    <input type="show" name="telefono2" id="telefono2" value="{{datos[0][10]}}" disabled
+                        class="form-control-material"></div>
             </div>
-            <div class="column" style="background-color:#ffb555;">
-                <h2>Datos de Pedido</h2>
-                idUsuario Solicitante:
+            <div class="column">
+                <div class="left_area">
+                    <h2>DATOS DEL <span>PEDIDO</span></h2>
+                </div>
+                <div class="form-input-material">
+
+                    Usuario Solicitante:
+                    <br>
+                    <input type="hidden" name="idUser" id="idUser" value="{{user}}" class="form-control-material">
+                    <input type="show" name="idUser2" id="idUser2" value="{{username}}" disabled
+                        class="form-control-material"></div><br>
+                <div class="form-input-material">
+                    Nombre del Artículo:
+                    <br>
+                    <input type="text" name="nombre" id="nombre" required class="form-control-material"></div>
                 <br>
-                <input type="hidden" name="idUser" id="idUser" value="{{user}}">
-                <input type="show" name="idUser2" id="idUser2" value="{{user}}" disabled>
-                <br><br>
-                Nombre del Artículo:
+                <div class="form-input-material">
+                    Cantidad:
+                    <br>
+                    <input type="number" min="1" step="1" name="cantidad" id="cantidad" value="0"
+                        onchange="calcularCosto()" required class="form-control-material"></div>
+
                 <br>
-                <input type="text" name="nombre" id="nombre" required>
-                <br><br>
-                Cantidad:
+                <div class="form-input-material">
+                    Precio (USD):
+                    <br>
+                    <input type="number" min="0" step="any" name="precio" id="precio" value="0"
+                        onchange="calcularCosto()" required class="form-control-material"></div>
                 <br>
-                <input type="number" min="1" step="1" name="cantidad" id="cantidad" value="0" onchange="calcularCosto()"
-                    required>
-                <br><br>
-                Precio (USD):
+                <div class="form-input-material">
+                    Peso (lb):
+                    <br>
+                    <input type="number" min="0" step="any" name="peso" id="peso" value="0" onchange="calcularCosto()"
+                        required class="form-control-material"></div>
                 <br>
-                $<input type="number" min="0" step="any" name="precio" id="precio" value="0" onchange="calcularCosto()"
-                    required>
-                <br><br>
-                Peso (lb):
+                <div class="form-input-material">
+                    Categoría:
+                    <br>
+                    <select name="categoria" id="categoria" required class="form-control-material">
+                        <option selected name="none" value="none">-</option>
+                        <option name="tecnologia" value="tecnologia">Teconología</option>
+                        <option name="ropa" value="ropa">Ropa y Calzado</option>
+                        <option name="joyeria" value="joyeria">Joyería y Accesorios</option>
+                        <option name="hogar" value="hogar">Artículos de Hogar</option>
+                        <option name="deportivo" value="deportivo">Deportivo</option>
+                        <option name="otro" value="otro">Otro</option>
+                    </select></div>
                 <br>
-                <input type="number" min="0" step="any" name="peso" id="peso" value="0" onchange="calcularCosto()"
-                    required>
-                <br><br>
-                Categoría:
+                <div class="form-input-material">
+                    URL:
+                    <br>
+                    <input type="text" name="url" id="url" required class="form-control-material"></div>
                 <br>
-                <select name="categoria" id="categoria" required>
-                    <option selected name="none" value="none">-</option>
-                    <option name="tecnologia" value="tecnologia">Teconología</option>
-                    <option name="ropa" value="ropa">Ropa y Calzado</option>
-                    <option name="joyeria" value="joyeria">Joyería y Accesorios</option>
-                    <option name="hogar" value="hogar">Artículos de Hogar</option>
-                    <option name="deportivo" value="deportivo">Deportivo</option>
-                    <option name="otro" value="otro">Otro</option>
-                </select>
+                <div class="form-input-material">
+                    Otras especificaciones (Opcional):
+                    <br>
+                    <textarea name="descripcion" rows="2" cols="20" class="form-control-material"></textarea></div>
                 <br>
-                URL:
-                <br>
-                <input type="text" name="url" id="url" required>
-                <br>
-                Otras especificaciones (Opcional):
-                <br>
-                <textarea name="descripcion" rows="2" cols="20"></textarea>
-                <br><br>
             </div>
         </div>
-        <br><br><br><br><br>
-        <center>Total</center>
-        <br>
-        <input type="hidden" name="total" id="total" value="0">
-        <center>
-            <div id="resultado" style="color: red; font-family: Arial, Helvetica, sans-serif;">
-                $ 0
-            </div>
-        </center>
+        <br><br><br><br><br><br><br><br>
+        <div class="column2">
+
+
+
+            <br>
+            <input type="hidden" name="total" id="total" value="0">
+            <center>
+                <div class="left_area">
+                    <div class="form-input-material">
+
+                        <h2><span>Total</span></h2>
+
+                        <br>
+
+                        <h2>
+                            <div id="resultado" class="form-control-material" style="margin-left: -0.5cm;">
+                                $ 0
+                            </div>
+
+                        </h2>
+
+                    </div>
+                </div>
+                <br>
+            </center>
+
+        </div>
+        <center><button style="margin-right: -29.5cm; margin-top: -18.7cm;" type="submit"
+                class="btn btn-primary btn-ghost">Solicitar
+                Pedido</button></center>
 
         <script type="text/javascript">
             function calcularCosto() {
@@ -128,8 +185,16 @@
                 document.getElementById("total").value = +result.toFixed(2);
             }
         </script>
-        <center><input type="submit" value="Solicitar Pedido"></center>
-    </form>
 
+    </form>
+    <!--===============================================================================================-->
+    <script src="static\vendor-copy\jquery\jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="static\vendor-copy\bootstrap\js\popper.js"></script>
+    <script src="static\vendor-copy\bootstrap\js\bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="static\vendor-copy\select2\select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="static\js\main3.js"></script>
 </body>
 </html>

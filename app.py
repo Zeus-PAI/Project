@@ -340,6 +340,7 @@ def ConfirmarPedido(id):
             datos=data,
             id=id,
             user=diccionarioUsuarios.get("idUser"),
+            username=diccionarioUsuarios.get("User")
         )
     else:  # "POST"
         logic = ConfirmarLogic()

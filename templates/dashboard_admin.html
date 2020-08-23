@@ -26,11 +26,11 @@
   <div class="sidebar">
     <center>
       {%if userfoto =="":%}
-      <img src="static\img\blankpic.png" alt="Circle Image" class="profile_image">
+      <img src="/static/img/blankpic.png" alt="Circle Image" class="profile_image">
       {%elif userfoto != none:%}
-      <img src="static\uploads\{{userfoto}}" alt="Circle Image" class="profile_image">
+      <img src="/static/uploads/{{userfoto}}" alt="Circle Image" class="profile_image">
       {%else:%}
-      <img src="static\img\blankpic.png" alt="Circle Image" class="profile_image">
+      <img src="/static/img/blankpic.png" alt="Circle Image" class="profile_image">
       {%endif%}
       <h4>{{userdata}}</h4>
     </center>
@@ -38,7 +38,7 @@
     <a href="/deleteuser"><i class="fas fa-user-times"></i><span>Eliminar usuario</span></a>
     <a href="/verviajeros"><i class="fas fa-clipboard-list"></i><span>Ver lista de viajeros</span></a>
     <a href="/verpedidos"><i class="fas fa-list-ol"></i><span>Ver lista de pedidos</span></a>
-    
+
   </div>
   <!--sidebar end-->
 

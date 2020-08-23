@@ -26,11 +26,11 @@
   <div class="sidebar">
     <center>
       {%if userfoto =="":%}
-      <img src="static\img\blankpic.png" alt="Circle Image" class="profile_image">
+      <img src="/static/img/blankpic.png" alt="Circle Image" class="profile_image">
       {%elif userfoto != none:%}
-      <img src="static\uploads\{{userfoto}}" alt="Circle Image" class="profile_image">
+      <img src="/static/uploads/{{userfoto}}" alt="Circle Image" class="profile_image">
       {%else:%}
-      <img src="static\img\blankpic.png" alt="Circle Image" class="profile_image">
+      <img src="/static/img/blankpic.png" alt="Circle Image" class="profile_image">
       {%endif%}
       <h4>{{userdata}}</h4>
     </center>

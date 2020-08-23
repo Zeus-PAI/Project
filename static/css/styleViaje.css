@@ -261,14 +261,14 @@ input {
     color: #999; }
 
 .submit {
-  background: #f8ba0f;
+  background: #c76728;
   color: #fff;
   font-size: 14px;
   margin-top: 23px;
   padding: 15px 20px;
   cursor: pointer; }
   .submit:hover {
-    background-color: #ce9906; }
+    background-color: #a34b10; }
 
 label {
   font-size: 12px;
@@ -298,7 +298,8 @@ label {
   width: 215px; }
 
 .form-submit {
-  width: 140px; }
+  width: 140px;
+ }
 
 .plus {
   top: 23px; }
