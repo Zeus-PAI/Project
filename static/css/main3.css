@@ -128,6 +128,7 @@ th, td {
   font-weight: unset;
   padding-right: 10px;
   align-content: center;
+  text-align: center;
 }
 
 
@@ -135,7 +136,7 @@ th, td {
 
 .column100.column0 {
   width: 50px;
-  padding-left: 25px;
+  padding-left: 15px;
 }
 
 
@@ -223,6 +224,7 @@ th, td {
 table,
         th,
         td {
+          text-align: center;
             
             border-collapse: collapse;
         }

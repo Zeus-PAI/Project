@@ -38,11 +38,14 @@
 
         <center>
             <div class="left_area">
-                <h2>TUS <span>PEDIDOS</span></h2>
+                <h2>FACTURAS DE <span>PEDIDOS</span></h2>
             </div>
         </center>
-        <h4> Mostrando Pedidos de: {{User}}</h4>
 
+        <h4> Mostrando Pedidos con Factura de: {{User}}</h4><br><br>
+        <center>
+            Las facturas solo se generan para los pedidos que han sido aceptados por un viajero.
+        </center>
     </div>
     <br><br>
     <div class="limiter">
@@ -60,15 +63,11 @@
                                 <th class="column100 column5" data-column="column5">Precio (USD)</th>
                                 <th class="column100 column6" data-column="column6">Peso (lb)</th>
                                 <th class="column100 column7" data-column="column7">Cantidad</th>
-                                <th class="column100 column8" data-column="column8">Otras especificaciones</th>
-                                <th class="column100 column9" data-column="column9">URL</th>
                                 <th class="column100 column10" data-column="column10">País</th>
-                                <th class="column100 column11" data-column="column11">Fecha de pedido </th>
+                                <th class="column100 column11" data-column="column11">Fecha de Pedido</th>
                                 <th class="column100 column12" data-column="column12">Fecha estimada de entrega</th>
                                 <th class="column100 column13" data-column="column13">Total</th>
-                                <th class="column100 column14" data-column="column14">Actualizar</th>
-                                <th class="column100 column15" data-column="column15">Calificar</th>
-
+                                <th class="column100 column14" data-column="column14">Factura</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -82,23 +81,15 @@
                                 <td class="column100 column5" data-column="column5">${{dato[8]}}</td>
                                 <td class="column100 column6" data-column="column6">{{dato[9]}}</td>
                                 <td class="column100 column7" data-column="column7">{{dato[10]}}</td>
-                                <td class="column100 column8" data-column="column8">{{dato[11]}}</td>
-                                <td class="column100 column9" data-column="column9">{{dato[12]}}</td>
                                 <td class="column100 column10" data-column="column10">{{dato[13]}}</td>
                                 <td class="column100 column11" data-column="column11">{{dato[14]}}</td>
                                 <td class="column100 column12" data-column="column12">{{dato[15]}}</td>
                                 <td class="column100 column13" data-column="column13">${{dato[16]}}</td>
-                                {% if (dato[7] != 'Entregado'): %}
-                                <td class="column100 column13" data-column="column13"> <a
-                                        href="/pedidosUsuario/{{dato[0]}}">Actualizar tu Pedido</a></td>
-                                {%else:%}
-                                <td class="column100 column13" data-column="column13">Actualizado</td>
-                                {%endif%}
-                                {% if (dato[17] == 0): %}
+                                {% if (dato[7] != 'Anulado'): %}
                                 <td class="column100 column14" data-column="column14"> <a
-                                        href="/calificarviajero/{{dato[0]}}">Califica tu Pedido</a></td>
+                                        href="/FacturasUsuario/{{dato[0]}}/{{dato[1]}}">Ver Tu Factura</a></td>
                                 {%else:%}
-                                <td class="column100 column14" data-column="column14">Calificado</td>
+                                <td class="column100 column14" data-column="column14">Anulado</td>
                                 {%endif%}
 
                             </tr>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Factura de Tu Pedido</title>
+  <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/styleFactura.css')}}" media="all">
+</head>
+<body>
+  <header class="clearfix">
+    <div id="logo">
+      <img src="/static/img/TravelersLogo.jpeg">
+    </div>
+    <h1>FACTURA PEDIDO {{datos[0][0]}}</h1>
+    <div id="company" class="clearfix">
+      <div>TRAVELERS</div>
+      <div>(503) 7777-1212</div>
+      <div><a href="#">ClientesTravelers@gmail.com</a></div>
+    </div>
+    <div id="project">
+      <div><span style="padding-right: 1.5cm;">NOMBRE DEL VIAJERO</span> {{datos[0][4]}}</div><br>
+      <div><span style="padding-right: 1.5cm;">NOMBRE DEL CLIENTE</span> {{nombre}}</div><br>
+      <div><span style="padding-right: 1.5cm;">CORREO ELECTRÓNICO</span> <a href="#">{{dataUser[0][3]}}</a></div><br>
+      <div><span style="padding-right: 1.5cm;">NÚMERO DE TELÉFONO</span> {{dataUser[0][6]}}</div>
+      <br>
+      <div><span style="padding-right: 1.5cm;">FECHA DE PEDIDO</span> {{datos[0][14]}}
+      </div>
+      <br>
+      <div><span style="padding-right: 1.5cm;">FECHA ENTREGA</span> {{datos[0][15]}}</div>
+    </div>
+  </header>
+  <input type="hidden" name="costo" id="costo" value="0">
+  <input type="hidden" name="precio" id="precio" value="{{datos[0][8]}}">
+  <input type="hidden" name="cantidad" id="cantidad" value="{{datos[0][10]}}">
+  <input type="hidden" name="peso" id="peso" value="{{datos[0][9]}}">
+  <input type="hidden" name="total" id="total" value="0">
+  <input type="hidden" name="totalfinal" id="totalfinal" value="{{datos[0][16]}}">
+
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th class="service">ARTÍCULO</th>
+          <th class="desc">ESPECIFICACIONES</th>
+          <th>PRECIO</th>
+          <th>CANTIDAD</th>
+          <th>PESO</th>
+          <th>TOTAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="service">{{datos[0][6]}}</td>
+          <td class="desc">{{datos[0][11]}}</td>
+          <td class="unit">${{datos[0][8]}}</td>
+          <td class="qty">{{datos[0][10]}}</td>
+          <td class="qty">{{datos[0][9]}}</td>
+          <td class="total">
+            <div id="resultado">
+            </div>
+          </td>
+
+
+        </tr>
+        <tr>
+          <td class="textos" colspan="5">SUBTOTAL</td>
+          <td class="total">
+            <div id="resultado2">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="textos" colspan="5">COMISIÓN VIAJERO</td>
+          <td class="total">
+            <div id="resultado3">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5" class="grand total">TOTAL</td>
+          <td class="grand total">${{datos[0][16]}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="notices">
+      <div>NOTA:</div>
+      <div class="notice">Un pedido no puede anularse después de que su estado se vuelve "Comprado".</div>
+    </div>
+  </main>
+  <footer>
+    Travelers.
+  </footer>
+
+</body>
+<script type="text/javascript">
+  window.onload = function MostrarCosto() {
+    var precio = parseFloat(document.getElementById("precio").value);
+    var cantidad = parseFloat(document.getElementById("cantidad").value);
+    var cobro = parseFloat(document.getElementById("costo").value);
+    var peso = parseFloat(document.getElementById("peso").value);
+    var totalFinal = parseFloat(document.getElementById("totalfinal").value);
+    result = (precio * cantidad);
+    comision = totalFinal - result
+    console.log("result-->" + result)
+    document.getElementById("resultado").innerHTML = "$ " + +result.toFixed(2);
+    document.getElementById("resultado2").innerHTML = "$ " + +result.toFixed(2);
+    document.getElementById("resultado3").innerHTML = "$ " + +comision.toFixed(2);
+    document.getElementById("total").value = +result.toFixed(2);
+  }
+</script>
+</html>

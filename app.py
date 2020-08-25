@@ -31,6 +31,7 @@ from userlogic import (
     PerfilViajero,
     NotasViajero,
     ViajesDispViajero,
+    UserShowFacturas,
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -340,7 +341,7 @@ def ConfirmarPedido(id):
             datos=data,
             id=id,
             user=diccionarioUsuarios.get("idUser"),
-            username=diccionarioUsuarios.get("User")
+            username=diccionarioUsuarios.get("User"),
         )
     else:  # "POST"
         logic = ConfirmarLogic()
@@ -355,6 +356,7 @@ def ConfirmarPedido(id):
         Especificaciones = request.form["descripcion"]
         URL = request.form["url"]
         Pais = request.form["pais"]
+        FechaPedido = request.form["fecha"]
         Fecha = request.form["fecharegreso"]
         Total = request.form["total"]
         logic2 = PedidoLogic()
@@ -370,11 +372,14 @@ def ConfirmarPedido(id):
             Especificaciones,
             URL,
             Pais,
+            FechaPedido,
             Fecha,
             Total,
         )
         message = f"{rows} affected"
-        return render_template("dashboard_user.html", message=message)
+        Foto = diccionarioUsuarios.get("Foto")
+
+        return render_template("dashboard_user.html", message=message, userfoto=Foto)
 
 
 @app.route("/pedidosUsuario", methods=["GET", "POST"])
@@ -495,7 +500,9 @@ def ShowSolicitudPedidos():
         idViajero = int("".join(map(str, idV[0])))
         logic2 = SolicitudPedidos()
         data = logic2.SolicitudPedidos(idViajero)
-        return render_template("solicitudes_pedidos.html", datos=data, idViajero=idViajero)
+        return render_template(
+            "solicitudes_pedidos.html", datos=data, idViajero=idViajero
+        )
     else:  # "POST"
         idSolicitudPedido = request.form["idsolicitud"]
         Estado = request.form["estadop"]
@@ -506,7 +513,9 @@ def ShowSolicitudPedidos():
         idViajero = int("".join(map(str, idV[0])))
         logic2 = SolicitudPedidos()
         data = logic2.SolicitudPedidos(idViajero)
-        return render_template("dashboard_viajero.html", datos=data, idViajero=idViajero)
+        return render_template(
+            "dashboard_viajero.html", datos=data, idViajero=idViajero
+        )
 
 
 @app.route("/pedidosUsuario/<int:id>", methods=["GET", "POST"])
@@ -635,6 +644,50 @@ def ShowPerfilViajero2(id):
             Viajes=viajes,
             Pedidos=pedidos,
             Activos=viajesDisponibles,
+        )
+
+
+@app.route("/FacturasUsuario", methods=["GET", "POST"])
+def ShowFacturas():
+    if request.method == "GET":
+        logic2 = UserShowFacturas()
+        data = logic2.ShowFacturas(diccionarioUsuarios.get("idUser"))
+        User = diccionarioUsuarios.get("User")
+        return render_template("ver_facturas.html", datos=data, User=User)
+    else:  # "POST"
+        logic2 = UserShowFacturas()
+        data = logic2.ShowFacturas(diccionarioUsuarios.get("idUser"))
+        User = diccionarioUsuarios.get("User")
+        return render_template("ver_facturas.html", datos=data, User=User)
+
+
+@app.route("/FacturasUsuario/<int:id>/<int:idUsuario>", methods=["GET", "POST"])
+def FacturaPedido(id, idUsuario):
+    if request.method == "GET":
+        logic = ActualizarLogic()
+        data = logic.PedidoByid(id)
+        logic2 = PerfilUsuario()
+        dataUser = logic2.getPerfilUsuario(idUsuario)
+        return render_template(
+            "FacturaPedido.html",
+            datos=data,
+            id=id,
+            user=diccionarioUsuarios.get("idUser"),
+            nombre=diccionarioUsuarios.get("Nombre"),
+            dataUser=dataUser,
+        )
+    else:
+        logic = ActualizarLogic()
+        data = logic.PedidoByid(id)
+        logic2 = PerfilUsuario()
+        dataUser = logic2.getPerfilUsuario(idUsuario)
+        return render_template(
+            "FacturaPedido.html",
+            datos=data,
+            id=id,
+            user=diccionarioUsuarios.get("idUser"),
+            nombre=diccionarioUsuarios.get("Nombre"),
+            dataUser=dataUser,
         )
 
 

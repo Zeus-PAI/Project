@@ -34,6 +34,14 @@
                 <div class="left_area">
                     <h2>DATOS DEL <span>VIAJE</span></h2>
                 </div>
+
+                <div class="form-input-material">
+                    Fecha de Pedido: <br>
+                    <input type="date" id="fecha2" name="fecha" disabled>
+                    <input type="date" id="fecha" name="fecha">
+
+                </div>
+                <br><br>
                 <div class="form-input-material">
                     Viaje Seleccionado: <br>
                     <input type="hidden" name="idviaje" id="idviaje" value="{{datos[0][0]}}"
@@ -184,6 +192,21 @@
                 document.getElementById("resultado").innerHTML = "$ " + +result.toFixed(2);
                 document.getElementById("total").value = +result.toFixed(2);
             }
+        </script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+
+                var now = new Date();
+
+                var day = ("0" + now.getDate()).slice(-2);
+                var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+                var today = now.getFullYear() + "-" + (month) + "-" + (day);
+                $("#fecha").val(today);
+            });
         </script>
 
     </form>

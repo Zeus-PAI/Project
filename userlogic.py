@@ -194,15 +194,16 @@ class PedidoLogic(Logic):
         Especificaciones,
         URL,
         Pais,
+        FechaPedido,
         Fecha,
         Total,
     ):
         database = self.get_databaseXObj()
         sql = (
             "INSERT INTO `proyectozeus`.`pedidos` (`idPedido`, `idUsuario`, `idViajero`, `idViaje`, `NombreArticulo`, `EstadoPedido`, "
-            + "`Precio`, `Peso`, `Categoria`, `Cantidad`, `Especificaciones`, `URL`, `Pais`, `FechaEntrega`, `Total`, `Calificado`) "
+            + "`Precio`, `Peso`, `Categoria`, `Cantidad`, `Especificaciones`, `URL`, `Pais`, `FechaPedido`,`FechaEntrega`, `Total`, `Calificado`) "
             + f"VALUES ('0', '{idUsuario}', '{idViajero}', '{idViaje}', '{NombreArticulo}', 'Pendiente', '{Precio}', '{Peso}', '{Categoria}',"
-            + f"'{Cantidad}', '{Especificaciones}', '{URL}', '{Pais}', '{Fecha}', '{Total}', '0');"
+            + f"'{Cantidad}', '{Especificaciones}', '{URL}', '{Pais}', '{FechaPedido}','{Fecha}', '{Total}', '0');"
         )
         rows = database.executeNonQueryRows(sql)
         return rows
@@ -383,5 +384,16 @@ class ViajesDispViajero(Logic):
     def ShowViajesDisp(self, id):
         database = self.get_databaseXObj()
         sql = f"SELECT * FROM proyectozeus.viajes where idViajero='{id}' and Activo = 'Sí';"
+        data = database.executeQuery(sql)
+        return data
+
+
+class UserShowFacturas(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def ShowFacturas(self, id):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.pedidos_view where Estado != 'Pendiente' and Estado != 'Rechazado' and idUsuario = '{id}';"
         data = database.executeQuery(sql)
         return data

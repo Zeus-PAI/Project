@@ -128,6 +128,7 @@ table {
 th, td {
   font-weight: unset;
   padding-right: 10px;
+  text-align: center;
 }
 
 .column100 {

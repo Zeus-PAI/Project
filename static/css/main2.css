@@ -121,17 +121,18 @@ table {
   width: 90%;
   background-color: #fff;
   position: absolute;
-  margin-left: -2.4cm;
+  margin-left: -1cm;
 }
 
 th, td {
   font-weight: unset;
   padding-right: 10px;
   align-content: center;
+  text-align: center;
 }
 
-.column100 {
-  padding-left: 25px;
+.column100.column0 {
+  padding-left: 15px;
 }
 
 .column100.column1 {
@@ -152,7 +153,13 @@ th, td {
 
 .column100.column4 {
   width: 100px;
+  
 }
+
+.column100.column8 {
+  width: 90px;
+}
+
 .row100.head th {
   padding-top: 24px;
   padding-bottom: 20px;
