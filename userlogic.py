@@ -397,3 +397,38 @@ class UserShowFacturas(Logic):
         sql = f"SELECT * FROM proyectozeus.pedidos_view where Estado != 'Pendiente' and Estado != 'Rechazado' and idUsuario = '{id}';"
         data = database.executeQuery(sql)
         return data
+
+
+class AdminShowFacturas(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def ShowAllFacturas(self):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.pedidos_view where Estado != 'Pendiente' and Estado != 'Rechazado';"
+        data = database.executeQuery(sql)
+        return data
+
+
+class AdminShowCalificaciones(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def ShowAllNotas(self):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.calificaciones_view;"
+        data = database.executeQuery(sql)
+        return data
+
+
+class UpdatePerfil(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def UpdatePerfil(self, id, Usuario, correo, password, telefono, pais, Foto):
+        database = self.get_databaseXObj()
+        sql = f"UPDATE proyectozeus.usuarios SET Usuario = '{Usuario}', correo = '{correo}', contraseña = '{password}', telefono = '{telefono}', pais = '{pais}', Foto = '{Foto}' "
+        +f"WHERE (`idUsuario` = '{id}');"
+        rows = database.executeNonQueryRows(sql)
+        return rows
+

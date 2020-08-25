@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tus Solicitudes</title>
+    <title>Calificaciones de Viajeros</title>
 
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="{{url_for('static' , filename = 'images/icons/favicon.ico')}}" />
@@ -23,7 +23,7 @@
         href="{{url_for('static' , filename = 'vendor-copy/perfect-scrollbar/perfect-scrollbar.css')}}">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/util.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/main2.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/main3.css')}}">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/form.css')}}">
 
@@ -34,41 +34,14 @@
     <p style="color: red;">{{message}}</p>
     <br>
     {% endif %}
-    <form class="login-form" action="/solicitudpedidosViajero" method="POST">
+    <div class="login-form" action="/pedidosViajero" method="POST">
 
         <center>
             <div class="left_area">
-                <h2>ACTUALIZA TUS <span>SOLICITUDES</span></h2>
+                <h2>CALIFICACIONES DE <span>VIAJEROS</span></h2>
             </div>
         </center>
-        <h4> Mostrando Solicitudes del Viajero id: {{idViajero}}</h4>
-        <center>
-            <div class="form-input-material">
-                <select name="idsolicitud" id="idsolicitud" class="form-control-material" required>
-                    <option value="0" selected>-</option>
-                    {% for dato in datos%}
-                    <option value="{{dato[0]}}"> Solicitud {{dato[0]}}</option>
-                    {% endfor %}
-                </select>
-                <label for="username">ID Solicitud</label>
-            </div>
-            <br><br>
-            <div class="form-input-material">
-                <select name="estadop" id="estadop" class="form-control-material" required>
-                    <option value="none" selected>-</option>
-                    <option value="Aceptado">Aceptado</option>
-                    <option value="Rechazado">Rechazado</option>
-                </select>
-
-
-                <label for="password">Estado</label>
-            </div>
-        </center>
-        <br><br>
-        <center>
-            <button type="submit" class="btn btn-primary btn-ghost">Actualizar</button>
-        </center>
-    </form>
+    </div>
     <br><br>
     <div class="limiter">
         <div class="container-table100">
@@ -77,40 +50,23 @@
                     <table data-vertable="ver5">
                         <thead>
                             <tr class="row100 head">
-                                <th class="column100 column0" data-column="column0">ID Solicitud Pedido</th>
+                                <th class="column100 column0" data-column="column0">ID Calificación</th>
                                 <th class="column100 column1" data-column="column1">Usuario</th>
                                 <th class="column100 column2" data-column="column2">Viajero</th>
-                                <th class="column100 column3" data-column="column3">ID Viaje</th>
-                                <th class="column100 column4" data-column="column4">Nombre del artículo</th>
-                                <th class="column100 column5" data-column="column5">Estado</th>
-                                <th class="column100 column6" data-column="column6">Precio (USD)</th>
-                                <th class="column100 column7" data-column="column7">Peso (lb)</th>
-                                <th class="column100 column8" data-column="column8">Cantidad</th>
-                                <th class="column100 column9" data-column="column9">Otras especificaciones</th>
-                                <th class="column100 column10" data-column="column10">URL</th>
-                                <th class="column100 column11" data-column="column11">País</th>
-                                <th class="column100 column12" data-column="column12">Fecha estimada de entrega</th>
-                                <th class="column100 column13" data-column="column13">Total</th>
-
+                                <th class="column100 column3" data-column="column3">ID Pedido</th>
+                                <th class="column100 column4" data-column="column4">Nota</th>
+                                <th class="column100 column5" data-column="column5">Comentarios</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for dato in datos%}
                             <tr class="row100">
                                 <td class="column100 column0" data-column="column0">{{dato[0]}}</td>
-                                <td class="column100 column1" data-column="column1">{{dato[2]}}</td>
+                                <td class="column100 column1" data-column="column1">{{dato[3]}}</td>
                                 <td class="column100 column2" data-column="column2">{{dato[4]}}</td>
                                 <td class="column100 column3" data-column="column3">{{dato[5]}}</td>
                                 <td class="column100 column4" data-column="column4">{{dato[6]}}</td>
                                 <td class="column100 column5" data-column="column5">{{dato[7]}}</td>
-                                <td class="column100 column6" data-column="column6">${{dato[8]}}</td>
-                                <td class="column100 column7" data-column="column7">{{dato[9]}}</td>
-                                <td class="column100 column8" data-column="column8">{{dato[10]}}</td>
-                                <td class="column100 column9" data-column="column9">{{dato[11]}}</td>
-                                <td class="column100 column10" data-column="column10">{{dato[12]}}</td>
-                                <td class="column100 column11" data-column="column11">{{dato[13]}}</td>
-                                <td class="column100 column12" data-column="column12">{{dato[14]}}</td>
-                                <td class="column100 column13" data-column="column13">${{dato[15]}}</td>
                             </tr>
                             {% endfor %}
                         </tbody>

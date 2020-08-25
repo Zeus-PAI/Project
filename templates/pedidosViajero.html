@@ -45,7 +45,7 @@
         <center>
             <div class="form-input-material">
                 <select name="idpedido" id="idpedido" class="form-control-material" required>
-                    <option value="none" selected>-</option>
+                    <option value="0" selected>-</option>
                     {% for dato in datos%}
                     <option value="{{dato[0]}}"> Pedido {{dato[0]}}</option>
                     {% endfor %}

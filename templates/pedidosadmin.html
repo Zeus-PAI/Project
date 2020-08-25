@@ -25,8 +25,10 @@
     <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/main3.css')}}">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/form.css')}}">
-    <style> 
-        input[type=button], input[type=submit], input[type=reset] {
+    <style>
+        input[type=button],
+        input[type=submit],
+        input[type=reset] {
             background-color: #0000cc;
             border: none;
             color: white;
@@ -43,45 +45,47 @@
     <br>
     {% endif %}
     <div class="login-form" action="/pedidosAdmin" method="POST">
-      <center>
+        <center>
             <div class="left_area">
                 <h2>ACTUALIZA LOS <span>PEDIDOS</span></h2>
             </div>
         </center>
 
-    <form action="/verpedidos" method="POST">
-    <br>
-       Selecciona el ID del pedido que deseas actualizar
-        <br>
-        ID Pedido: <br>
-        <select class="" name="idpedido" id="idpedido">
-            <option value="none" selected>-</option>
-            {% for dato in datos%}
-            <option value="{{dato[0]}}"> Pedido {{dato[0]}}</option>
-            {% endfor %}
-        </select>
-        <br><br>
-        Estado: <br>
-        <select class="" name="estado" id="estado">
-            <option value="none" selected>-</option>
-            <option value="Entregado">Entregado</option>
-            <option value="Anulado">Anulado</option>
-            <option value="Comprado">Comprado</option>
-            <option value="Aceptado">Aceptado</option>
-            <option value="Rechazado">Rechazado</option>
-        </select>
-        <br><br>
-        <input type="submit" value="Actualizar">
-    </form>
+        <form action="/verpedidos" method="POST">
+            <br>
+            <center>
+                Selecciona el ID del pedido que deseas actualizar
+                <br>
+                ID Pedido: <br>
+                <select class="" name="idpedido" id="idpedido">
+                    <option value="0" selected>-</option>
+                    {% for dato in datos%}
+                    <option value="{{dato[0]}}"> Pedido {{dato[0]}}</option>
+                    {% endfor %}
+                </select>
+                <br><br>
+                Estado: <br>
+                <select class="" name="estado" id="estado">
+                    <option value="none" selected>-</option>
+                    <option value="Entregado">Entregado</option>
+                    <option value="Anulado">Anulado</option>
+                    <option value="Comprado">Comprado</option>
+                    <option value="Aceptado">Aceptado</option>
+                    <option value="Rechazado">Rechazado</option>
+                </select>
+                <br><br>
+                <button type="submit" style="margin-left:-0.1cm;" class="btn btn-primary btn-ghost">Actualizar</button>
+            </center>
+        </form>
     </div>
     <br>
-     <div class="limiter">
+    <div class="limiter">
         <div class="container-table100">
             <div class="wrap-table100">
                 <div class="table100 ver5 m-b-110">
                     <table data-vertable="ver5">
                         <thead>
-                             <tr class="row100 head">
+                            <tr class="row100 head">
                                 <th class="column100 column0" data-column="column0">ID Pedido</th>
                                 <th class="column100 column1" data-column="column1">ID Usuario</th>
                                 <th class="column100 column2" data-column="column2">ID Viajero</th>
@@ -118,8 +122,8 @@
                                 <td class="column100 column12" data-column="column12">{{dato[12]}}</td>
                                 <td class="column100 column13" data-column="column13">{{dato[13]}}</td>
                                 <td class="column100 column14" data-column="column14">${{dato[14]}}</td>
-                                
-                             </tr>
+
+                            </tr>
                             {% endfor %}
                         </tbody>
                     </table>
@@ -130,7 +134,7 @@
         </div>
     </div>
 
-     <script src="static\vendor-copy\jquery\jquery-3.2.1.min.js"></script>
+    <script src="static\vendor-copy\jquery\jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
     <script src="static\vendor-copy\bootstrap\js\popper.js"></script>
     <script src="static\vendor-copy\bootstrap\js\bootstrap.min.js"></script>
@@ -138,6 +142,6 @@
     <script src="static\vendor-copy\select2\select2.min.js"></script>
     <!--===============================================================================================-->
     <script src="static\js\main3.js"></script>
-   
+
 </body>
 </html>

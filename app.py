@@ -3,6 +3,7 @@ import urllib.request
 from flask import Flask, flash, request, redirect, url_for, render_template, session
 from werkzeug.utils import secure_filename
 from MethodUtil import MethodUtil
+from datetime import date
 from userlogic import (
     UserLogic,
     RegisterLogic,
@@ -32,6 +33,9 @@ from userlogic import (
     NotasViajero,
     ViajesDispViajero,
     UserShowFacturas,
+    AdminShowFacturas,
+    AdminShowCalificaciones,
+    UpdatePerfil
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -356,7 +360,7 @@ def ConfirmarPedido(id):
         Especificaciones = request.form["descripcion"]
         URL = request.form["url"]
         Pais = request.form["pais"]
-        FechaPedido = request.form["fecha"]
+        FechaPedido = date.today()
         Fecha = request.form["fecharegreso"]
         Total = request.form["total"]
         logic2 = PedidoLogic()
@@ -378,7 +382,6 @@ def ConfirmarPedido(id):
         )
         message = f"{rows} affected"
         Foto = diccionarioUsuarios.get("Foto")
-
         return render_template("dashboard_user.html", message=message, userfoto=Foto)
 
 
@@ -689,6 +692,47 @@ def FacturaPedido(id, idUsuario):
             nombre=diccionarioUsuarios.get("Nombre"),
             dataUser=dataUser,
         )
+
+
+@app.route("/verFacturas", methods=["GET", "POST"])
+def ShowAdminFacturas():
+    if request.method == "GET":
+        logic2 = AdminShowFacturas()
+        data = logic2.ShowAllFacturas()
+        User = diccionarioUsuarios.get("User")
+        return render_template("facturas.html", datos=data, User=User)
+    else:  # "POST"
+        logic2 = AdminShowFacturas()
+        data = logic2.ShowAllFacturas()
+        User = diccionarioUsuarios.get("User")
+        return render_template("facturas.html", datos=data, User=User)
+
+
+@app.route("/verCalificaciones", methods=["GET", "POST"])
+def ShowAdminNotas():
+    if request.method == "GET":
+        logic2 = AdminShowCalificaciones()
+        data = logic2.ShowAllNotas()
+        return render_template("calificaciones.html", datos=data)
+    else:  # "POST"
+        logic2 = AdminShowCalificaciones()
+        data = logic2.ShowAllNotas()
+        return render_template("calificaciones.html", datos=data)
+
+
+@app.route("/editarPerfil", methods=["GET", "POST"])
+def EditarPerfil():
+    if request.method == "GET":
+        logic = idViajeroLogic()
+        idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
+        idViajero = int("".join(map(str, idV[0])))
+        logic2 = PerfilViajero()
+        data = logic2.getPerfilViajero(idViajero)
+        return render_template("editarPerfil.html", datos=data)
+    else:  # "POST"
+        logic = UpdatePerfil()
+        
+        return render_template("editarPerfil.html")
 
 
 if __name__ == "__main__":

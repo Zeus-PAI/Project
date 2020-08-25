@@ -46,7 +46,7 @@
     <center>
       <div class="form-input-material">
         <select name="idviaje" id="idviaje" class="form-control-material" required>
-          <option value="none" selected>-</option>
+          <option value="0" selected>-</option>
           {% for dato in datos%}
           <option value="{{dato[0]}}"> Viaje {{dato[0]}}</option>
           {% endfor %}

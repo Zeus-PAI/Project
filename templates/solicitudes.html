@@ -49,7 +49,7 @@
         <br><br>
         ID Solicitud: <br>
         <select class="" name="idsolicitud" id="idsolicitud">
-            <option value="none" selected>-</option>
+            <option value="0" selected>-</option>
             {% for dato in datos%}
             <option value="{{dato[0]}}"> Solicitud {{dato[0]}}</option>
             {% endfor %}
