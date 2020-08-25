@@ -427,8 +427,7 @@ class UpdatePerfil(Logic):
 
     def UpdatePerfil(self, id, Usuario, correo, password, telefono, pais, Foto):
         database = self.get_databaseXObj()
-        sql = f"UPDATE proyectozeus.usuarios SET Usuario = '{Usuario}', correo = '{correo}', contraseña = '{password}', telefono = '{telefono}', pais = '{pais}', Foto = '{Foto}' "
-        +f"WHERE (`idUsuario` = '{id}');"
+        sql = f"UPDATE proyectozeus.usuarios SET Usuario = '{Usuario}', correo = '{correo}', contraseña = '{password}', telefono = '{telefono}', pais = '{pais}', Foto = '{Foto}' WHERE (`idUsuario` = '{id}');"
         rows = database.executeNonQueryRows(sql)
         return rows
 

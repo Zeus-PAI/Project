@@ -35,7 +35,7 @@ from userlogic import (
     UserShowFacturas,
     AdminShowFacturas,
     AdminShowCalificaciones,
-    UpdatePerfil
+    UpdatePerfil,
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -547,11 +547,15 @@ def ShowPerfilUsuario():
     if request.method == "GET":
         logic = PerfilUsuario()
         data = logic.getPerfilUsuario(diccionarioUsuarios.get("idUser"))
-        return render_template("perfilUsuario.html", datos=data)
+        logic3 = NotasViajero()
+        Notas = logic3.getNotasViajero(diccionarioUsuarios.get("idUser"))
+        return render_template("perfilUsuario.html", datos=data, Notas=Notas)
     else:  # "POST"
         logic = PerfilUsuario()
         data = logic.getPerfilUsuario(diccionarioUsuarios.get("idUser"))
-        return render_template("perfilUsuario.html", datos=data)
+        logic3 = NotasViajero()
+        Notas = logic3.getNotasViajero(diccionarioUsuarios.get("idUser"))
+        return render_template("perfilUsuario.html", datos=data, Notas=Notas)
 
 
 @app.route("/perfilViajero", methods=["GET", "POST"])
@@ -723,16 +727,153 @@ def ShowAdminNotas():
 @app.route("/editarPerfil", methods=["GET", "POST"])
 def EditarPerfil():
     if request.method == "GET":
+        profile = PerfilUsuario()
+        data = profile.getPerfilUsuario(diccionarioUsuarios.get("idUser"))
+        return render_template("editarPerfil.html", datos=data)
+    else:  # "POST"
+        Usuario = request.form["usuario"]
+        Correo = request.form["correo"]
+        Password = request.form["password"]
+        Telefono = request.form["telefono"]
+        Pais = request.form["pais"]
+        Foto = ""
+
+        print(f"request.files -> {request.files}")
+        if "file" not in request.files:
+            flash("No file part")
+            print(request.url)
+            return redirect(request.url)
+        file = request.files["file"]
+        print(f"file.filename -> {file.filename}")
+        if file.filename == "":
+            flash("No image selected for uploading")
+            editar = UpdatePerfil()
+            editar.UpdatePerfil(
+                diccionarioUsuarios.get("idUser"),
+                Usuario,
+                Correo,
+                Password,
+                Telefono,
+                Pais,
+                Foto,
+            )
+
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+            flash("Image successfully uploaded and displayed")
+            Foto = file.filename
+            editar = UpdatePerfil()
+            editar.UpdatePerfil(
+                diccionarioUsuarios.get("idUser"),
+                Usuario,
+                Correo,
+                Password,
+                Telefono,
+                Pais,
+                Foto,
+            )
+
+        else:
+            flash("Allowed image types are -> png, jpg, jpeg, gif")
+            return redirect(request.url)
         logic = idViajeroLogic()
         idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
         idViajero = int("".join(map(str, idV[0])))
         logic2 = PerfilViajero()
         data = logic2.getPerfilViajero(idViajero)
+        logic3 = NotasViajero()
+        Notas = logic3.getNotasViajero(diccionarioUsuarios.get("idUser"))
+        logic4 = ShowViajesViajero()
+        viajes = logic4.ShowViajesViajero(idViajero)
+        logic5 = ViajeroPedidos()
+        pedidos = logic5.ShowPedidosViajero(idViajero)
+        logic6 = ViajesDispViajero()
+        viajesDisponibles = logic6.ShowViajesDisp(idViajero)
+        return render_template(
+            "perfilViajero.html",
+            datos=data,
+            Notas=Notas,
+            Viajes=viajes,
+            Pedidos=pedidos,
+            Activos=viajesDisponibles,
+        )
+
+
+@app.route("/perfilUsuario/<int:id>", methods=["GET", "POST"])
+def ShowPerfilUsuario2(id):
+    if request.method == "GET":
+        profile = PerfilUsuario()
+        data = profile.getPerfilUsuario(id)
+        logic3 = NotasViajero()
+        Notas = logic3.getNotasViajero(id)
+        return render_template("perfilUsuario2.html", datos=data, Notas=Notas)
+    else:  # "POST"
+        profile = PerfilUsuario()
+        data = profile.getPerfilUsuario(diccionarioUsuarios.get("idUser"))
+        logic3 = NotasViajero()
+        Notas = logic3.getNotasViajero(diccionarioUsuarios.get("idUser"))
+        return render_template("perfilUsuario2.html", datos=data, Notas=Notas)
+
+
+@app.route("/editarPerfilUsuario", methods=["GET", "POST"])
+def EditarPerfilUsuario():
+    if request.method == "GET":
+        profile = PerfilUsuario()
+        data = profile.getPerfilUsuario(diccionarioUsuarios.get("idUser"))
         return render_template("editarPerfil.html", datos=data)
     else:  # "POST"
-        logic = UpdatePerfil()
-        
-        return render_template("editarPerfil.html")
+        Usuario = request.form["usuario"]
+        Correo = request.form["correo"]
+        Password = request.form["password"]
+        Telefono = request.form["telefono"]
+        Pais = request.form["pais"]
+        Foto = ""
+
+        print(f"request.files -> {request.files}")
+        if "file" not in request.files:
+            flash("No file part")
+            print(request.url)
+            return redirect(request.url)
+        file = request.files["file"]
+        print(f"file.filename -> {file.filename}")
+        if file.filename == "":
+            flash("No image selected for uploading")
+            editar = UpdatePerfil()
+            editar.UpdatePerfil(
+                diccionarioUsuarios.get("idUser"),
+                Usuario,
+                Correo,
+                Password,
+                Telefono,
+                Pais,
+                Foto,
+            )
+
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
+            flash("Image successfully uploaded and displayed")
+            Foto = file.filename
+            editar = UpdatePerfil()
+            editar.UpdatePerfil(
+                diccionarioUsuarios.get("idUser"),
+                Usuario,
+                Correo,
+                Password,
+                Telefono,
+                Pais,
+                Foto,
+            )
+
+        else:
+            flash("Allowed image types are -> png, jpg, jpeg, gif")
+            return redirect(request.url)
+        profile = PerfilUsuario()
+        data = profile.getPerfilUsuario(diccionarioUsuarios.get("idUser"))
+        logic3 = NotasViajero()
+        Notas = logic3.getNotasViajero(diccionarioUsuarios.get("idUser"))
+        return render_template("perfilUsuario.html", datos=data, Notas=Notas)
 
 
 if __name__ == "__main__":

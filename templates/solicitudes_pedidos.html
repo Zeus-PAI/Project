@@ -91,6 +91,7 @@
                                 <th class="column100 column11" data-column="column11">País</th>
                                 <th class="column100 column12" data-column="column12">Fecha estimada de entrega</th>
                                 <th class="column100 column13" data-column="column13">Total</th>
+                                <th class="column100 column14" data-column="column14">Perfil</th>
 
                             </tr>
                         </thead>
@@ -111,6 +112,7 @@
                                 <td class="column100 column11" data-column="column11">{{dato[13]}}</td>
                                 <td class="column100 column12" data-column="column12">{{dato[14]}}</td>
                                 <td class="column100 column13" data-column="column13">${{dato[15]}}</td>
+                                <td class="column100 column14" data-column="column14"><a href="/perfilUsuario/{{dato[1]}}">Ver Perfil</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>

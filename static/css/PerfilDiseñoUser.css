@@ -150,7 +150,7 @@ a .material-icons {
 .icon2 {
     text-align: center;
     text-indent: 1.05cm;
-    padding-right: 3cm;
+    margin-left: 0.4cm;
 }
 
 .icon3 {
@@ -347,6 +347,7 @@ a .material-icons {
     font-family: "Roboto Slab","Times New Roman",serif;
     text-align: center;
     text-indent: 2.6cm;
+    margin-left: 0.5cm;
 }
 
 .Dato33 {
@@ -358,11 +359,17 @@ a .material-icons {
     font-size: medium;
     font-family: "Roboto Slab","Times New Roman",serif;
     text-align: right;
-    padding-left: 2.3cm;
+    margin-left: 3.3cm;
 }
 
 .Datos {
     width: 1000px;
+
+}
+
+.Datos1 {
+    width: 1000px;
+    margin-left: 2cm;
 
 }
 .profile-page .description {
@@ -605,7 +612,7 @@ footer p a:hover {
   width: 1500px;
   margin: -9cm auto;
   margin-left: -5cm;
-  margin-top: -9cm;
+  margin-top: -14cm;
   
 }
 

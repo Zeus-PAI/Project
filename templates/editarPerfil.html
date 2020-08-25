@@ -1,116 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edita tus Datos</title>
+    <link rel="icon" type="image/png" href="{{url_for('static' , filename = 'images/icons/favicon.ico')}}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'vendor-copy/bootstrap/css/bootstrap.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'vendor-copy/animate/animate.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'vendor-copy/select2/select2.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'vendor-copy/perfect-scrollbar/perfect-scrollbar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/editarPerfil.css')}}">
 </head>
+
 <body>
+    <form class="login-form" action="/editarPerfil" method="POST" enctype="multipart/form-data">
 
-
-    <div class="container">
-        <div class="col-md-12">
-            <div class="col-md-4">
-                <div class="portlet light profile-sidebar-portlet bordered">
-                    <div class="profile-userpic">
-                        <img src="static\img\blankpic.png" class="img-responsive" alt="">
-                    </div>
-                    <div class="profile-usertitle">
-                        <div class="profile-usertitle-name"> Marcus Doe </div>
-                        <div class="profile-usertitle-job"> Developer </div>
-                    </div>
-                    <div class="profile-userbuttons">
-                        <button type="button" class="btn btn-info  btn-sm">Follow</button>
-                        <button type="button" class="btn btn-info  btn-sm">Message</button>
-                    </div>
-                    <div class="profile-usermenu">
-                        <ul class="nav">
-                            <li class="active">
-                                <a href="#">
-                                    <i class="icon-home"></i> Ticket List </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-settings"></i> Support Staff </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="icon-info"></i> Configurations </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        <center>
+            <div class="left_area">
+                <h2>EDITA TUS <span>DATOS</span></h2>
             </div>
-            <div class="col-md-8">
-                <div class="portlet light bordered">
-                    <div class="portlet-title tabbable-line">
-                        <div class="caption caption-md">
-                            <i class="icon-globe theme-font hide"></i>
-                            <span class="caption-subject font-blue-madison bold uppercase">Your info</span>
-                        </div>
-                    </div>
-                    <div class="portlet-body">
-                        <div>
+        </center>
+        <center>
+            {% for dato in datos%}
+            <div class="form-input-material">
+                Nombre de Usuario: <br>
+                <input type="text" name="usuario" id="usuario" value="{{dato[1]}}" class="form-control-material"
+                    required>
 
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
-                                        data-toggle="tab">Update</a></li>
-                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
-                                        data-toggle="tab">Profile</a></li>
-                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab"
-                                        data-toggle="tab">Messages</a></li>
-                                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab"
-                                        data-toggle="tab">Settings</a></li>
-                            </ul>
-
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="home">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="inputName">Name</label>
-                                            <input type="text" class="form-control" id="inputName" placeholder="Name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputLastName">Last Name</label>
-                                            <input type="text" class="form-control" id="inputLastName"
-                                                placeholder="Last Name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Email address</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                                placeholder="Email">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">Password</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                                placeholder="Password">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputFile">File input</label>
-                                            <input type="file" id="exampleInputFile">
-                                            <p class="help-block">Example block-level help text here.</p>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> Check me out
-                                            </label>
-                                        </div>
-                                        <button type="submit" class="btn btn-default">Submit</button>
-                                    </form>
-                                </div>
-                                <div role="tabpanel" class="tab-pane" id="profile">Profile</div>
-                                <div role="tabpanel" class="tab-pane" id="messages">Messages</div>
-                                <div role="tabpanel" class="tab-pane" id="settings">Settings</div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-    </div>
+            <br>
+            <div class="form-input-material">
+                Correo: <br>
+                <input type="email" name="correo" id="correo" value="{{dato[3]}}" class="form-control-material"
+                    required>
+
+            </div>
+            <br>
+            <div class="form-input-material">
+                Contraseña: <br>
+                <input type="password" name="password" id="password" value="{{dato[4]}}" class="form-control-material"
+                    required>
+
+            </div>
+            <br>
+            <div class="form-input-material">
+                Teléfono: <br>
+                <input type="number" name="telefono" id="telefono" value="{{dato[6]}}" class="form-control-material"
+                    required>
+
+            </div>
+            <br>
+            <div class="form-input-material">
+                País de Residencia: <br>
+                <input type="text" name="pais" id="pais" value="{{dato[7]}}" class="form-control-material" required>
+
+            </div>
+            <br>
+            <div class="form-input-material">
+                Foto de Perfil: <br>
+                <div>
+                    {%if dato[11] =="":%}
+                    <img src="static\img\blankpic.png" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                    {%elif dato[11] != none:%}
+                    <img src="static\uploads\{{dato[9]}}" alt="Circle Image"
+                        class="img-raised rounded-circle img-fluid">
+                    {%else:%}
+                    <img src="static\img\blankpic.png" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+                    {%endif%}
+                </div>
+                <center><input type="file" name="file" id="file" class="form-control-material" autocomplete="off">
+                </center>
+
+            </div>
+            <br>
+        </center>
+        <br>
+        <center>
+            <button type="submit" class="btn btn-primary btn-ghost">Actualizar</button>
+        </center>
+        {% endfor %}
+    </form>
+
+    <!--===============================================================================================-->
+    <script src="static\vendor-copy\jquery\jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="static\vendor-copy\bootstrap\js\popper.js"></script>
+    <script src="static\vendor-copy\bootstrap\js\bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="static\vendor-copy\select2\select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="static\js\main3.js"></script>
 </body>
+
 </html>

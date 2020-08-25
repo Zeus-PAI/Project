@@ -31,20 +31,7 @@
                 </button>
             </div>
 
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ml-auto">
-                    <li class="dropdown nav-item">
-                        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false">
-                            <i class="material-icons">apps</i> Opciones
-                        </a>
-                        <div class="dropdown-menu dropdown-with-icons">
-                            <a href="/editarPerfilUsuario" class="dropdown-item">
-                                <i class="material-icons">edit</i> Editar tu Perfil
-                            </a>3
-                        </div>
-                    </li>
-                </ul>
-            </div>
+
         </div>
     </nav>
     <div class="page-header header-filter" data-parallax="true"
@@ -58,13 +45,13 @@
                         <div class="profile">
                             <div class="avatar">
                                 {%if dato[9] =="":%}
-                                <img src="static\img\blankpic.png" alt="Circle Image"
+                                <img src="/static\img\blankpic.png" alt="Circle Image"
                                     class="img-raised rounded-circle img-fluid">
                                 {%elif dato[9] != none:%}
-                                <img src="static\uploads\{{dato[9]}}" alt="Circle Image"
+                                <img src="/static\uploads\{{dato[9]}}" alt="Circle Image"
                                     class="img-raised rounded-circle img-fluid">
                                 {%else:%}
-                                <img src="static\img\blankpic.png" alt="Circle Image"
+                                <img src="/static\img\blankpic.png" alt="Circle Image"
                                     class="img-raised rounded-circle img-fluid">
                                 {%endif%}
                             </div>
