@@ -787,6 +787,8 @@ def EditarPerfil():
                 Pais,
                 diccionarioUsuarios.get("Foto"),
             )
+            diccionarioUsuarios.update({"Pais": Pais})
+            diccionarioUsuarios.update({"User": Usuario})
             logic = idViajeroLogic()
             idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
             idViajero = int("".join(map(str, idV[0])))
@@ -824,6 +826,9 @@ def EditarPerfil():
                 Pais,
                 Foto,
             )
+            diccionarioUsuarios.update({"Foto": Foto})
+            diccionarioUsuarios.update({"Pais": Pais})
+            diccionarioUsuarios.update({"User": Usuario})
 
         else:
             flash("Allowed image types are -> png, jpg, jpeg, gif")
@@ -898,8 +903,10 @@ def EditarPerfilUsuario():
                 Password,
                 Telefono,
                 Pais,
-                Foto,
+                diccionarioUsuarios.get("Foto"),
             )
+            diccionarioUsuarios.update({"Pais": Pais})
+            diccionarioUsuarios.update({"User": Usuario})
 
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
@@ -916,7 +923,9 @@ def EditarPerfilUsuario():
                 Pais,
                 Foto,
             )
-
+            diccionarioUsuarios.update({"Foto": Foto})
+            diccionarioUsuarios.update({"Pais": Pais})
+            diccionarioUsuarios.update({"User": Usuario})
         else:
             flash("Allowed image types are -> png, jpg, jpeg, gif")
             return redirect(request.url)
