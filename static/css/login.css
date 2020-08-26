@@ -338,6 +338,25 @@
       border-radius: 50%;
     }
 
+    .button{
+      padding: 1px;
+      background: #c76728;
+      text-decoration: none;
+      float: right;
+      margin-top: -30px;
+      margin-right: 40px;
+      border-radius: 25px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      transition: 0.5s;
+      transition-property: background;
+    }
+    
+    .button:hover{
+      background: #882e04;
+    }
+
     .overbox {
       width: 100%;
       height: 100%;

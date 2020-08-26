@@ -927,6 +927,54 @@ def EditarPerfilUsuario():
         return render_template("perfilUsuario.html", datos=data, Notas=Notas)
 
 
+@app.route("/perfilViajero2/<int:id>", methods=["GET", "POST"])
+def ShowPerfilViajero3(id):
+    if request.method == "GET":
+        logic = idUserLogic()
+        idV = logic.getidViajeroUsuario(id)
+        idViajero = int("".join(map(str, idV[0])))
+        logic2 = PerfilViajero()
+        data = logic2.getPerfilViajero(id)
+        logic3 = NotasViajero()
+        Notas = logic3.getNotasViajero(idViajero)
+        logic4 = ShowViajesViajero()
+        viajes = logic4.ShowViajesViajero(id)
+        logic5 = ViajeroPedidos()
+        pedidos = logic5.ShowPedidosViajero(id)
+        logic6 = ViajesDispViajero()
+        viajesDisponibles = logic6.ShowViajesDisp(id)
+        return render_template(
+            "perfilViajero2.html",
+            datos=data,
+            Notas=Notas,
+            Viajes=viajes,
+            Pedidos=pedidos,
+            Activos=viajesDisponibles,
+        )
+    else:  # "POST"
+        logic = idUserLogic()
+        idV = logic.getidViajeroUsuario(id)
+        idViajero = int("".join(map(str, idV[0])))
+        logic2 = PerfilViajero()
+        data = logic2.getPerfilViajero(id)
+        logic3 = NotasViajero()
+        Notas = logic3.getNotasViajero(idViajero)
+        logic4 = ShowViajesViajero()
+        viajes = logic4.ShowViajesViajero(id)
+        logic5 = ViajeroPedidos()
+        pedidos = logic5.ShowPedidosViajero(id)
+        logic6 = ViajesDispViajero()
+        viajesDisponibles = logic6.ShowViajesDisp(id)
+        return render_template(
+            "perfilViajero2.html",
+            datos=data,
+            Notas=Notas,
+            Viajes=viajes,
+            Pedidos=pedidos,
+            Activos=viajesDisponibles,
+        )
+
+
 if __name__ == "__main__":
     app.run(debug=True)
     # app.run(debug=True)

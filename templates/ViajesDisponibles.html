@@ -4,84 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viajes Activos</title>
-    <style>
-        table {
-            width: 100%;
-        }
-
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 15px;
-            text-align: left;
-        }
-
-        #t01 tr:nth-child(even) {
-            background-color: #eee;
-        }
-
-        #t01 tr:nth-child(odd) {
-            background-color: #fff;
-        }
-
-        #t01 th {
-            background-color: black;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="{{url_for('static' , filename = 'css/ViajesDisponibles.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 </head>
-<body>
-    <h1>
-        <center>Encuentra el viaje para hacer tu pedido</center>
-    </h1>
-    {% if message %}
-    <p style="color: red;">{{message}}</p>
-    <br>
-    {% endif %}
-    <table class="tablaViajes" id="t01">
-
-        <tr>
-            <th>ID Viaje</th>
-            <th>Viajero</th>
-            <th>Inicio de Viaje</th>
-            <th>Regreso de Viaje</th>
-            <th>País Destino</th>
-            <th>Dirección de Estadía</th>
-            <th>Costo por libra</th>
-            <th>Teléfono</th>
-            <th>Foto</th>
-            <th>Cantidad de Viajes</th>
-            <th>Cantidad de Pedidos</th>
-            <th>Calificación</th>
-            <th> </th>
-        </tr>
+    <div class="main_title">
+        <h1>Viajes <span>Disponibles</span></h1>
+        <div class="main-btns">
+            <a href="#"><i class="fas fa-home"></i></a>
+            <a href="#"><i class="fas fa-arrow-circle-left"></i></a> 
+        </div>
+    </div>
+    <div class="pricing-table">
         {% for dato in datos%}
-        <tr>
-            <td>{{dato[0]}}</td>
-            <td>{{dato[2]}}</td>
-            <td>{{dato[3]}}</td>
-            <td>{{dato[4]}}</td>
-            <td>{{dato[6]}}</td>
-            <td>{{dato[7]}}</td>
-            <td>${{dato[9]}}</td>
-            <td>{{dato[10]}}</td>
-            <td><img src="static\uploads\{{dato[11]}}" alt="Image" height="128" width="128"></td>
-            <td>{{dato[12]}}</td>
-            <td>{{dato[13]}}</td>
-            {% if dato[14] != none: %}
+        <div class="pricing-card">
+            <h3 class="pricing-card-header">Viaje</h3>
+            <div class="price"><sup>$</sup>{{dato[9]}}<span>/lb</span></div>
+            <ul>
+                <li><strong>Viajero</strong> {{dato[2]}}</li>
+                <div class="container">
+                    <li><strong></strong><img src="static\uploads\{{dato[11]}}" class="profile_pic"></li>
+                        <div class="middle">
+                            <a href="/perfilViajero2/{{dato[1]}}" class="text-btn">Ver perfil</a> 
+                        </div>
+                </div>
+                <li><strong>Inicio de Viaje</strong> {{dato[3]}}</li>
+                <li><strong>Fin de Viaje</strong> {{dato[4]}}</li>
+                <li><strong>País Destino</strong> {{dato[6]}}</li>
+                <li><strong>Viajes realizados</strong> {{dato[12]}}</li>
+                <li><strong>Calificacion</strong> {% if dato[14] != none: %}
             <td>{{dato[14]}}</td>
             {%else:%}
             <td>Sin Calificar</td>
             {%endif%}
-            <td> <a href="/confirmarpedido/{{dato[0]}}">Haz tu Pedido</a></td>
-        </tr>
-        {% endfor %}
-    </table>
+                </li>    
+            </ul>
+            <a href="/confirmarpedido/{{dato[0]}}" class="order-btn">Realizar pedido</a>
+        </div>
+     {% endfor %}    
+    </div>
 </body>
-</html>
+</html> 
