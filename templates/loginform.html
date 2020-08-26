@@ -32,9 +32,10 @@
         <div class="button login">
           <button><span>Ingresar</span> <i class="fa fa-check" type="submit"></i></button>
         </div>
-
-        <a href="" class="pass-forgot">Forgot your password?</a>
-
+        {% if message %}
+        <p style="color: rgb(255, 123, 0);">{{message}}</p>
+        <br>
+        {% endif %}
       </div>
 
       <div class="overbox">

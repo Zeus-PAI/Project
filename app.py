@@ -36,6 +36,7 @@ from userlogic import (
     AdminShowFacturas,
     AdminShowCalificaciones,
     UpdatePerfil,
+    UpdatePerfilViajero,
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -122,9 +123,13 @@ def loginform():
                         userfoto=userdata.Foto,
                     )
             else:
-                return render_template("loginform.html", message="hubo error")
+                return render_template(
+                    "loginform.html", message="Usuario o contraseña incorrectos"
+                )
         else:
-            return render_template("loginform.html", message="hubo error")
+            return render_template(
+                "loginform.html", message="Usuario o contraseña incorrectos"
+            )
 
 
 @app.route("/registrousuario", methods=["GET", "POST"])
@@ -473,6 +478,30 @@ def CalificarViajeros(id):
         return render_template("dashboard_user.html", message=message, datos=data)
 
 
+@app.route("/calificarusuario/<int:id>", methods=["GET", "POST"])
+def CalificarUsuarios(id):
+    if request.method == "GET":
+        logic = ActualizarLogic()
+        data = logic.PedidoByid(id)
+        return render_template("calificarusuario.html", datos=data)
+    else:  # "POST"
+        Calificado = request.form["idUsuarioCalificado"]
+        Calificador = diccionarioUsuarios.get("idUser")
+        IdPedido = request.form["idPedido"]
+        Nota = request.form["Nota"]
+        comentario = request.form["comentario"]
+        logic = calificarviajero()
+        rows = logic.calificarviajero(
+            Calificador, Calificado, IdPedido, Nota, comentario
+        )
+        logic3 = idViajeroLogic()
+        idV = logic3.getidViajero(diccionarioUsuarios.get("idUser"))
+        idViajero = int("".join(map(str, idV[0])))
+        logic2 = ViajeroPedidos()
+        data = logic2.ShowPedidosViajero(idViajero)
+        return render_template("pedidosViajero.html", datos=data, idViajero=idViajero)
+
+
 @app.route("/pedidosViajero", methods=["GET", "POST"])
 def ShowPedidosViajero():
     if request.method == "GET":
@@ -747,24 +776,46 @@ def EditarPerfil():
         print(f"file.filename -> {file.filename}")
         if file.filename == "":
             flash("No image selected for uploading")
-            editar = UpdatePerfil()
-            editar.UpdatePerfil(
+            editar = UpdatePerfilViajero()
+
+            editar.UpdatePerfilViajero(
                 diccionarioUsuarios.get("idUser"),
                 Usuario,
                 Correo,
                 Password,
                 Telefono,
                 Pais,
-                Foto,
+                diccionarioUsuarios.get("Foto"),
             )
+            logic = idViajeroLogic()
+            idV = logic.getidViajero(diccionarioUsuarios.get("idUser"))
+            idViajero = int("".join(map(str, idV[0])))
+            logic2 = PerfilViajero()
+            data = logic2.getPerfilViajero(idViajero)
+            logic3 = NotasViajero()
+            Notas = logic3.getNotasViajero(diccionarioUsuarios.get("idUser"))
+            logic4 = ShowViajesViajero()
+            viajes = logic4.ShowViajesViajero(idViajero)
+            logic5 = ViajeroPedidos()
+            pedidos = logic5.ShowPedidosViajero(idViajero)
+            logic6 = ViajesDispViajero()
+            viajesDisponibles = logic6.ShowViajesDisp(idViajero)
 
+            return render_template(
+                "perfilViajero.html",
+                datos=data,
+                Notas=Notas,
+                Viajes=viajes,
+                Pedidos=pedidos,
+                Activos=viajesDisponibles,
+            )
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
             flash("Image successfully uploaded and displayed")
             Foto = file.filename
-            editar = UpdatePerfil()
-            editar.UpdatePerfil(
+            editar = UpdatePerfilViajero()
+            editar.UpdatePerfilViajero(
                 diccionarioUsuarios.get("idUser"),
                 Usuario,
                 Correo,

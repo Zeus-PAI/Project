@@ -431,3 +431,14 @@ class UpdatePerfil(Logic):
         rows = database.executeNonQueryRows(sql)
         return rows
 
+
+class UpdatePerfilViajero(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def UpdatePerfilViajero(self, id, Usuario, correo, password, telefono, pais, Foto):
+        database = self.get_databaseXObj()
+        sql = f"UPDATE proyectozeus.viajeros SET Usuario = '{Usuario}', correo = '{correo}', contraseña = '{password}', telefono = '{telefono}', pais = '{pais}', Foto = '{Foto}' WHERE (`idUsuario` = '{id}');"
+        rows = database.executeNonQueryRows(sql)
+        return rows
+

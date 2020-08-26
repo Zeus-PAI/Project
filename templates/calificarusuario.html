@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edita tus Datos</title>
+    <title>Califica tu pedido</title>
     <link rel="icon" type="image/png" href="{{url_for('static' , filename = 'images/icons/favicon.ico')}}" />
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css"
@@ -20,78 +20,55 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css"
         href="{{url_for('static' , filename = 'vendor-copy/perfect-scrollbar/perfect-scrollbar.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/editarPerfil.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/form2.css')}}">
 </head>
 
 <body>
-    <form class="login-form" action="/editarPerfil" method="POST" enctype="multipart/form-data">
+    <form class="login-form" action="/calificarusuario/{{datos[0][0]}}" method="POST">
 
         <center>
             <div class="left_area">
-                <h2>EDITA TUS <span>DATOS</span></h2>
+                <h2>CALIFICA TU <span>PEDIDO</span></h2>
             </div>
         </center>
         <center>
-            {% for dato in datos%}
             <div class="form-input-material">
-                Nombre de Usuario: <br>
-                <input type="text" name="usuario" id="usuario" value="{{dato[1]}}" class="form-control-material"
+                ID del pedido: <br>
+                <input type="hidden" name="idPedido" id="idPedido" value="{{datos[0][0]}}"
+                    class="form-control-material">
+                <input type="show" name="idPedido2" id="idPedido2" value="{{datos[0][0]}}" class="form-control-material"
+                    disabled>
+            </div>
+            <br><br>
+            <div class="form-input-material">
+                Usuario a calificar: <br>
+                <input type="hidden" name="idUsuarioCalificado" id="idUsuarioCalificado" value="{{datos[0][1]}}"
+                    class="form-control-material">
+                <input type="show" name="idUsuarioCalificado2" id="idUsuarioCalificado2" value="{{datos[0][2]}}"
+                    class="form-control-material" disabled>
+
+
+            </div>
+            <br><br>
+            <div class="form-input-material">
+                Nota a del pedido (0-10): <br>
+                <input type="number" min="0" max="10" step="0.5" name="Nota" id="Nota" class="form-control-material"
                     required>
 
             </div>
-            <br>
+            <br><br>
             <div class="form-input-material">
-                Correo: <br>
-                <input type="email" name="correo" id="correo" value="{{dato[3]}}" class="form-control-material"
-                    required>
+                Comentario: <br>
+                <textarea name="comentario" rows="4" cols="25" class="form-control-material"></textarea>
 
             </div>
-            <br>
-            <div class="form-input-material">
-                Contraseña: <br>
-                <input type="password" name="password" id="password" value="{{dato[4]}}" class="form-control-material"
-                    required>
-
-            </div>
-            <br>
-            <div class="form-input-material">
-                Teléfono: <br>
-                <input type="number" name="telefono" id="telefono" value="{{dato[6]}}" class="form-control-material"
-                    required>
-
-            </div>
-            <br>
-            <div class="form-input-material">
-                País de Residencia: <br>
-                <input type="text" name="pais" id="pais" value="{{dato[7]}}" class="form-control-material" required>
-
-            </div>
-            <br>
-            <div class="form-input-material">
-                Foto de Perfil: <br>
-                <div>
-                    {%if dato[9] =="":%}
-                    <img src="static\img\blankpic.png" alt="Circle Image1" class="img-raised rounded-circle img-fluid">
-                    {%elif dato[9] != none:%}
-                    <img src="static\uploads\{{dato[9]}}" alt="Circle Image2"
-                        class="img-raised rounded-circle img-fluid">
-                    {%else:%}
-                    <img src="static\img\blankpic.png" alt="Circle Image" class="img-raised rounded-circle img-fluid">
-                    {%endif%}
-                </div>
-                <center><input type="file" name="file" id="file" class="form-control-material" autocomplete="off">
-                </center>
-
-            </div>
-            <br>
+            <br><br>
         </center>
-        <br>
         <center>
-            <button type="submit" class="btn btn-primary btn-ghost">Actualizar</button>
+            <button type="submit" class="btn btn-primary btn-ghost">Enviar</button>
         </center>
-        {% endfor %}
+
     </form>
-
     <!--===============================================================================================-->
     <script src="static\vendor-copy\jquery\jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
