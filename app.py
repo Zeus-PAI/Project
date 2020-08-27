@@ -46,6 +46,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # git add -A
 # git commit -m "nombre de accion"
 # git push --set-upstream https://github.com/Zeus-PAI/Project master
+#Excelente texto
 app = Flask(__name__)
 app.secret_key = "python es bien chivo"
 diccionarioUsuarios = {"idUser": "", "User": "", "Nombre": "", "Pais": "", "Foto": ""}
@@ -980,6 +981,7 @@ def ShowPerfilViajero3(id):
             Notas=Notas,
             Viajes=viajes,
             Pedidos=pedidos,
+            # Muy buen texto
             Activos=viajesDisponibles,
         )
 
