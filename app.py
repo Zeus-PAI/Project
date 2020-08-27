@@ -37,6 +37,7 @@ from userlogic import (
     AdminShowCalificaciones,
     UpdatePerfil,
     UpdatePerfilViajero,
+    ViajesAdminLogic
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -1020,6 +1021,17 @@ def homeAdmin():
         userdata=diccionarioUsuarios.get("User"),
         userfoto=diccionarioUsuarios.get("Foto"),
     )
+
+@app.route("/verviajes", methods=["GET", "POST"])
+def ShowTodosLosViajesAdmin():
+    if request.method == "GET":
+        logic2 = ViajesAdminLogic()
+        data = logic2.GetViajesAdmin()
+        return render_template("viajesadmin.html", datos=data)
+    else:  # "POST"
+        logic2 = ViajesAdminLogic()
+        data = logic2.GetViajesAdmin()
+        return render_template("viajesadmin.html", datos=data)
 
 
 if __name__ == "__main__":

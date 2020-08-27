@@ -442,3 +442,13 @@ class UpdatePerfilViajero(Logic):
         rows = database.executeNonQueryRows(sql)
         return rows
 
+
+class ViajesAdminLogic(Logic):
+    def __init__(self):
+        super().__init__()
+
+    def GetViajesAdmin(self):
+        database = self.get_databaseXObj()
+        sql = f"SELECT * FROM proyectozeus.viajes_view;"
+        data = database.executeQuery(sql)
+        return data

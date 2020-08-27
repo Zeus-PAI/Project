@@ -41,10 +41,6 @@
     </style>
 </head>
 <body>
-    {% if message %}
-    <p style="color: red;">{{message}}</p>
-    <br>
-    {% endif %}
     <div class="login-form" action="/pedidosAdmin" method="POST">
         <div class="main_title">
             <a href="/homeAdmin"><i style="color:white;" class="fas fa-home"></i></a>
@@ -125,8 +121,8 @@
                                 <td class="column100 column10" data-column="column10">{{dato[10]}}</td>
                                 <td class="column100 column11" data-column="column11">{{dato[11]}}</td>
                                 <td class="column100 column12" data-column="column12">{{dato[12]}}</td>
-                                <td class="column100 column13" data-column="column13">{{dato[13]}}</td>
-                                <td class="column100 column14" data-column="column14">${{dato[14]}}</td>
+                                <td class="column100 column13" data-column="column13">{{dato[14]}}</td>
+                                <td class="column100 column14" data-column="column14">${{dato[15]}}</td>
 
                             </tr>
                             {% endfor %}
