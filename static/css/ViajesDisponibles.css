@@ -150,12 +150,19 @@ body{
       
   }
 
-  div a{
+  i{
       color: #fff;
-      height: 10px;
-      width: 10px;
+      font-size: 35px;
+      top: 10px;
+      
   }
 
+  i:hover{
+      color: #c76728;
+      transition: .3s linear;
+  }
+
+  
 
 
 @media screen and (max-width:1100px){
