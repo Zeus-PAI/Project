@@ -3,87 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliminar un Usuario</title>
-<style>
-    table {
-        width: 100%;
-    }
-
-    table,
-    th,
-    td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
-
-    th,
-    td {
-        padding: 15px;
-        text-align: left;
-    }
-
-    #t01 tr:nth-child(even) {
-        background-color: #eee;
-    }
-
-    #t01 tr:nth-child(odd) {
-        background-color: #fff;
-    }
-
-    #t01 th {
-        background-color: black;
-        color: white;
-    }
-</style>
+    <title>Eliminar Usuario</title>
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{{url_for('static' , filename = 'images/icons/favicon.ico')}}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'vendor-copy/bootstrap/css/bootstrap.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'vendor-copy/animate/animate.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'vendor-copy/select2/select2.min.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+        href="{{url_for('static' , filename = 'vendor-copy/perfect-scrollbar/perfect-scrollbar.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/util.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/main3.css')}}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/form.css')}}">
+    <style>
+        input[type=button],
+        input[type=submit],
+        input[type=reset] {
+            background-color: #0000cc;
+            border: none;
+            color: white;
+            padding: 16px 32px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1><center>Selecciona los usuarios a eliminar</center></h1>
     {% if message %}
     <p style="color: red;">{{message}}</p>
     <br>
     {% endif %}
-    <form action="/deleteuser" method="POST">
-        Escoge el ID del Usuario que deseas eliminar:
-        <br><br>
-        ID Usuario: <br>
-        <select class="" name="idUsuario" id="idUsuario">
-            <option value="0" selected>-</option>
-            {% for dato in datos%}
-            <option value="{{dato[0]}}"> Usuario {{dato[0]}}</option>
-            {% endfor %}
-        </select>
-        <br><br>
-        <input type="submit" value="Eliminar">
-    </form>
-    <br><br>
-    <table class="tablaOrdenes" id="t01">
-    
-        <tr>
-            <th>ID Usuario</th>
-            <th>Usuario</th>
-            <th>Nombre Completo</th>
-            <th>Correo</th>
-            <th>Contraseña</th>
-            <th>Fecha de Nacimiento</th>
-            <th>Telefono</th>
-            <th>Pais</th>
-            <th>idTipo</th>
-            <th>Foto</th>
-        </tr>
-        {% for dato in datos%}
-        <tr>
-            <td>{{dato[0]}}</td>
-            <td>{{dato[1]}}</td>
-            <td>{{dato[2]}}</td>
-            <td>{{dato[3]}}</td>
-            <td>{{dato[4]}}</td>
-            <td>{{dato[5]}}</td>
-            <td>{{dato[6]}}</td>
-            <td>{{dato[7]}}</td>
-            <td>{{dato[8]}}</td>
-            <td>{{dato[9]}}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="login-form" action="/pedidosAdmin" method="POST">
+        <center>
+            <div class="left_area">
+                <h2>SELECCIONA LOS USUARIOS <span>A ELIMINIAR</span></h2>
+            </div>
+        </center>
+
+        <form action="/deleteuser" method="POST">
+            <br>
+            <center>
+                Escoge el ID que deseas elimininar:
+                <br><br>
+                ID Usuario: <br>
+                <select class="" name="idusuario" id="idusuario">
+                    <option value="0" selected>-</option>
+                    {% for dato in datos%}
+                    <option value="{{dato[0]}}"> Usuario {{dato[0]}}</option>
+                    {% endfor %}
+                </select>
+                <br><br>
+                <button type="submit" style="margin-left:-0.1cm;" class="btn btn-primary btn-ghost">Eliminar</button>
+            </center>
+        </form>
+    </div>
+    <br>
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100 ver5 m-b-110">
+                    <table data-vertable="ver5">
+                        <thead>
+                            <tr class="row100 head">
+                                <th class="column100 column0" data-column="column0">ID Usuario</th>
+                                <th class="column100 column1" data-column="column1">Usuario</th>
+                                <th class="column100 column2" data-column="column2">Nombre Completo</th>
+                                <th class="column100 column3" data-column="column3">Correo</th>
+                                <th class="column100 column4" data-column="column4">Contraseña</th>
+                                <th class="column100 column5" data-column="column5">Fecha de Nacimiento</th>
+                                <th class="column100 column6" data-column="column6">Telefono</th>
+                                <th class="column100 column7" data-column="column7">Pais</th>
+                                <th class="column100 column8" data-column="column8">idTipo</th>
+                                <th class="column100 column9" data-column="column9">Foto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for dato in datos%}
+                            <tr class="row100">
+                                <td class="column100 column0" data-column="column0">{{dato[0]}}</td>
+                                <td class="column100 column1" data-column="column1">{{dato[1]}}</td>
+                                <td class="column100 column2" data-column="column2">{{dato[2]}}</td>
+                                <td class="column100 column3" data-column="column3">{{dato[3]}}</td>
+                                <td class="column100 column4" data-column="column4">{{dato[4]}}</td>
+                                <td class="column100 column5" data-column="column5">{{dato[5]}}</td>
+                                <td class="column100 column6" data-column="column6">{{dato[6]}}</td>
+                                <td class="column100 column7" data-column="column7">{{dato[7]}}</td>
+                                <td class="column100 column8" data-column="column8">{{dato[8]}}</td>
+                                <td class="column100 column9" data-column="column9"><img src="static\uploads\{{dato[9]}}" alt="Image" height="128" width="128"></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script src="static\vendor-copy\jquery\jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="static\vendor-copy\bootstrap\js\popper.js"></script>
+    <script src="static\vendor-copy\bootstrap\js\bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="static\vendor-copy\select2\select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="static\js\main3.js"></script>
+
 </body>
 </html>
