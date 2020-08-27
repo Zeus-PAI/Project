@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>¡Gracias por Aplicar!</title>
+    <title>¡Gracias por tu Pedido!</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'assets/css/main.css')}}">
@@ -11,7 +11,8 @@
 
     <!-- Header -->
     <header id="header">
-        <div class="logo"><a href="/"><i style="color:white;" class="fas fa-home"></i></a>TRAVELERS<span>|Empresa de
+        <div class="logo"><a href="/homeUsuario"><i style="color:white;"
+                    class="fas fa-home"></i></a>TRAVELERS<span>|Empresa de
                 encomiendas y envíos</span></div>
     </header>
 
@@ -25,26 +26,30 @@
     <div class="main_title">
 
     </div>
-    <section id="banner" class="bg-img" data-bg="FondoEncomiendas.jpg">
+    <section id="banner" class="bg-img" data-bg="FondoPedidosIII.jpg">
         <div class="inner">
             <header>
-                <h1>¡Muchas gracias por Aplicar!</h1>
+                <h1>¡Muchas gracias por realizar tu pedido!</h1>
             </header>
         </div>
+
     </section>
 
     <!-- One -->
-    <section id="one" class="wrapper post bg-img" data-bg="FondoEncomiendas3.jpg">
+    <section id="one" class="wrapper post bg-img" data-bg="FondoPedidosI.jpg">
         <div class="inner">
             <article class="box">
                 <header>
-                    <h2>¡Te esperamos en TRAVELERS!</h2>
+                    <h2>¡Gracias por escoger TRAVELERS!</h2>
+                    <p>01.01.2020</p>
                 </header>
                 <div class="content">
                     <p> Somos un empresa que se encarga de traerte tus paquetes o encomiendas desde otros países hasta
-                        la puerta de tu casa. Contamos con el mejor personal, trabajadores seguros y muy amables.
-                        Además, hemos tomado las medidas sanitarias necesarias para que tus productos lleguen higiénicos
-                        y sin ningún riesgo con la situación del COVID-19 que se está viviendo</p>
+                        la
+                        puerta de tu casa. Contamos con el mejor personal, trabajadores seguros y muy amables. Además,
+                        hemos
+                        tomado las medidas sanitarias necesarias para que tus productos lleguen higiénicos y sin ningún
+                        riesgo con la situación del COVID-19 que se está viviendo</p>
                 </div>
 
             </article>
@@ -53,17 +58,23 @@
     </section>
 
     <!-- Two -->
-    <section id="two" class="wrapper post bg-img" data-bg="FondoEncomiendas2.jpg">
+    <section id="two" class="wrapper post bg-img" data-bg="FondoPedidosII.jpg">
         <div class="inner">
             <article class="box">
                 <header>
-                    <h2>Acerca de tu solicitud de aplicación a viajero</h2>
+                    <h2>Acerca de tu solicitud sobre tu pedido</h2>
+                    <p>Fecha estimada de llegada:</p>
+                    <p>{{FechaEntrega}}</p>
                 </header>
                 <div class="content">
-                    <p> Antes que nada, te damos las gracias por haber aplicado para formar parte de nuestro ¡gran
-                        equipo! En menos de 24 horas recibirás un correo en el cual se detallará si tu solicitud ha sido
-                        aceptada, por ahorita nuestra empresa se encarga de revisar todos los datos y requisitos para
-                        que todo esté en orden. Muchísimas gracias por tu comprensión y por tu paciencia</p>
+                    <p> Antes que nada, te damos las gracias por haber solicitado tu paquete junto a nuestro gran
+                        equipo,
+                        ¡prometemos no defraudarte! En menos de 24 horas recibirás un correo en el cual se detallará si
+                        tu
+                        solicitud acerca del pedido ha sido aceptada, por ahorita nuestra empresa se encarga de revisar
+                        todos los datos y requisitos para que todo esté en orden. Muchísimas gracias por tu comprensión
+                        y
+                        por tu paciencia</p>
                 </div>
             </article>
         </div>
@@ -91,12 +102,12 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="static/assets/js/jquery.min.js"></script>
-    <script src="static/assets/js/jquery.scrolly.min.js"></script>
-    <script src="static/assets/js/jquery.scrollex.min.js"></script>
-    <script src="static/assets/js/skel.min.js"></script>
-    <script src="static/assets/js/util.js"></script>
-    <script src="static/assets/js/main.js"></script>
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/jquery.scrolly.min.js"></script>
+    <script src="/static/assets/js/jquery.scrollex.min.js"></script>
+    <script src="/static/assets/js/skel.min.js"></script>
+    <script src="/static/assets/js/util.js"></script>
+    <script src="/static/assets/js/main.js"></script>
 
 </body>
 </html>

@@ -160,7 +160,7 @@ def registerform():
             rows = logic.insertNewUser(
                 usuario, nombre, email, contraseña, Fecha, telefono, pais, Foto
             )
-            return render_template("index.html")
+            return render_template("mensajeUsuario.html")
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
@@ -170,12 +170,12 @@ def registerform():
             rows = logic.insertNewUser(
                 usuario, nombre, email, contraseña, Fecha, telefono, pais, Foto
             )
-            return render_template("index.html")
+            return render_template("mensajeUsuario.html")
         else:
             flash("Allowed image types are -> png, jpg, jpeg, gif")
             return redirect(request.url)
         message = f"{rows} affected"
-    return render_template("index.html", message=message)
+    return render_template("mensajeUsuario.html", message=message)
 
 
 @app.route("/registroviajero", methods=["GET", "POST"])
@@ -388,7 +388,9 @@ def ConfirmarPedido(id):
         )
         message = f"{rows} affected"
         Foto = diccionarioUsuarios.get("Foto")
-        return render_template("dashboard_user.html", message=message, userfoto=Foto)
+        return render_template(
+            "mensajePedido.html", message=message, userfoto=Foto, FechaEntrega=Fecha
+        )
 
 
 @app.route("/pedidosUsuario", methods=["GET", "POST"])
@@ -477,7 +479,9 @@ def CalificarViajeros(id):
         logic2 = UserShowPedidos()
         data = logic2.ShowPedidos(diccionarioUsuarios.get("idUser"))
         User = diccionarioUsuarios.get("User")
-        return render_template("ver_pedidos.html", message=message, datos=data, User=User)
+        return render_template(
+            "ver_pedidos.html", message=message, datos=data, User=User
+        )
 
 
 @app.route("/calificarusuario/<int:id>", methods=["GET", "POST"])
@@ -909,7 +913,11 @@ def EditarPerfilUsuario():
             )
             diccionarioUsuarios.update({"Pais": Pais})
             diccionarioUsuarios.update({"User": Usuario})
-
+            profile = PerfilUsuario()
+            data = profile.getPerfilUsuario(diccionarioUsuarios.get("idUser"))
+            logic3 = NotasViajero()
+            Notas = logic3.getNotasViajero(diccionarioUsuarios.get("idUser"))
+            return render_template("perfilUsuario.html", datos=data, Notas=Notas)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))

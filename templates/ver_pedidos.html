@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facturas de tus Pedidos</title>
+    <title>Tus Pedidos</title>
 
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="{{url_for('static' , filename = 'images/icons/favicon.ico')}}" />
@@ -30,10 +30,6 @@
 </head>
 
 <body>
-    {% if message %}
-    <p style="color: red;">{{message}}</p>
-    <br>
-    {% endif %}
     <div class="login-form" action="/pedidosViajero" method="POST">
 
         <div class="main_title">
