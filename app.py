@@ -329,7 +329,7 @@ def DelUsers():
         data = logic2.ShowUsers()
         return render_template("deleteuser.html", datos=data)
     else:  # "POST"
-        idUsuario = request.form["idUsuario"]
+        idUsuario = request.form["idusuario"]
         logic = DeleteUser()
         rows = logic.DeleteUser(idUsuario)
         message = f"{rows} affected"
@@ -563,7 +563,7 @@ def ShowSolicitudPedidos():
         logic2 = SolicitudPedidos()
         data = logic2.SolicitudPedidos(idViajero)
         return render_template(
-            "dashboard_viajero.html", datos=data, idViajero=idViajero
+            "solicitudes_pedidos", datos=data, idViajero=idViajero
         )
 
 

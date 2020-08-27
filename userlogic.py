@@ -142,7 +142,7 @@ class DeleteUser(Logic):
 
     def DeleteUser(self, id):
         database = self.get_databaseXObj()
-        sql = f"DELETE FROM proyectozeus.usuarios WHERE (idUsuario = '{id}');"
+        sql = f"DELETE FROM proyectozeus.usuarios WHERE (`idUsuario` = '{id}');"
         rows = database.executeNonQueryRows(sql)
         return rows
 
