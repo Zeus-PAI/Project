@@ -37,7 +37,7 @@ from userlogic import (
     AdminShowCalificaciones,
     UpdatePerfil,
     UpdatePerfilViajero,
-    ViajesAdminLogic
+    ViajesAdminLogic,
 )
 from userobj import UserObj
 from Solicitudobj import SolicitudObj
@@ -269,7 +269,11 @@ def registrarViajeform():
                 telefono,
                 imagenReferencia,
             )
-            return redirect(request.url)
+            return render_template(
+                "dashboard_viajero.html",
+                userdata=diccionarioUsuarios.get("User"),
+                userfoto=diccionarioUsuarios.get("Foto"),
+            )
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
@@ -288,10 +292,16 @@ def registrarViajeform():
             )
         else:
             flash("Allowed image types are -> png, jpg, jpeg, gif")
-            return redirect(request.url)
+            return render_template(
+                "dashboard_viajero.html",
+                userdata=diccionarioUsuarios.get("User"),
+                userfoto=diccionarioUsuarios.get("Foto"),
+            )
         message = f"{rows} affected"
         return render_template(
-            "dashboard_viajero.html", message=message, idViajero=idViajero
+            "dashboard_viajero.html",
+            userdata=diccionarioUsuarios.get("User"),
+            userfoto=diccionarioUsuarios.get("Foto"),
         )
 
 
@@ -1021,6 +1031,7 @@ def homeAdmin():
         userdata=diccionarioUsuarios.get("User"),
         userfoto=diccionarioUsuarios.get("Foto"),
     )
+
 
 @app.route("/verviajes", methods=["GET", "POST"])
 def ShowTodosLosViajesAdmin():
