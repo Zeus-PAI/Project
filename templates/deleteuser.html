@@ -41,10 +41,6 @@
     </style>
 </head>
 <body>
-    {% if message %}
-    <p style="color: red;">{{message}}</p>
-    <br>
-    {% endif %}
     <div class="login-form" action="/pedidosAdmin" method="POST">
         <div class="main_title">
             <a href="/homeAdmin"><i style="color:white;" class="fas fa-home"></i></a>
@@ -105,8 +101,15 @@
                                 <td class="column100 column6" data-column="column6">{{dato[6]}}</td>
                                 <td class="column100 column7" data-column="column7">{{dato[7]}}</td>
                                 <td class="column100 column8" data-column="column8">{{dato[8]}}</td>
-                                <td class="column100 column9" data-column="column9"><img
-                                        src="static\uploads\{{dato[9]}}" alt="Image" height="128" width="128"></td>
+                                {%if dato[9] =="":%}
+                                <td class="column100 column9" data-column="column9">N/A</td>
+                                {%elif dato[9] != none:%}
+                                <td class="column100 column9" data-column="column9"><img src="static\uploads\{{dato[9]}}" alt="Image" height="128"
+                                        width="128"></td>
+                                {%else:%}
+                                <td class="column100 column9" data-column="column9">N/A</td>
+                                {%endif%}
+
                             </tr>
                             {% endfor %}
                         </tbody>
