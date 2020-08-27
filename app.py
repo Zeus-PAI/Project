@@ -46,7 +46,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # git add -A
 # git commit -m "nombre de accion"
 # git push --set-upstream https://github.com/Zeus-PAI/Project master
-#Excelente texto
+# Excelente texto
 app = Flask(__name__)
 app.secret_key = "python es bien chivo"
 diccionarioUsuarios = {"idUser": "", "User": "", "Nombre": "", "Pais": "", "Foto": ""}
@@ -226,7 +226,7 @@ def registerviajeroform():
             flash("Allowed image types are -> png, jpg, jpeg, gif")
             return render_template("index.html")
     message = f"{rows} affected"
-    return render_template("index.html", message=message)
+    return render_template("mensajeViajero.html", message=message)
 
 
 @app.route("/registrarViajes", methods=["GET", "POST"])
@@ -476,7 +476,8 @@ def CalificarViajeros(id):
         message = f"{rows} affected"
         logic2 = UserShowPedidos()
         data = logic2.ShowPedidos(diccionarioUsuarios.get("idUser"))
-        return render_template("dashboard_user.html", message=message, datos=data)
+        User = diccionarioUsuarios.get("User")
+        return render_template("ver_pedidos.html", message=message, datos=data, User=User)
 
 
 @app.route("/calificarusuario/<int:id>", methods=["GET", "POST"])
@@ -878,7 +879,7 @@ def EditarPerfilUsuario():
     if request.method == "GET":
         profile = PerfilUsuario()
         data = profile.getPerfilUsuario(diccionarioUsuarios.get("idUser"))
-        return render_template("editarPerfil.html", datos=data)
+        return render_template("editarPerfilUsuario.html", datos=data)
     else:  # "POST"
         Usuario = request.form["usuario"]
         Correo = request.form["correo"]
@@ -984,6 +985,33 @@ def ShowPerfilViajero3(id):
             # Muy buen texto
             Activos=viajesDisponibles,
         )
+
+
+@app.route("/homeUsuario")
+def homeUser():
+    return render_template(
+        "dashboard_user.html",
+        userdata=diccionarioUsuarios.get("User"),
+        userfoto=diccionarioUsuarios.get("Foto"),
+    )
+
+
+@app.route("/homeViajero")
+def homeViajero():
+    return render_template(
+        "dashboard_viajero.html",
+        userdata=diccionarioUsuarios.get("User"),
+        userfoto=diccionarioUsuarios.get("Foto"),
+    )
+
+
+@app.route("/homeAdmin")
+def homeAdmin():
+    return render_template(
+        "dashboard_admin.html",
+        userdata=diccionarioUsuarios.get("User"),
+        userfoto=diccionarioUsuarios.get("Foto"),
+    )
 
 
 if __name__ == "__main__":

@@ -21,11 +21,15 @@
     <link rel="stylesheet" type="text/css"
         href="{{url_for('static' , filename = 'vendor-copy/perfect-scrollbar/perfect-scrollbar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/form2.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 </head>
 
 <body>
     <form class="login-form" action="/registrarViajes" method="POST" enctype="multipart/form-data">
-
+        <div class="main_title">
+            <a href="/homeViajero"><i style="color:white;" class="fas fa-home"></i></a>
+            <a href="javascript:history.back()"><i style="color:white;" class="fas fa-arrow-circle-left"></i></a>
+        </div>
         <center>
             <div class="left_area">
                 <h2>REGISTRA UN <span>NUEVO VIAJE</span></h2>

@@ -730,3 +730,13 @@ th, td {
   pointer-events: none;
   border: 1px solid #e25f07;
 }
+
+.main_title {
+    color: #fff;
+    margin-top: -1.5cm;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 900;
+    text-align: left;
+
+}

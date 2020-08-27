@@ -4,12 +4,19 @@
   <meta charset="utf-8">
   <title>Factura de Tu Pedido</title>
   <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/styleFactura.css')}}" media="all">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 </head>
 <body>
+
   <header class="clearfix">
+
     <div id="logo">
-      <img src="/static/img/TravelersLogo.jpeg">
+      <img src="/static/img/TravelersLogo.jpeg" style="padding-bottom:0.5cm;">
     </div>
+    <div class="main_title">
+      <a href="javascript:history.back()"><i style="color:black;" class="fas fa-arrow-circle-left"></i></a>
+    </div>
+
     <h1>FACTURA PEDIDO {{datos[0][0]}}</h1>
     <div id="company" class="clearfix">
       <div>TRAVELERS</div>

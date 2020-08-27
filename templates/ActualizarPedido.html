@@ -21,11 +21,15 @@
     <link rel="stylesheet" type="text/css"
         href="{{url_for('static' , filename = 'vendor-copy/perfect-scrollbar/perfect-scrollbar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/form2.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 </head>
 
 <body>
     <form class="login-form" action="/pedidosUsuario/{{id}}" method="POST">
-
+        <div class="main_title">
+            <a href="/homeUsuario"><i style="color:white;" class="fas fa-home"></i></a>
+            <a href="javascript:history.back()"><i style="color:white;" class="fas fa-arrow-circle-left"></i></a>
+        </div>
         <center>
             <div class="left_area">
                 <h2>ACTUALIZA TU <span>PEDIDO</span></h2>
@@ -96,14 +100,14 @@
         </center>
     </form>
     <!--===============================================================================================-->
-    <script src="static\vendor-copy\jquery\jquery-3.2.1.min.js"></script>
+    <script src="/static\vendor-copy\jquery\jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
-    <script src="static\vendor-copy\bootstrap\js\popper.js"></script>
-    <script src="static\vendor-copy\bootstrap\js\bootstrap.min.js"></script>
+    <script src="/static\vendor-copy\bootstrap\js\popper.js"></script>
+    <script src="/static\vendor-copy\bootstrap\js\bootstrap.min.js"></script>
     <!--===============================================================================================-->
-    <script src="static\vendor-copy\select2\select2.min.js"></script>
+    <script src="/static\vendor-copy\select2\select2.min.js"></script>
     <!--===============================================================================================-->
-    <script src="static\js\main3.js"></script>
+    <script src="/static\js\main3.js"></script>
 </body>
 
 </html>

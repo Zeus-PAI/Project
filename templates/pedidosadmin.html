@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/main3.css')}}">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/form.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     <style>
         input[type=button],
         input[type=submit],
@@ -45,6 +46,10 @@
     <br>
     {% endif %}
     <div class="login-form" action="/pedidosAdmin" method="POST">
+        <div class="main_title">
+            <a href="/homeAdmin"><i style="color:white;" class="fas fa-home"></i></a>
+            <a href="javascript:history.back()"><i style="color:white;" class="fas fa-arrow-circle-left"></i></a>
+        </div>
         <center>
             <div class="left_area">
                 <h2>ACTUALIZA LOS <span>PEDIDOS</span></h2>

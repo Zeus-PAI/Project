@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Viajeros</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     <link rel="stylesheet" href="{{url_for('static' , filename = 'css/DiseñoCard.css')}}">
 </head>
 <body>
@@ -13,6 +14,9 @@
                 <h1>VIAJEROS <span>DISPONIBLES</span></h1>
             </div>
         </center>
+        <div class="main_title">
+            <a href="javascript:history.back()"><i style="color:white;" class="fas fa-arrow-circle-left"></i></a>
+        </div>
     </div>
 
     <br>
@@ -52,17 +56,17 @@
                     <div class="stats">
                         <div>
                             <div class="title">Viajes</div>
-                            <i class="fas fa-trophy"></i>
+                            <i class="fa fa-plane" aria-hidden="true"></i>
                             <div class="value">{{dato[4]}}</div>
                         </div>
                         <div>
                             <div class="title">Pedidos</div>
-                            <i class="fas fa-gamepad"></i>
+                            <i class="fa fa-archive" aria-hidden="true"></i>
                             <div class="value">{{dato[5]}}</div>
                         </div>
                         <div>
                             <div class="title">Calificación</div>
-                            <i class="fas fa-group"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                             {%if dato[5] == 0 :%}
                             <div class="value">N/A</div>
                             {%elif dato[6] != none:%}
@@ -74,7 +78,7 @@
                         </div>
                         <div>
                             <div class="title">Eficiencia</div>
-                            <i class="fas fa-coffee"></i>
+                            <i class="fas fa-trophy"></i>
                             <div class="value infinity">∞</div>
                         </div>
                     </div>

@@ -139,3 +139,13 @@ footer {
   padding: 8px 0;
   text-align: center;
 }
+
+.main_title {
+    color: #fff;
+    margin-top: -1.5cm;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 900;
+    text-align: left;
+
+}

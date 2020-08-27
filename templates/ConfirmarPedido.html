@@ -20,13 +20,20 @@
     <link rel="stylesheet" type="text/css"
         href="{{url_for('static' , filename = 'vendor-copy/perfect-scrollbar/perfect-scrollbar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/formPedido.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
 </head>
 <body>
+
 
     <div class="left_area">
         <center>
             <h2>CONFIRMA TU <span>PEDIDO</span></h2>
         </center>
+        <div class="main_title">
+            <a href="/homeUsuario"><i style="color:white;" class="fas fa-home"></i></a>
+            <a href="javascript:history.back()"><i style="color:white;" class="fas fa-arrow-circle-left"></i></a>
+        </div>
     </div>
     <form class="login-form" action="/confirmarpedido/{{id}}" method="POST">
         <div class="row">

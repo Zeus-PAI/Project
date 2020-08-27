@@ -14,6 +14,7 @@
     <link rel="stylesheet"
         href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
     <link rel="stylesheet" href="{{url_for('static' , filename = 'css/PerfilDiseñoUser.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 </head>
 
 <body class="profile-page">
@@ -22,7 +23,14 @@
         {% for dato in datos%}
         <div class="container">
             <div class="navbar-translate">
+                <br>
                 Perfil del Usuario No {{dato[0]}}
+                
+                <div class="main_title">
+                    <a href="/homeViajero"><i style="color:white; " class="fas fa-home"></i></a>
+                    <a href="javascript:history.back()"><i style="color:white; "
+                            class="fas fa-arrow-circle-left"></i></a>
+                </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -215,7 +223,7 @@
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
         integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
         crossorigin="anonymous"></script>
-    <script src="/static\js\PerfilDiseno.js"></script>
+    <script src="/static/js/PerfilDiseno.js"></script>
 
 
 

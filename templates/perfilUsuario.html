@@ -14,6 +14,7 @@
     <link rel="stylesheet"
         href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
     <link rel="stylesheet" href="{{url_for('static' , filename = 'css/PerfilDiseñoUser.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
 </head>
 
 <body class="profile-page">
@@ -23,6 +24,11 @@
         <div class="container">
             <div class="navbar-translate">
                 Perfil del Usuario No {{dato[0]}}
+                <div class="main_title">
+                    <a href="/homeUsuario"><i style="color:white;" class="fas fa-home"></i></a>
+                    <a href="javascript:history.back()"><i style="color:white;"
+                            class="fas fa-arrow-circle-left"></i></a>
+                </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -40,7 +46,7 @@
                         <div class="dropdown-menu dropdown-with-icons">
                             <a href="/editarPerfilUsuario" class="dropdown-item">
                                 <i class="material-icons">edit</i> Editar tu Perfil
-                            </a>3
+                            </a>
                         </div>
                     </li>
                 </ul>

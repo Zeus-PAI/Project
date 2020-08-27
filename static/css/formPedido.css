@@ -121,3 +121,13 @@ body {
             display: table;
             clear: both;
         }
+
+    .main_title {
+    color: #fff;
+    margin-top: -0.5cm;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 900;
+    text-align: left;
+
+}

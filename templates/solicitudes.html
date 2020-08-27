@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/main3.css')}}">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{url_for('static' , filename = 'css/form.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
     <style>
         input[type=button],
         input[type=submit],
@@ -44,7 +45,11 @@
     <p style="color: red;">{{message}}</p>
     <br>
     {% endif %}
-    <div class="login-form" action="/pedidosAdmin" method="POST">
+    <div class="login-form">
+        <div class="main_title">
+            <a href="/homeAdmin"><i style="color:white;" class="fas fa-home"></i></a>
+            <a href="javascript:history.back()"><i style="color:white;" class="fas fa-arrow-circle-left"></i></a>
+        </div>
         <center>
             <div class="left_area">
                 <h2>ACTUALIZA LAS <span>SOLICITUDES</span></h2>
@@ -69,7 +74,7 @@
                     <option value="none" selected>-</option>
                     <option value="Aprobada">Aprobada</option>
                     <option value="Denegada">Denegada</option>
-                 </select>
+                </select>
                 <br><br>
                 <button type="submit" style="margin-left:-0.1cm;" class="btn btn-primary btn-ghost">Actualizar</button>
             </center>
@@ -111,7 +116,8 @@
                                 <td class="column100 column8" data-column="column8">{{dato[8]}}</td>
                                 <td class="column100 column9" data-column="column9">{{dato[9]}}</td>
                                 <td class="column100 column10" data-column="column10">{{dato[10]}}</td>
-                                <td class="column100 column11" data-column="column11"><img src="static\uploads\{{dato[11]}}" alt="Image" height="128" width="128"></td>
+                                <td class="column100 column11" data-column="column11"><img
+                                        src="static\uploads\{{dato[11]}}" alt="Image" height="128" width="128"></td>
                             </tr>
                             {% endfor %}
                         </tbody>
