@@ -563,7 +563,7 @@ def ShowSolicitudPedidos():
         logic2 = SolicitudPedidos()
         data = logic2.SolicitudPedidos(idViajero)
         return render_template(
-            "solicitudes_pedidos", datos=data, idViajero=idViajero
+            "solicitudes_pedidos.html", datos=data, idViajero=idViajero
         )
 
 
